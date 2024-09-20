@@ -5,7 +5,7 @@ function curso(curso, any) {
     return{
         nombreCurso:curso,
         any: any, 
-        descripcion: "",
+        descripcion: "ninguna",
         alumnado:[],
     }
 }
