@@ -6,22 +6,20 @@ function sumarNumeros() {
     if(arguments.length < 2){
         console.log(`Error!! Necesitas mínimo más de un número para poder realizar la suma.`);
         return;
-        
     }
 
     let suma = 0;
 
     //Realizamos un for para leer cada parámetro introducido.
     for(let i=0; i < arguments.length ; i++){
-        let num = arguments[i];
 
         //verificamos si los parámetros introducidos son números o no antes de realizar la suma.
-        if(isNaN(num)){
-            console.error(`Error!! El valor ${num} introducido no es un número.`);
+        if(isNaN(arguments[i])){
+            console.error(`Error!! El valor ${arguments[i]} introducido no es un número.`);
             return;
         }
 
-        suma += num;
+        suma += arguments[i];
     }
 
     console.log(`La suma de los números es: ${suma}`);
