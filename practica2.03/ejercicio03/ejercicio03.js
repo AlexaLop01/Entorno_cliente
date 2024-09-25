@@ -49,10 +49,11 @@ function discente(id, nom, apellidos, nota1, nota2, nota3) {
 }
 
 
-
+//Creamos pruebas de discentes
 let discente1 = discente("01", "Manuel", "Martinez Gomez", 5, 6, 8);
 let discente2 = discente("02", "María", "Gonzalez López", 8, 7, 8);
 
+//Imprimimos los informes de los discentes creados anteriormente
 discente1.imprimirInforme();
 discente2.imprimirInforme();
 
