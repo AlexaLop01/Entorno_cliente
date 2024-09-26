@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 function discente(id, nom, apellidos, nota1, nota2, nota3) {
     return{
@@ -57,14 +57,12 @@ function curso(curso, any) {
         descripcion: "ninguna",
         alumnado:[],
 
-        matricular: function(alumno){
-            let alumnoMatriculado;
-                alumnoMatriculado = [...discente].map((alumno) =>{
-                    return alumno;
-                }) ;   
-        }
+        //funcion para matricular
+        matricular: function(){
+            return  this.alumnado = [...this.alumnado, {...discente}];
+        }   
     }
-}
+};
 
 function mostrarCurso(curso){
     let propiedadesCurso = "";
@@ -73,7 +71,7 @@ function mostrarCurso(curso){
         propiedadesCurso += `${propiedad}: ${curso[propiedad]}\n`;
     }
     console.log(propiedadesCurso);
-}
+};
 
 
 var curso1 = curso("Entorno cliente", "2024");

@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 //creamos un "constructor" de tipo curso
 function curso(curso, any) {
@@ -8,5 +8,5 @@ function curso(curso, any) {
         descripcion: "ninguna",
         alumnado:[],
     }
-}
+};
 console.log(curso());

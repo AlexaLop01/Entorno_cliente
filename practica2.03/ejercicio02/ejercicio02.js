@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 //constructor de curso
 function curso(curso, any) {
@@ -8,7 +8,7 @@ function curso(curso, any) {
         descripcion: "ninguna",
         alumnado:[],
     }
-}
+};
 
 //variables con información
 var curso1 = curso("Entorno cliente", "2024");
@@ -24,7 +24,7 @@ function mostrarCurso(curso){
         propiedadesCurso += `${propiedad}: ${curso[propiedad]}\n`;
     }
     console.log(propiedadesCurso);
-}
+};
 
 //Pruebas de resultado
 console.log(mostrarCurso(curso1));

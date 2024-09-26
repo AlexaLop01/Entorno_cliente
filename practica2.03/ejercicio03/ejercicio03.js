@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 //constructor
 function discente(id, nom, apellidos, nota1, nota2, nota3) {
@@ -46,7 +46,7 @@ function discente(id, nom, apellidos, nota1, nota2, nota3) {
         }
         
     }
-}
+};
 
 
 //Creamos pruebas de discentes
