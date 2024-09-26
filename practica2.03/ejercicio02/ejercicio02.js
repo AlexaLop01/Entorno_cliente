@@ -17,7 +17,7 @@ var curso2 = curso("Base de datos", "2023");
 
 
 //función que establece la información del curso
-function mostrarCurso(curso){
+function mostrarCurso(curso){ 
     let propiedadesCurso = "";
     console.log(`Vamos a mostrar la información del curso`);
     for(var propiedad in curso){
