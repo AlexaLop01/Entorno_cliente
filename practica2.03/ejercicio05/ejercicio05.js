@@ -26,8 +26,15 @@ function mostrarObjeto(objeto) {
             else if(Array.isArray(valor)){
                 datosObjeto += `${clave} (${tipoDato}): [${[...clave]}.`; 
             }
-            el
-            
+            else if(tipoDato === 'object'){
+
+            }
+            else if(tipoDato === 'function'){
+                
+            }
+            else{
+
+            }
             
         }
     }
