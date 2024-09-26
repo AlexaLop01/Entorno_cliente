@@ -58,16 +58,10 @@ function curso(curso, any) {
         alumnado:[],
 
         matricular: function(alumno){
-            if(alumno instanceof discente){
-                this.alumnado = discente.map((discente) => {
-                    console.log(`El alumno ${discente.nombre} ha sido matriculado correctamente`);
-                    return discente;
-                });
-
-            }
-            else{
-                console.log(`El alumno que intenta matricular no es válido`);
-            }
+            let alumnoMatriculado;
+                alumnoMatriculado = [...discente].map((alumno) =>{
+                    return alumno;
+                }) ;   
         }
     }
 }
