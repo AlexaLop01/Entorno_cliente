@@ -58,8 +58,8 @@ function curso(curso, any) {
         alumnado:[],
 
         //funcion para matricular
-        matricular: function(){
-            return  this.alumnado = [...this.alumnado, {...discente}];
+        matricular: function(discente){ //Se le pone por parámetro algo que tenga que entrar en la función.
+            this.alumnado = [...this.alumnado, discente]; //No se pone el return porque no tiene que devolver nada si no sol guardar en el array de alumnado.
         }   
     }
 };
