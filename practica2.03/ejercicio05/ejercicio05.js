@@ -21,7 +21,7 @@ function mostrarObjeto(objeto) {
       } else if (tipoDato === "string") {
         console.log(`${clave} (${tipoDato}): ${valor}.`);
       } else if (Array.isArray(valor)) {
-        console.log(`${clave} (${tipoDato}): [${valor}]`);
+        console.log(`${clave} (Array): [${valor}]`);
       } else if (tipoDato === "object") {
         console.log(`${clave} (${tipoDato}):  { `);
         //Esto es una llamada recursiva a la función de sacar el objeto como parámetro para reutilizar el código que se ha hecho.
