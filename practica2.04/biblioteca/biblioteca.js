@@ -130,11 +130,38 @@ function filtrarUsuario3datos(array){
 
 function valorVacio(array) {
     let arrayValorVacio = [...array].filter((usuario) => {
-        return  !usuario.nombre || !usuario.preferencias || !usuario.contacto || !usuario.direccion || !usuario.correoelectronico || !usuario.telefono;
+        return  !usuario.nombre || !usuario.preferencias || !usuario.contacto || !usuario.contacto.direccion || !usuario.contacto.correoelectronico ||!usuario.contacto.telefono ;
     });
     console.log(`El array filtrado por valor vacio es: `);
     mostrarObjeto(arrayValorVacio);
 
+}
+
+function anyadirApellidos(array) {
+    let usuarioModificado = [...array].map((usuario) =>{
+      return { //Dentro del map se devuelve la copia del objeto , más el nuevo atributo.
+        ...usuario,
+        apellidos: "No indicado"
+      };
+  });
+    mostrarObjeto(usuarioModificado);
+}
+
+function anyadirCodigoDireccion(array) {
+   let usuarioModificadoCodigo = [...array].map((usuario) =>{
+      return { //Dentro del map se devuelve la copia del objeto , y vamos llamando a los demás objetos hasta poder entrar en el que deseamos añadir el nuevo atributo.
+        ...usuario,
+        contacto:{
+          ...usuario.contacto,
+            direccion:{
+              codigo : "00000",
+            ...usuario.contacto.direccion
+            }
+          
+        }
+      };
+  });
+    mostrarObjeto(usuarioModificadoCodigo);
 }
 
 //Funciones para el primer ejercicio.
@@ -144,4 +171,4 @@ export {cambiarMayusculas, ordenarAlfabetoReves, convertirAObjetos};
 export {generarNumerosAleatorios, filtrarArray};
 
 //Función para el tercer ejercicio.
-export {insertarNuevoUsuario, filtrarUsuariosEdad, filtrarUsuariosYahoo, filtrarUsuario3datos, valorVacio};
+export {insertarNuevoUsuario, filtrarUsuariosEdad, filtrarUsuariosYahoo, filtrarUsuario3datos, valorVacio, anyadirApellidos, anyadirCodigoDireccion};

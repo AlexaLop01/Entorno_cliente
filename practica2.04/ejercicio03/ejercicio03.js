@@ -1,6 +1,6 @@
 "use strict";
 
-import { insertarNuevoUsuario, filtrarUsuariosEdad, filtrarUsuariosYahoo, filtrarUsuario3datos, valorVacio} from "../biblioteca/biblioteca.js";
+import { insertarNuevoUsuario, filtrarUsuariosEdad, filtrarUsuariosYahoo, filtrarUsuario3datos, valorVacio, anyadirApellidos, anyadirCodigoDireccion} from "../biblioteca/biblioteca.js";
 
 //Array de objetos que proporciona el ejercicio 3.
 const usuarios = [
@@ -114,7 +114,7 @@ const usuarios = [
   }
 
 //Sacamos por consola el resultado de la inserción del nuevo usuario.
-  insertarNuevoUsuario(usuarios, nuevoUsuario);
+ insertarNuevoUsuario(usuarios, nuevoUsuario);
   console.log(`\n\n`); //Para generar espacios entre los resultados y sea más fácil separar las respustas.
 //Sacamos los usuarios filtrados por edad.
   filtrarUsuariosEdad(usuarios);
@@ -125,8 +125,13 @@ const usuarios = [
 //Sacamos los ususarios filtrados por tema, edad y pais.
 filtrarUsuario3datos(usuarios);
 console.log(`\n\n`);
-
+//Sacamos por consola los objetos que tengan algún elemento vacío.
 valorVacio(usuarios);
-
+console.log(`\n\n`);
+//Sacamos por consola los objetos con el apellido incluido.
+anyadirApellidos(usuarios);
+console.log(`\n\n`);
+//Sacamos por consola el objeto con el codigo añadido.
+anyadirCodigoDireccion(usuarios);
 
 
