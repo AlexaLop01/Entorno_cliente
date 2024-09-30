@@ -144,6 +144,8 @@ function anyadirApellidos(array) {
         apellidos: "No indicado"
       };
   });
+    console.log(`Añadimos el apellido al array de objetos siguiente:`);
+    
     mostrarObjeto(usuarioModificado);
 }
 
@@ -161,6 +163,8 @@ function anyadirCodigoDireccion(array) {
         }
       };
   });
+    console.log(`Este array es con el codigo en dirección incluido: `);
+    
     mostrarObjeto(usuarioModificadoCodigo);
 }
 
