@@ -41,10 +41,11 @@ function mostrarObjeto(objeto) {
         } else if (Array.isArray(valor)) {
           console.log(`${clave} : [${valor}]`);
         } else if (tipoDato === "object") {
-          console.log(`Objeto ${clave} :  { `);
+          console.log(`${clave}:  { `);
           //Esto es una llamada recursiva a la función de sacar el objeto como parámetro para reutilizar el código que se ha hecho.
           mostrarObjeto(valor);
-          console.log(` }`);
+          console.log(`}`);
+          
         } else if (tipoDato === "function") {
           console.log(
             `${clave} : ${valor.name || "función anónima"}`
@@ -85,11 +86,55 @@ function generarNumerosAleatorios(cantidad) {
 
 function filtrarArray(array) {
     let arrayFiltrado = [...array].filter((numero) => {
-        return numero > 5;
+        return numero > 5; //Se filtran los numeros mayores que 5.
     });
-    console.log(`El array filtrado es: ${arrayFiltrado}.`);
-    
-    
+    console.log(`El array filtrado por número es: ${arrayFiltrado}.`);
+      
+}
+
+function insertarNuevoUsuario(array ,nuevoUsuario) {
+    let usuarioNuevoInsertado = [...array, nuevoUsuario];
+    console.log(`Estos son los usuarios del array con su nuevo usuario:`);
+    mostrarObjeto(usuarioNuevoInsertado); //Reutilizo la función para imprimir objetos.
+}
+
+function filtrarUsuariosEdad(array) {
+    let arrayFiltradoEdad = [...array].filter((usuario) => {
+        return usuario.preferencias.edad >= 18; //Con usuario.edad lo que hacemos es especificar que dato es el que usaremos para filtrar.
+    });
+    console.log(`El array filtrado por edad es: `);
+    mostrarObjeto(arrayFiltradoEdad);
+}
+
+function filtrarUsuariosYahoo(array) {
+    let arrayFiltradoEmail = [...array].filter((usuario) => {
+        return usuario.contacto.correoelectronico.includes("@yahoo.com"); //Cuando colocamos el .include es para verificar si el dato contiene esa información dentro de su valor.
+    });
+    console.log(`El array filtrado por email es: `);
+    mostrarObjeto(arrayFiltradoEmail);
+}
+
+function filtrarUsuario3datos(array){
+    console.log(`El array filtrado por tema, edad y pais es: `);
+    let arrayFiltrado3datos = [...array,].filter((usuario) => {
+        //Especificamos con su ruta correspondiente cuales son los requisito del filtro para este array con tema, edad y pais.
+        if(usuario.preferencias.tema === "claro" && usuario.preferencias.edad >=18 && usuario.contacto.direccion.pais === "España"){
+            return usuario; 
+        }else{
+            console.log(`No hay usuarios con ese filtro.`); //Este if else lo coloco ya que al probar veo que no existe el objeto con esas especificaciones. 
+        }
+
+    });
+    mostrarObjeto(arrayFiltrado3datos);
+}
+
+function valorVacio(array) {
+    let arrayValorVacio = [...array].filter((usuario) => {
+        return  !usuario.nombre || !usuario.preferencias || !usuario.contacto || !usuario.direccion || !usuario.correoelectronico || !usuario.telefono;
+    });
+    console.log(`El array filtrado por valor vacio es: `);
+    mostrarObjeto(arrayValorVacio);
+
 }
 
 //Funciones para el primer ejercicio.
@@ -97,3 +142,6 @@ export {cambiarMayusculas, ordenarAlfabetoReves, convertirAObjetos};
 
 //Funciones para el segundo ejercicio.
 export {generarNumerosAleatorios, filtrarArray};
+
+//Función para el tercer ejercicio.
+export {insertarNuevoUsuario, filtrarUsuariosEdad, filtrarUsuariosYahoo, filtrarUsuario3datos, valorVacio};
