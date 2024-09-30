@@ -71,5 +71,29 @@ function convertirAObjetos(array) {
     return mostrarObjeto(arrayNombresObjetos); //Utilizo la función de mostrar para que aparezca la información del objeto.
 }
 
+//Función para generar numeros aleatorios reutilizada y modificada.
 
+function generarNumerosAleatorios(cantidad) {
+    let numerosAleatorios = [];
+
+    for (let i = 0; i < cantidad; i++) {
+        numerosAleatorios[i] = Math.floor(Math.random()*11);   
+    }
+
+    return numerosAleatorios;
+}
+
+function filtrarArray(array) {
+    let arrayFiltrado = [...array].filter((numero) => {
+        return numero > 5;
+    });
+    console.log(`El array filtrado es: ${arrayFiltrado}.`);
+    
+    
+}
+
+//Funciones para el primer ejercicio.
 export {cambiarMayusculas, ordenarAlfabetoReves, convertirAObjetos};
+
+//Funciones para el segundo ejercicio.
+export {generarNumerosAleatorios, filtrarArray};
