@@ -1,0 +1,9 @@
+.interprete-contenedor{
+    width: 100%;
+    border: 2px dotted blue;
+    padding: 15px;
+}
+
+.interprete-imagen{
+    width: 20%;
+}
