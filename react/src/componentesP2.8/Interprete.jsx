@@ -7,7 +7,7 @@ const Interprete = (props) => {
         //JSX
         <>
             <div className="interprete-contenedor">
-            <img className="interprete-imagen" src={foto} alt='Feo' />
+            <img className="interprete-imagen" src={foto} alt='Actor' />
             <h1>{nombre}</h1>
             <h3>{children}</h3>
             </div>

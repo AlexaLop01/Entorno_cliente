@@ -1,0 +1,45 @@
+{
+    "pelicula" : {
+      "id": 6,
+      "nombre": "Concursante",
+      "director": "Rodrigo Cortés",
+      "clasificacion": "Drama",
+      "recaudacion": "$47 millones",
+      "cartelera": "https://www.ecartelera.com/carteles/1300/1364/001.jpg",
+      "nota": 10,
+      "actores": [
+        {
+          "nombre": "Jack Nicholson",
+          "fechaNacimiento": "22/04/1937",
+          "biografia": "Jack Nicholson es un actor y cineasta estadounidense...",
+          "imagen": "https://example.com/jack_nicholson.jpg"
+        },
+        {
+          "nombre": "Shelley Duvall",
+          "fechaNacimiento": "07/07/1949",
+          "biografia": "Shelley Duvall es una actriz estadounidense...",
+          "imagen": "https://example.com/shelley_duvall.jpg"
+        },
+        {
+          "nombre": "Danny Lloyd",
+          "fechaNacimiento": "13/01/1973",
+          "biografia": "Danny Lloyd es un actor estadounidense...",
+          "imagen": "https://example.com/danny_lloyd.jpg"
+        },
+        {
+          "nombre": "Scatman Crothers",
+          "fechaNacimiento": "23/05/1910",
+          "biografia": "Scatman Crothers fue un actor y músico estadounidense...",
+          "imagen": "https://example.com/scatman_crothers.jpg"
+        },
+        {
+          "nombre": "Barry Nelson",
+          "fechaNacimiento": "16/04/1917",
+          "biografia": "Barry Nelson fue un actor estadounidense...",
+          "imagen": "https://example.com/barry_nelson.jpg"
+        }
+      ],
+      "resumen":
+        "Martín Circo Martín es el afortunado ganador del mayor concurso de la historia de la televisión: un premio valorado en tres millones de euros. En esta ácida sátira de la sociedad actual, el golpe de suerte de Martín dará un vuelco a su vida convirtiéndola en una auténtica pesadilla."
+    }
+  }
