@@ -1,6 +1,6 @@
 import './App.css';
-import Contenedor from './componentes/Contenedor.jsx';
-import Interprete from './componentes/Interprete.jsx';
+import Contenedor from './componentes2.7/Contenedor.jsx';
+import Interprete from './componentes2.7/Interprete.jsx';
 
 function App() {
  
