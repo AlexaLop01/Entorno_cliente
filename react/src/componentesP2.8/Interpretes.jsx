@@ -1,23 +1,21 @@
 import Interprete from "./Interprete";
-import Actores from "../objetosP2.8/pelicula.json";
 
-function Interpretes() {
+function Interpretes(props) {
     //Javascript
-    const pelicula = [...Actores.pelicula.actores];
-    console.log(pelicula);
+    const {actores} = props;
     return(
         //JSX
         <>
-        <h1>Lista de interpretes.</h1>
         <div>
-            {pelicula.length ?
-            pelicula.map((actor) => {
+            {actores.length ?
+            actores.map((actor) => {
                 return (
                     <Interprete
-                    
-                    >
-                        
-                    </Interprete>
+                        key={actor.nombre}
+                        foto={actor.imagen}
+                        nombre={actor.nombre}
+                        fechaNacimiento={actor.fechaNacimiento}
+                        biografia={actor.biografia}/>
                 );
             })
             : "No se ha encontrado ningún actor."}
@@ -25,3 +23,5 @@ function Interpretes() {
         </>
     );
 }
+
+export default Interpretes;
