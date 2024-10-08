@@ -1,22 +1,23 @@
-import Pelicula from "./ejercicio1/Pelicula.jsx";
-import movies from "../objetosP2.8/pelicula.json";
+import Pelicula from "./Pelicula.jsx";
+import Interpretes from "./Interpretes.jsx";
+import movies from "../../objetosP2.8/peliculas.json";
 
 function Peliculas() {
     //Javascript
-
+    
     return(
         //JSX
         <>
         <div>
-            {movies.pelicula.length ?
-            movies.pelicula.map((movie) => {
+            {movies.peliculas.length ?
+            movies.peliculas.map((movie) => {
                 return (
                     <Pelicula
                         key={movie.id}
                         titulo={movie.nombre}
                         direccion={movie.direccion}
-                        cartelera={movie.cartelera}
-                        actores={movie.actores}
+                        cartelera={movie.cartelera} 
+                        actores={<Interpretes actores={movie.actores}/>}   
                     >
                       {movie.resumen}  
                     </Pelicula>

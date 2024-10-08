@@ -1,6 +1,6 @@
-import Interpretes from "./ejercicio1/Interpretes.jsx";
+import Interpretes from "./Interpretes.jsx";
 import "./Pelicula.css";
-import movie from "../objetosP2.8/pelicula.json";
+import movie from "../../objetosP2.8/pelicula.json";
 
 const Pelicula = (props) =>{
     //Javascript

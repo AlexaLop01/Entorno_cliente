@@ -1,0 +1,43 @@
+.contenedor-pelicula{
+    display: grid;
+   
+}
+
+h1{
+    font-size: 35px;
+    margin-bottom: 0;
+}
+
+.pelicula-titulo {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.pelicula-direccion{
+    text-align: left;
+    margin-left: 20px;
+}
+
+.pelicula-informacion{
+    display: flex;
+}
+.pelicula-imagen{
+    width: 200px;
+    margin-left: 20px;
+}
+
+.pelicula-resumen{
+    font-size: 15px;
+    font-weight: 400;
+    margin-left: 35px;
+    text-align: left;
+}
+
+.pelicula-elenco{
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+
+

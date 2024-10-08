@@ -1,0 +1,20 @@
+.interprete-contenedor{
+    width: auto;
+    border: 2px solid blue;
+    padding: 15px;
+    display: grid;
+    grid-template-areas: 
+    "img texto"
+    ;
+    margin: 15px;
+}
+
+.interprete-imagen{
+    width: 100px;
+    grid-area: img;
+}
+
+.interprete-informacion{
+    grid-area: texto;
+    text-align: left;
+}

@@ -1,4 +1,4 @@
-import Interprete from "./ejercicio1/Interprete";
+import Interprete from "./Interprete.jsx";
 
 function Interpretes(props) {
     //Javascript
