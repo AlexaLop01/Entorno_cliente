@@ -15,7 +15,7 @@ function Peliculas() {
                     <Pelicula
                         key={movie.id}
                         titulo={movie.nombre}
-                        direccion={movie.direccion}
+                        direccion={movie.director}
                         cartelera={movie.cartelera} 
                         actores={<Interpretes actores={movie.actores}/>}   
                     >
