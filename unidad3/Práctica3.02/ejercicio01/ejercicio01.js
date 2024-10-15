@@ -1,12 +1,11 @@
 "use strict";
 
-const text = document.body.innerHTML;
-console.log(text);
-
-const span = document.createElement("span");
-    span.innerHTML= `Contenido Bloqueado`;
-    span.setAttribute("class", "censura");
-console.log(span);
+import { censurarPalabra } from "../biblioteca/biblioteca.js";
 
 
+const idTimeOut = setTimeout(()=>{
+    
+    censurarPalabra("sexo");
+    
+}, 2000);
 
