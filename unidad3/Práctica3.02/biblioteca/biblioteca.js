@@ -41,4 +41,33 @@ function esPrimo(numero){
     }
     return true;//Si el resto del número no es 0 sale y devuelve este true.
 }
-export {censurarPalabra, crearTabla, esPrimo};
+
+function generarColorAleatorio() {
+    const hexadecimal = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += hexadecimal[Math.floor(Math.random()*16)];
+    }
+    return color;
+}
+
+function generarIndiceAleatorio(array) {
+    var indice = Math.floor(Math.random() * array.length);
+    return indice;
+}
+
+function animarOpacidad(elemento, inicio, fin, duracion) {
+    let incremento = (fin - inicio) / (duracion / 10); // Incremento en cada paso
+    let opacidadActual = inicio;
+
+    function animar() {
+        opacidadActual += incremento;
+        elemento.style.opacity = opacidadActual;
+        if ((incremento > 0 && opacidadActual < fin) || (incremento < 0 && opacidadActual > fin)) {
+            setTimeout(animar, 10); // Siguiente paso en 10ms
+        }
+    }
+    animar();
+}
+
+export {censurarPalabra, crearTabla, esPrimo, generarColorAleatorio, generarIndiceAleatorio, animarOpacidad};
