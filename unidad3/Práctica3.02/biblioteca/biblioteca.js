@@ -56,18 +56,22 @@ function generarIndiceAleatorio(array) {
     return indice;
 }
 
-function animarOpacidad(elemento, inicio, fin, duracion) {
-    let incremento = (fin - inicio) / (duracion / 10); // Incremento en cada paso
-    let opacidadActual = inicio;
+function animarOpacidad(imagen) {
+    
+    let opacidadActual = 0;
+    const duracion = 1000; //La duración de la animación.
+    const incremento = 0.1;//Incremento de la opacidad.
+    const intervaloPaso = duracion / (1/ incremento); //Tiempo entre cada cambio de opacidad.
 
-    function animar() {
+    const intervaloOpacidad = setInterval(() => {
         opacidadActual += incremento;
-        elemento.style.opacity = opacidadActual;
-        if ((incremento > 0 && opacidadActual < fin) || (incremento < 0 && opacidadActual > fin)) {
-            setTimeout(animar, 10); // Siguiente paso en 10ms
+        imagen.style.opacity = opacidadActual;
+        if (opacidadActual >= 1) {
+            clearInterval(intervaloOpacidad); // Detenemos la animación cuando la opacidad llegue a 1
         }
-    }
-    animar();
+    }, intervaloPaso); 
+
 }
+
 
 export {censurarPalabra, crearTabla, esPrimo, generarColorAleatorio, generarIndiceAleatorio, animarOpacidad};
