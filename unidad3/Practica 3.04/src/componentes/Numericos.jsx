@@ -3,7 +3,7 @@ import { obtenerNumeroAleatorio } from "../biblioteca/biblioteca.js";
 
 const Numericos = () => {
     //Javascript
-    const refe = useRef(null);
+    const refeNumerico = useRef(null);
 
     const anadirNumerico = (referencia) =>{
         referencia.current.innerHTML += `<li>Número : ${obtenerNumeroAleatorio()}.</li>`
@@ -14,9 +14,9 @@ const Numericos = () => {
     <>
         <div>
             <button onClick={()=>{
-                anadirNumerico(refe);
+                anadirNumerico(refeNumerico);
             }}>Añadir numerico</button>
-            <ol ref={refe}></ol>
+            <ol ref={refeNumerico}></ol>
         </div>
     </>
   )

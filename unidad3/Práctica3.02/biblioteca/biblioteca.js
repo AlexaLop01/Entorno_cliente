@@ -36,7 +36,7 @@ function crearTabla(elemento) {
 function esPrimo(numero){
     if(numero <= 1) return false;
     if(numero === 2) return true;
-    for (let i = 2; i < Math.sqrt(numero); i++) { //Math.sqrt devuelve la raíz cuadrada de un número.
+    for (let i = 2; i <= Math.sqrt(numero); i++) { //Math.sqrt devuelve la raíz cuadrada de un número.
         if(numero % i === 0) return false; //Después de que cumple la especificación del for verifica si el resto del número es cero para descartar que es un número primo.
     }
     return true;//Si el resto del número no es 0 sale y devuelve este true.

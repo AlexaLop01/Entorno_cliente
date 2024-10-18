@@ -11,4 +11,25 @@ function generarColorAleatorio() {
     return color;
 }
 
-export {obtenerNumeroAleatorio, generarColorAleatorio};
+function cambiarColorElemento(referencia) {
+    const color = generarColorAleatorio();
+    referencia.current.style.backgroundColor= color;
+}
+
+function incrementar(referencia) {
+    let valorActual = parseInt(referencia.current.textContent) || 0;
+    if ( valorActual >=0) {
+        valorActual ++;
+        referencia.current.textContent = valorActual;
+    }
+}
+
+function decrementar(referencia) {
+    let valorActual = parseInt(referencia.current.textContent) || 0;
+    if ( valorActual >0) {
+        valorActual --;
+        referencia.current.textContent = valorActual;
+    }
+}
+
+export {obtenerNumeroAleatorio, generarColorAleatorio, cambiarColorElemento, incrementar, decrementar};

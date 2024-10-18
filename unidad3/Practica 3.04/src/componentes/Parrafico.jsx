@@ -1,13 +1,18 @@
 import {useRef} from 'react';
-import { generarColorAleatorio } from '../biblioteca/biblioteca.js';
+import { cambiarColorElemento } from '../biblioteca/biblioteca.js';
 
 const Parrafico = () => {
     //Javascript
-    const refe = useRef(null);
+    const referenciaParrafico = useRef(null);
 
   return (
     <>
-        <div></div>
+        <div>
+        <button onClick={()=>{
+              cambiarColorElemento(referenciaParrafico);
+          }}>Cambiar colorico</button>
+          <p ref={referenciaParrafico}>¡Soy el párrafo 1! Hola.</p>
+        </div>
     </>
   )
 }
