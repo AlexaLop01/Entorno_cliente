@@ -1,4 +1,4 @@
-import "./Contenedor.css";
+import "../css/Contenedor.css";
 
 const Contenedor = (props) =>{
 

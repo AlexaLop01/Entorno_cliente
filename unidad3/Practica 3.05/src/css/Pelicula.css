@@ -1,0 +1,62 @@
+
+
+h1{
+    font-size: 35px;
+    margin-bottom: 0;
+}
+
+.pelicula-titulo {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.pelicula-direccion{
+    text-align: left;
+    margin-left: 20px;
+}
+
+.pelicula-informacion{
+    display: flex;
+}
+.pelicula-imagen{
+    width: 30%;
+    margin-left: 20px;
+}
+
+.pelicula-resumen{
+    font-size: 15px;
+    font-weight: 400;
+    margin-left: 35px;
+    text-align: left;
+}
+
+.pelicula-elenco{
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(89, 89, 223);
+}
+
+.pelicula-boton-taquilla{
+    background-color: rgb(199, 46, 46);
+}
+.pelicula-taquilla{
+    border: 2px dotted rgb(199, 46, 46);
+    padding: 5px 30px;
+}
+
+.pelicula-referencias{
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+}
+
+button{
+    margin: 20px 10px;
+}
+
+.desaparecer{
+    display: none;
+}
+
+

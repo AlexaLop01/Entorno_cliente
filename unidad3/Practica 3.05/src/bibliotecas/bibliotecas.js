@@ -3,4 +3,8 @@ const generarUuidAleatorio = () => {
     return crypto.randomUUID();
   };
   
-export { generarUuidAleatorio };
+
+  const quitarApariencia = (referencia) => {
+    referencia.current.classList.toggle("desaparecer");
+  }
+export { generarUuidAleatorio , quitarApariencia};

@@ -1,11 +1,13 @@
-import "./Pelicula.css";
+import "../css/Pelicula.css";
 import Interpretes from "./Interpretes.jsx";
+import { quitarApariencia } from "../bibliotecas/bibliotecas.js";
 import { useRef } from "react";
 
 const Pelicula = (props) =>{
     //Javascript
     const {children, titulo, direccion, cartelera, actores, recaudacion} = props;
-    const refe = useRef(null);
+    const referenciaActores = useRef(null);
+    const referenciaTaquilla = useRef(null);
 
     return(
         //JSX
@@ -17,12 +19,22 @@ const Pelicula = (props) =>{
                 <img className="pelicula-imagen" src={cartelera} alt='Pelicula'/>
                 <p className="pelicula-resumen">{children}</p>
             </div>
-            <p onClick={()=>{
+            <div className="pelicula-referencias">
+                <button  onClick={()=>{
+                    quitarApariencia(referenciaActores);
+                }} className="pelicula-elenco">Elenco</button>
+                <button onClick={()=>{
+                    quitarApariencia(referenciaTaquilla);
+                }} className="pelicula-boton-taquilla">Taquilla</button>
 
-            }} className="pelicula-elenco">Elenco</p>
-            <p>Taquilla</p>
+            </div> 
+                <p className= "pelicula-taquilla" ref={referenciaTaquilla}>{recaudacion}</p>
+             
+                <div ref={referenciaActores}>
+                    <Interpretes  actores={actores}></Interpretes>
+                </div>
 
-            <Interpretes actores={actores}></Interpretes>
+            
         </div>
         </>
     );

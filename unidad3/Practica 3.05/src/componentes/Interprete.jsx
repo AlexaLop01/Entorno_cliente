@@ -1,5 +1,5 @@
 
-import "./Interprete.css";
+import "../css/Interprete.css";
 
 const Interprete = (props) => {
     //Javascript
