@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const Inicio = () => {
   return (
-    <div>Inicio</div>
+    <h2>Este es el componente de Inicio.</h2>
   )
 }
 

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const Contacto = () => {
   return (
-    <div>Contacto</div>
+    <h2>Este es el componente de Contacto.</h2>
   )
 }
 

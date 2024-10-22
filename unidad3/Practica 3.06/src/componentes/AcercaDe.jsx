@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const AcercaDe = () => {
   return (
-    <div>AcercaDe</div>
+    <h2>Este es el componente de Acerca De.</h2>
   )
 }
 
