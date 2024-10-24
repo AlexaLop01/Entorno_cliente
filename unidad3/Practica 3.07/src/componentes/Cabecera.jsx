@@ -1,9 +1,13 @@
 import React from "react"
 
-const Cabecera = () => {
+const Cabecera = (props) => {
+  const {children} = props;
   return (
     <>
-      <div>Cabecera</div>
+    <div>
+      <div>{children}</div>
+
+    </div>
     </>
   )
 }

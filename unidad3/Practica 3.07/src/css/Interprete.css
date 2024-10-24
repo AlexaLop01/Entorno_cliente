@@ -1,0 +1,10 @@
+.interprete-contenedor{
+    width: auto;
+    border: 2px dotted rgb(89, 89, 223);
+    padding: 15px;
+}
+
+.interprete-imagen{
+    width: 100px;
+    height: 100px;
+}
