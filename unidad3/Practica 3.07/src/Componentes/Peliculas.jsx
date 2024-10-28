@@ -12,7 +12,7 @@ function Peliculas(props) {
     return(
         //JSX
         <>
-        <h1>Panel de administración de Películas</h1>
+        <h2>Panel de administración de Películas</h2>
         <div>
             <SubmenuPeliculas/>
         </div>
@@ -22,7 +22,7 @@ function Peliculas(props) {
         <button onClick={()=>{
             navegar("/");
         }}>Volver a Inicio</button>
-        <div>
+        <div className="peliculas-contenedor">
             {listado.length ?
             listado.map((movie) => {
                 return (

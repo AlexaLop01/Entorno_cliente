@@ -1,8 +1,10 @@
 import React from "react";
+import "../css/Pie.css";
+
 const Pie = () => {
   return (
     <>
-      <div>Información del footer</div>
+      <div className="pie-contenedor">Información del footer</div>
     </>
   )
 }

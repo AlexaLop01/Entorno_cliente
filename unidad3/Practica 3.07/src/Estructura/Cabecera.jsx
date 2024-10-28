@@ -1,10 +1,11 @@
-import React from "react"
+import React from "react";
+import "../css/Cabecera.css";
 
 const Cabecera = (props) => {
   const {children} = props;
   return (
     <>
-    <div>
+    <div className="cabecera-contenedor">
       <div>{children}</div>
 
     </div>

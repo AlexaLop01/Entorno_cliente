@@ -9,7 +9,6 @@ const SubmenuPeliculas = () => {
         <Link className='submenu-elementomenu' to='/peliculas/movies'>Peliculas</Link> 
         <Link className='submenu-elementomenu' to='/peliculas/interpretes'>Interpretes</Link> 
         <Link className='submenu-elementomenu' to='/peliculas/directores'>Directores</Link> 
-
     </div>
     </>
   )

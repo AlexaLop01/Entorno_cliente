@@ -1,10 +1,11 @@
 import React from "react";
+import "../css/Contenido.css"
 
 const Contenido = (props) => {
   const {children} = props;
   return (
     <>
-      <div id='contenedor-contenido'>{children}</div>
+      <div id='contenido-contenedor'>{children}</div>
     </>
   )
 }
