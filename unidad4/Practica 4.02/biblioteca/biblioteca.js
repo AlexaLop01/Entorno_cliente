@@ -14,7 +14,7 @@ function aparecerContenido(elemento) {
 
 //Creamos una función que permita introducir las colecciones oportunas y pueda indicarse el índice del cuál queremos mostrar la pestaña.
 function activarPestaña(elemento1, elemento2, indice){
-    //Quitamos la clase activo de todas
+    //Quitamos la clase activo de todas.
     for (let i = 0; i < elemento1.length; i++) {
         elemento1[i].classList.remove("activo"); 
     }
