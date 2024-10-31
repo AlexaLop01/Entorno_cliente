@@ -1,7 +1,38 @@
+/*Ejercicio01*/
 .aparecer{
     display: block;
 }
 
 p{
     display: none;
+}
+
+/*Ejercicio 2*/
+.contenedor-pestañas{
+    display: flex;
+    gap: 10px;
+}
+
+.contenedor-pestañas button{
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(122, 137, 249);
+    font-weight: bold;
+}
+
+.contenedor-pestañas button.activo{
+    background-color: rgb(189, 115, 226);
+}
+.contenedor-contenido p{
+    display: none;
+    padding: 10px;
+    width: 97%;
+    height: 100px;
+}
+
+.contenedor-contenido p.activo{
+    display: block;
+    background-color: rgb(189, 115, 226);
+
 }
