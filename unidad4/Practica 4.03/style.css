@@ -1,0 +1,29 @@
+.blanco{
+    background-color: white;
+}
+.negro{
+    background-color: black;
+}
+.rojo{
+    background-color: red;
+}
+.amarillo{
+    background-color: yellow;
+}
+.verde{
+    background-color: green;
+}
+.azul{
+    background-color: blue;
+}
+
+#colores td{
+    width: 10px;
+    height: 10px;
+    border: 1px solid gray;
+    border-radius: 50%;
+}
+
+button{
+    margin: 20px 0;
+}
