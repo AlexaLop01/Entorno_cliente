@@ -17,13 +17,49 @@
     background-color: blue;
 }
 
+body{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wr;
+
+}
+
+#pinturas{
+    margin-left: 20px;
+}
+h2{
+    font-family: sans-serif;
+}
+
+#colores{
+    display: flex;
+    gap: 5px;
+}
+
 #colores td{
     width: 10px;
     height: 10px;
     border: 1px solid gray;
     border-radius: 50%;
+    cursor: pointer;
+
+}
+
+.seleccionada{
+    outline: 1px solid black;
+    outline-offset: 2px;
 }
 
 button{
     margin: 20px 0;
+    padding: 10px 25px;
+    background-color: rgb(213, 212, 212);
+    border: none;
+    font-family: sans-serif;
+}
+
+#lienzo td{
+    width: 10px;
+    height: 10px;
+    border: 1px solid gray;
 }
