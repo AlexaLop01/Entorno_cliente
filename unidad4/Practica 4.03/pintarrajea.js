@@ -1,5 +1,5 @@
 "use strict";
-import { crearTabla } from "./biblioteca/biblioteca.js";
+import { crearTabla ,resetearLienzo} from "./biblioteca/biblioteca.js";
 
 window.onload = () =>{
     const lienzo = document.getElementById("lienzo");
@@ -51,10 +51,10 @@ window.onload = () =>{
         }
 
     }, false);
-    
 
     //Sección de resetear el lienzo a blanco
     borrar.addEventListener("click", ()=>{
+        resetearLienzo();
         
     })
 }

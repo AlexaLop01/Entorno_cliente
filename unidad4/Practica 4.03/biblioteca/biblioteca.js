@@ -7,6 +7,7 @@ function crearTabla(contenedor, filas, columnas){
         const fila = document.createElement("tr");
         for (let j = 0; j < columnas; j++) {
             const celda = document.createElement("td");
+            celda.classList.add("celdaLienzo");
             fila.appendChild(celda);
         }
         tabla.appendChild(fila);
@@ -14,4 +15,10 @@ function crearTabla(contenedor, filas, columnas){
     contenedor.appendChild(tabla);
 }
 
-export {crearTabla};
+function resetearLienzo(){
+    const celdasLienzo = document.getElementsByClassName("celdaLienzo");
+        Array.from(celdasLienzo).forEach(celda => {
+            celda.className = "celdaLienzo blanco";
+        });
+}
+export {crearTabla, resetearLienzo};
