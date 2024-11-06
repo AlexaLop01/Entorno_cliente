@@ -26,6 +26,9 @@ body{
 
 #pinturas{
     margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 h2{
     font-family: sans-serif;
@@ -52,14 +55,16 @@ h2{
 
 button{
     margin: 20px 0;
-    padding: 10px 25px;
+    padding: 10px 30px;
     background-color: rgb(213, 212, 212);
     border: none;
+    border-radius: 10px;
     font-family: sans-serif;
+    cursor: pointer;
 }
 
 #lienzo td{
     width: 10px;
     height: 10px;
-    border: 1px solid gray;
+    border: 1px solid rgb(215, 214, 214);
 }
