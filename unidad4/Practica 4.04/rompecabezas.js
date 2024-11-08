@@ -1,3 +1,15 @@
 "use strict";
+import { barajarImagenes, crearImagenes} from "./biblioteca/biblioteca.js";
 
-var imagenes = ["img/1.png", "img/2.png", "img/3.png", "img/4.png", "img/5.png", "img/6.png", "img/7.png", "img/8.png", "img/9.png"];
+window.onload = ()=>{
+    let contenedorPiezas = document.getElementById("piezas");
+    
+    contenedorPiezas.innerHTML=``;
+    const arrayPiezas= barajarImagenes(crearImagenes());
+    console.log(arrayPiezas);
+
+    arrayPiezas.map(pieza => {
+        contenedorPiezas.appendChild(pieza);
+    });
+    
+}
