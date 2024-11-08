@@ -7,27 +7,30 @@
     <title>Rompecabezas</title>
 </head>
 <body>
-    <div id="piezas">
-
-    </div>
-    <div id="puzzle">
-        <table>
-            <tr>
-                <td class="celdaPuzzle"></td>
-                <td class="celdaPuzzle"></td>
-                <td class="celdaPuzzle"></td>
-            </tr>
-            <tr>
-                <td class="celdaPuzzle"></td>
-                <td class="celdaPuzzle"></td>
-                <td class="celdaPuzzle"></td>
-            </tr>
-            <tr>
-                <td class="celdaPuzzle"></td>
-                <td class="celdaPuzzle"></td>
-                <td class="celdaPuzzle"></td>
-            </tr>
-        </table>
+    <div id="zona-arrastrable">
+        <div id="piezas" class="soltable">
+    
+        </div>
+        <div id="puzzle">
+            <table>
+                <tr>
+                    <td class="celdaPuzzle soltable" data-position="1"></td>
+                    <td class="celdaPuzzle soltable" data-position="2"></td>
+                    <td class="celdaPuzzle soltable" data-position="3"></td>
+                </tr>
+                <tr>
+                    <td class="celdaPuzzle soltable" data-position="4"></td>
+                    <td class="celdaPuzzle soltable" data-position="5"></td>
+                    <td class="celdaPuzzle soltable" data-position="6"></td>
+                </tr>
+                <tr>
+                    <td class="celdaPuzzle soltable" data-position="7"></td>
+                    <td class="celdaPuzzle soltable" data-position="8"></td>
+                    <td class="celdaPuzzle soltable" data-position="9"></td>
+                </tr>
+            </table>
+            <button>reset</button>
+        </div>
     </div>
     <script type="module" src="./rompecabezas.js"></script>
 </body>
