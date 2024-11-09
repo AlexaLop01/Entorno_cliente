@@ -24,7 +24,6 @@ function crearImagenes(){
         pieza.alt=`imagen ${indice + 1}`;
         return pieza;
     })
-    console.log(piezas);
     return piezas;
 }
 
@@ -38,12 +37,12 @@ function colocarImagenesContenedor(contenedor){
 }
 
 function verificarSolucion() {
-    const casillas = document.querySelectorAll(".soltable");
-    for (const casilla of casillas) {
-        const pieza = casilla.firstChild;
+    const celdas = document.querySelectorAll(".celdaPuzzle");
+    for (const celda of celdas) {
+        const pieza = celda.firstChild;
         
-        // Si la casilla está vacía o la pieza no está en la posición correcta, retorna falso
-        if (!pieza || pieza.getAttribute("data-position") !== casilla.getAttribute("data-position")) {
+        // Si la casilla está vacía o la pieza no está en la posición correcta, devuelve false.
+        if (!pieza || pieza.getAttribute("data-position") !== celda.getAttribute("data-position")) {
             return false;
         }
     }
