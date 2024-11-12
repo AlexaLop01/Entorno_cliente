@@ -44,12 +44,14 @@ function desmarcarTodos(elementos){
 }
 
 //Funciones del ejercicio 2.
+//Función para resetear los valores.
 function resetearValues(){
     document.getElementById("texto-introducir").value = "";
     document.getElementById("estilo-texto").value = "";
 
 }
 
+//Función para crear párrafo con estilo.
 function crearParrafoConEstilo(texto, estilo, contenedor){
     const mensajeError = document.getElementById("error");
 
@@ -74,6 +76,68 @@ function crearParrafoConEstilo(texto, estilo, contenedor){
 
 }
 
+//Funciones del ejercicio 3.
+//Función para guardar un disco.
+function guardarDisco(formulario , listaDiscos) {
+    const nombreDisco = document.getElementById('nombre-disco').value.trim();
+    const grupoMusical = document.getElementById('grupo-musical').value.trim();
+    const any = document.getElementById('fech-publicacion').value;
+    const tipoMusica = document.getElementById('tipo-musica').value;
+    const localizacion = document.getElementById('localizacion').value.trim();
+    const prestado = document.getElementById('prestado').checked;
+    const mensaje = document.getElementById("mensaje");
 
+    // Verificamos que todos los campos obligatorios estén llenos.
+    if (!nombreDisco || !grupoMusical || !any || !tipoMusica || !localizacion) {
+      mensaje.textContent = `Por favor. Completa todos los campos`;
+      return;
+    }
 
-export {crearCheckbox, marcarPares, desmarcarTodos, crearParrafoConEstilo};
+    // Creamos un nuevo objeto disco.
+    const nuevoDisco = {
+        nombreDisco,
+        grupoMusical,
+        any: parseInt(any),
+        tipoMusica,
+        localizacion,
+        prestado
+    };
+
+    // Añadimos el objeto disco a la lista de discos.
+    listaDiscos.discos.push(nuevoDisco);
+
+    console.log(listaDiscos);
+    
+    // Reseteamos los campos después de guardar el disco.
+    formulario.reset();
+
+    // Añadimos un mensaje para el usuario de que se ha guardado correctamente.
+    mensaje.textContent = `El disco ha sido guardado correctamente`;
+}
+
+function mostrarDiscos(contenedor, listaDiscos) {
+    
+    contenedor.innerHTML = ''; // Limpiar el contenido anterior
+
+    if (listaDiscos.discos.length === 0) {
+      contenedor.innerHTML = '<p>No hay discos guardados.</p>';
+      return;
+    }
+
+    // Crear el listado de discos formateado
+    listaDiscos.discos.forEach((disco, index) => {
+        const discoDiv = document.createElement("div");
+        discoDiv.classList.add("disco");
+
+        discoDiv.innerHTML = `
+          <h3>Disco ${index + 1}: ${disco.nombreDisco} (${disco.any})</h3>
+          <p><strong>Grupo:</strong> ${disco.grupoMusical}</p>
+          <p><strong>Tipo de Música:</strong> ${disco.tipoMusica}</p>
+          <p><strong>Localización:</strong> ${disco.localizacion}</p>
+          <p><strong>Prestado:</strong> ${disco.prestado ? "Sí" : "No"}</p>
+        `;
+
+        contenedor.appendChild(discoDiv);
+    });
+}
+export {crearCheckbox, marcarPares, desmarcarTodos, crearParrafoConEstilo, guardarDisco, mostrarDiscos};

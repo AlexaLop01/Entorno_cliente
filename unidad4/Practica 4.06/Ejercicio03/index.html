@@ -3,9 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Discos</title>
 </head>
 <body>
+    <form id="formulario-disco">
+        <label for="nombre-disco">Introduce el nombre del disco: </label>
+        <input id="nombre-disco" type="text" required><br>
     
+        <label for="grupo-musical">Introduce el grupo de música o el intérprete: </label>
+        <input id="grupo-musical" type="text" required><br>
+    
+        <label for="fech-publicacion">Introduce el año de publicacion: </label>
+        <input id="fech-publicacion" type="number" required>
+    
+        <label for="tipo-musica">Introduce el tipo de música: </label>
+        <select id="tipo-musica" required>
+            <option value="rock">Rock</option>
+            <option value="progressive">Progressive</option>
+            <option value="punk">Punk</option>
+            <option value="trash">Trash</option>
+        </select>
+
+        <label for="localizacion">Introduce su localización (Estantería):</label>
+        <input id="localizacion" type="text" required>
+
+        <label for="prestado">¿El disco es prestado?</label>
+        <input id="prestado" type="checkbox"><br>
+
+        <input id="guardar-disco" type="button" value="Guardar">
+        <input id="mostrar-disco" type="button" value="Mostrar">
+    </form>
+    <p id="mensaje"></p>
+
+    <div id="resultado">
+
+    </div>
+
+    <script type="module" src="./discos.js"></script>
 </body>
 </html>
