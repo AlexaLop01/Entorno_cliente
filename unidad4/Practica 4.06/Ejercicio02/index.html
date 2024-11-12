@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Creador de párrafos</title>
+</head>
+<body>
+    <form>
+        <label for="texto-introducir">Introduce un texto: </label><br>
+        <textarea id="texto-introducir" rows="4" cols="50" placeholder="Escribe el texto que quieres que aparezca en el párrafo siguiente."></textarea><br>
+
+        <label for="estilo-texto">Elige un estilo para el párrafo:</label><br>
+        <select id="estilo-texto">
+            <option value="">--selecciona un estilo--</option>
+            <option value="rojo">rojo</option>
+            <option value="azul">azul</option>
+            <option value="verde">verde</option>
+        </select><br>
+
+        <p id="error" class="oculta">!Error! No ha completado alguno de los campos, introduzca la información.</p>
+
+        <input id="btn-parrafo" type="button" value="Crear párrafo">
+    </form>
+    <div id="resultado">
+
+    </div>
+    <script type="module" src="./creadorParrafos.js"></script>
+</body>
+</html>
