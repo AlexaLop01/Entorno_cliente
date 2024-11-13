@@ -87,11 +87,6 @@ function guardarDisco(formulario , listaDiscos) {
     const prestado = document.getElementById('prestado').checked;
     const mensaje = document.getElementById("mensaje");
 
-    // Verificamos que todos los campos obligatorios estén llenos.
-    if (!nombreDisco || !grupoMusical || !any || !tipoMusica || !localizacion) {
-      mensaje.textContent = `Por favor. Completa todos los campos`;
-      return;
-    }
 
     // Creamos un nuevo objeto disco.
     const nuevoDisco = {
@@ -105,8 +100,6 @@ function guardarDisco(formulario , listaDiscos) {
 
     // Añadimos el objeto disco a la lista de discos.
     listaDiscos.discos.push(nuevoDisco);
-
-    console.log(listaDiscos);
     
     // Reseteamos los campos después de guardar el disco.
     formulario.reset();
@@ -143,7 +136,8 @@ function mostrarDiscos(contenedor, listaDiscos) {
 
 //Funciones del ejercicio 4.
 //Función para actualizar las poblaciones.
-function actualizarPoblaciones() {
+//Pasamos por parámetros los select y el objeto de arrays de las poblaciones.
+function actualizarPoblaciones(selectProvincias, selectPoblacion, poblaciones) {
     //Guardamos el valor de las provincias.
     const provinciaSeleccionada = selectProvincias.value;
 
@@ -159,4 +153,88 @@ function actualizarPoblaciones() {
         });
     }
 }
-export {crearCheckbox, marcarPares, desmarcarTodos, crearParrafoConEstilo, guardarDisco, mostrarDiscos, actualizarPoblaciones};
+
+//Funciones del ejercicio 5.
+//Función que muestre el error que se usará dentro de la validación del formulario.
+function mostrarError(campo, mensaje) {
+    const mensajeError = document.getElementById("mensaje");
+    campo.classList.add("input-error");
+    campo.previousElementSibling.classList.add("label-error");
+    mensajeError.textContent = mensaje;
+   
+  }
+
+//Función que resetee el error de la validación.
+function resetearEstilos(campo) {
+    campo.classList.remove("input-error");
+    campo.previousElementSibling.classList.remove("label-error");
+}
+
+
+
+//Función para hacer la validación del formulario.
+function validacionFormulario( formulario, listaDiscos) {
+    const nombreDisco = document.getElementById("nombre-disco");
+    const grupoMusical = document.getElementById("grupo-musical");
+    const any = document.getElementById("fech-publicacion");
+    const tipoMusica = document.getElementById("tipo-musica");
+    const localizacion = document.getElementById("localizacion");
+
+    // Reseteamos los estilos de error
+    resetearEstilos(nombreDisco);
+    resetearEstilos(grupoMusical);
+    resetearEstilos(any);
+    resetearEstilos(tipoMusica);
+    resetearEstilos(localizacion);
+
+    let esValido = true;
+
+    // Validación del nombre del disco (mínimo 5 caracteres)
+    if (nombreDisco.value.trim().length < 5) {
+      mostrarError(nombreDisco, "El nombre del disco debe tener al menos 5 caracteres.");
+      esValido = false;
+    }
+
+    // Validación del grupo de música (mínimo 5 caracteres)
+    if (grupoMusical.value.trim().length < 5) {
+      mostrarError(grupoMusical, "El grupo de música debe tener al menos 5 caracteres.");
+      esValido = false;
+    }
+
+    // Validación del año de publicación (debe tener 4 caracteres y estar entre 1900 y 2024)
+    const year = parseInt(any.value);
+    if (any.value.length !== 4 || isNaN(year) || year < 1900 || year > 2024) {
+      mostrarError(anyoPublicacion, "El año de publicación debe ser un número de 4 dígitos entre 1900 y 2024.");
+      esValido = false;
+    }
+
+    // Validación del tipo de música (debe seleccionarse una opción válida)
+    if (tipoMusica.value === "") {
+      mostrarError(tipoMusica, "Selecciona un tipo de música.");
+      esValido = false;
+    }
+
+    // Validación de la localización (formato ES-001AA)
+    const localizacionRegex = /^ES-\d{3}[A-Z]{2}$/;
+    if (!localizacionRegex.test(localizacion.value.trim())) {
+      mostrarError(localizacion, "La localización debe tener el formato ES-001AA.");
+      esValido = false;
+    }
+
+    // Mostrar mensaje de éxito si todo es válido
+    if (esValido) {
+      mensaje.textContent = "El disco se ha guardado correctamente.";
+      mensaje.classList.remove("error");
+      
+      //Después de ser validado guardamos el disco con los datos pertienentes.
+      guardarDisco(formulario, listaDiscos);
+    } else {
+      mensaje.innerHTML += "Por favor, corrige los errores marcados.";
+      mensaje.classList.add("error");
+    }
+  }
+
+  
+
+
+export {crearCheckbox, marcarPares, desmarcarTodos, crearParrafoConEstilo, guardarDisco, mostrarDiscos, actualizarPoblaciones, validacionFormulario};
