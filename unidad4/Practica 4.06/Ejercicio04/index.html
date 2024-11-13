@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Pueblos</title>
+</head>
+<body>
+    <form id="formulario-provincias">
+        <label for="provincia">Selecciona la provincia: </label>
+        <select name="provincia" id="provincia">
+            <option value="">-- No seleccionado --</option>
+            <option value="Alicante">Alicante</option>
+            <option value="Castellon">Castellón</option>
+            <option value="Valencia">Valencia</option>
+        </select>
+
+        <label for="poblacion">Selecciona la población: </label>
+        <select name="poblacion" id="poblacion">
+            <option value="">-- No seleccionado --</option>
+        </select><br>
+
+        <p id="mensaje-error" class="oculta">Por favor, selecciona una provincia y una población.</p><br>
+        <input id="btnEnviar" type="button" value="Enviar">
+    </form>
+    <script type="module" src="./pueblos.js"></script>
+</body>
+</html>

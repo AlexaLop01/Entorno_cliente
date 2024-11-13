@@ -125,7 +125,7 @@ function mostrarDiscos(contenedor, listaDiscos) {
     }
 
     // Crear el listado de discos formateado
-    listaDiscos.discos.forEach((disco, index) => {
+    listaDiscos.discos.map((disco, index) => {
         const discoDiv = document.createElement("div");
         discoDiv.classList.add("disco");
 
@@ -140,4 +140,23 @@ function mostrarDiscos(contenedor, listaDiscos) {
         contenedor.appendChild(discoDiv);
     });
 }
-export {crearCheckbox, marcarPares, desmarcarTodos, crearParrafoConEstilo, guardarDisco, mostrarDiscos};
+
+//Funciones del ejercicio 4.
+//Función para actualizar las poblaciones.
+function actualizarPoblaciones() {
+    //Guardamos el valor de las provincias.
+    const provinciaSeleccionada = selectProvincias.value;
+
+    //Reseteamos las poblaciones que hayan quedado anteriormente.
+    selectPoblacion.innerHTML = `<option value="">-- No seleccionado--</option>`; 
+
+    if(provinciaSeleccionada && poblaciones[provinciaSeleccionada]){
+        poblaciones[provinciaSeleccionada].map((poblacion)=>{
+            const option = document.createElement("option");
+            option.value = poblacion;
+            option.textContent = poblacion;
+            selectPoblacion.appendChild(option);
+        });
+    }
+}
+export {crearCheckbox, marcarPares, desmarcarTodos, crearParrafoConEstilo, guardarDisco, mostrarDiscos, actualizarPoblaciones};

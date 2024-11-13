@@ -1,7 +1,9 @@
+/*CSS del ejercicio 1*/
 #texto-introducir, #estilo-texto{
     margin-bottom: 15px;
 }
 
+/*CSS del ejercicio 2*/
 .rojo{
     background-color: rgb(156, 34, 34);
     color: white;
@@ -24,6 +26,7 @@
 
 }
 
+/*CSS del ejercicio 3*/
 .oculta{
     display: none;
 }
@@ -34,4 +37,9 @@
 .disco{
     padding: 10px;
     border: 1px solid rgb(228, 227, 227);
+}
+
+/*CSS del ejercicio 4*/
+#formulario-provincias label{
+    display: block;
 }
