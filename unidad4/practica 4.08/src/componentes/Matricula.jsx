@@ -14,6 +14,8 @@ const Discentes = () => {
         <button>Apellidos</button>
         <button>Reiniciar Listado</button>
         {/*El último sería que al clicar en un discente desaparezca el listado */}
+
+        
     </div>
     </>
   )
