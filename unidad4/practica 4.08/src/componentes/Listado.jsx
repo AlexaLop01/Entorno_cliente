@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { generarNumerosAleatorios } from '../biblioteca/biblioteca.js';
+import { generarNumerosAleatorios, generarUuidAleatorio} from '../biblioteca/biblioteca.js';
 import "./Listado.css";
 
 const Listado = () => {
@@ -24,10 +24,10 @@ const Listado = () => {
                 }}>Borrar</button>
             <p>Numeros generados Aleatoriamente: </p>
             <ul>
-                {numeros.map((numero, indice)=>{
+                {numeros.map((numero)=>{
                 //Generamos un map que recorra el estado de numeros y los devuelva en una lista.
                     return(
-                        <li key={indice}>{numero}</li>
+                        <li key={generarUuidAleatorio()}>{numero}</li>
                     );
                 })
                 }
