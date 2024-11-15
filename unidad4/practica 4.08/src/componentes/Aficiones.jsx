@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Aficiones.css"
 
 const Aficiones = (props) => {
     //Javascript
@@ -6,14 +7,16 @@ const Aficiones = (props) => {
   return (
     //JSX
     <>
-    <div>
-        {aficiones.lenght ? 
-            aficiones.map((aficion)=>{
+    <div className='contendor-aficiones'>
+      <ul>
+        {aficiones.map((aficion, indice)=>{
                 return(
-                    aficion
-                )
+                    <li key={indice} className='elemento-aficion'> {aficion}</li>
+                );
             })
-        : "No se ha encontrado ninguna aficion"}
+        }
+
+      </ul>
     </div>
     </>
   )

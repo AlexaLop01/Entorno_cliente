@@ -1,5 +1,6 @@
 import React from 'react';
 import Discente from './Discente.jsx';
+import { generarUuidAleatorio } from '../biblioteca/biblioteca.js';
 
 const Discentes = (props) => {
   //Javascript
@@ -8,11 +9,10 @@ const Discentes = (props) => {
     //JSX
     <>
     <div>
-        {discentes.lenght ? 
-            discentes.map((discente) =>{
+        {discentes.map((discente) =>{
                 return(
                     <Discente 
-                        key={discente.id}
+                        key={generarUuidAleatorio()}
                         id={discente.id}
                         nombre={discente.nombre}
                         apellidos={discente.apellidos}
@@ -23,7 +23,7 @@ const Discentes = (props) => {
                     />
                 );
             })
-        : "No se ha encontrado ningún discente."}
+        }
     </div>
     </>
   )

@@ -1,24 +1,40 @@
 import {useState} from 'react';
+import Discentes from './Discentes.jsx';
+import listadoDiscientes from "../objetos/matriculados.json";
 
-const Discentes = () => {
+
+const Matricula = () => {
     //Javascript
+    const valorInicial = listadoDiscientes.discentes;
+    const [discentes, setDiscentes] = useState(valorInicial);
+
+    const filtrar2DAw =()=>{
+      discentes.filter((discente)=>{
+        return discente.curso === "2DAW";
+      })
+    }
   return (
     //JSX
     <>
     <div>
-        <h3>Discentes filtrados por: </h3>
-        <button>2º DAW</button>
+        <h2>Discentes filtrados por: </h2>
+        <button onClick={()=>{
+          filtrar2DAw();
+        }}>2º DAW</button>
         <button>Primer curso</button>
         <button>DAW</button>
         <button>Aficion lectura</button>
         <button>Apellidos</button>
         <button>Reiniciar Listado</button>
         {/*El último sería que al clicar en un discente desaparezca el listado */}
-
+      
+      <div>
+          <Discentes discentes={listadoDiscientes.discentes}/>
+      </div>
         
     </div>
     </>
   )
 }
 
-export default Discentes;
+export default Matricula;
