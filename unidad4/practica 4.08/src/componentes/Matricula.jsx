@@ -8,10 +8,11 @@ const Matricula = () => {
     const valorInicial = listadoDiscientes.discentes;
     const [discentes, setDiscentes] = useState(valorInicial);
 
-    const filtrar2DAw =()=>{
-      discentes.filter((discente)=>{
+    const filtrar2DAW =()=>{
+      const filtro2daw = discentes.filter((discente)=>{
         return discente.curso === "2DAW";
       })
+      setDiscentes(filtro2daw);
     }
   return (
     //JSX
@@ -19,7 +20,7 @@ const Matricula = () => {
     <div>
         <h2>Discentes filtrados por: </h2>
         <button onClick={()=>{
-          filtrar2DAw();
+          filtrar2DAW();
         }}>2º DAW</button>
         <button>Primer curso</button>
         <button>DAW</button>
@@ -29,7 +30,7 @@ const Matricula = () => {
         {/*El último sería que al clicar en un discente desaparezca el listado */}
       
       <div>
-          <Discentes discentes={listadoDiscientes.discentes}/>
+          <Discentes discentes={discentes}/>
       </div>
         
     </div>
