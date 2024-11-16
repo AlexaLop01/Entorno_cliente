@@ -4,11 +4,11 @@ import { generarUuidAleatorio } from '../biblioteca/biblioteca.js';
 
 const Discentes = (props) => {
   //Javascript
-  const {discentes } = props;
+  const {discentes , onClickDiscente} = props;
   return (
     //JSX
     <>
-    <div >
+    <div>
         {discentes.map((discente) =>{
                 return(
                     <Discente 
@@ -19,7 +19,7 @@ const Discentes = (props) => {
                         curso={discente.curso}
                         aficiones={discente.aficiones}
                         comida={discente.comida}
-                    
+                        onClick={onClickDiscente}//Le pasamos a discente la función que queremos realizar en matricular.
                     />
                 );
             })

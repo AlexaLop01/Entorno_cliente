@@ -5,11 +5,13 @@ import "./Discente.css";
 
 const Dicente = (props) => {
     //Javascript
-    const {id , nombre, apellidos, curso, aficiones, comida} = props;
+    const {id , nombre, apellidos, curso, aficiones, comida, onClick} = props;
     return(
         //JSX
         <>
-        <div className='contenedor-discente' >
+        <div className='contenedor-discente' onClick={()=>{
+            onClick(id);//Colocamos esa función generada en matricula para que nos elimine el discente indicado por identificador.
+        }}>
             <h3>Datos del discente: {id}</h3>
             <div className='contendor-nombre'>
                 <h4>Nombre: </h4>

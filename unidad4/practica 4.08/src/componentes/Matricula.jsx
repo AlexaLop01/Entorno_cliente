@@ -42,7 +42,7 @@ const Matricula = () => {
     const filtrarPorApellido =()=>{
       //Cambiamos el orden según como esté ese orden actualmente.
       const nuevoOrden = ordenar === "asc" ? "desc" : "asc";
-      const ordenDiscientes = discentes.sort((a, b)=>{
+      const ordenDiscientes = [...discentes].sort((a, b)=>{
         if(nuevoOrden === "asc"){
           return a.apellidos.localeCompare(b.apellidos);
         }
@@ -58,11 +58,11 @@ const Matricula = () => {
       setDiscentes(valorInicial);
     }
 
-    //Función para que aparezca solo el disciente que se clica sobre él.
-    const desaparecerRestoDeDiscentes = (nombre) =>{
+    //Función para eliminar el discente que clicamos en la lista.
+    const eliminarDiscenteLista = (identificador) =>{
       
       const unicoDiscente = discentes.filter((discente)=>{
-        return discente.nombre !== nombre;
+        return discente.id !== identificador;
       })
       setDiscentes(unicoDiscente);
     }
@@ -94,10 +94,11 @@ const Matricula = () => {
         <button onClick={()=>{
           reiniciarListado();
         }}>Reiniciar Listado</button>
-        {/*El último sería que al clicar en un discente desaparezca el listado */}
+        {/*El último sería que al clicar en un discente desaparezca el listado. */}
       
       <div className='contenedor-discentes-matricula'>
-          <Discentes discentes={discentes}/>
+        {/*El onClickDiscente es para poder pasarselo al componente Discentes por props. */}
+          <Discentes discentes={discentes} onClickDiscente={eliminarDiscenteLista}/>
       </div>
         
     </div>
