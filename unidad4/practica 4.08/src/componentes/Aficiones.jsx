@@ -8,15 +8,13 @@ const Aficiones = (props) => {
     //JSX
     <>
     <div className='contendor-aficiones'>
-      <ul>
         {aficiones.map((aficion, indice)=>{
                 return(
-                    <li key={indice} className='elemento-aficion'> {aficion}</li>
+                    <p key={indice} className='elemento-aficion'> {aficion}</p>
                 );
             })
         }
 
-      </ul>
     </div>
     </>
   )

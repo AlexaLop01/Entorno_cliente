@@ -4,11 +4,11 @@ import { generarUuidAleatorio } from '../biblioteca/biblioteca.js';
 
 const Discentes = (props) => {
   //Javascript
-  const {discentes} = props;
+  const {discentes } = props;
   return (
     //JSX
     <>
-    <div>
+    <div >
         {discentes.map((discente) =>{
                 return(
                     <Discente 

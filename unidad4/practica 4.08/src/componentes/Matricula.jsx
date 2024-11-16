@@ -7,12 +7,64 @@ const Matricula = () => {
     //Javascript
     const valorInicial = listadoDiscientes.discentes;
     const [discentes, setDiscentes] = useState(valorInicial);
+    const [ordenar, setOrdenar] = useState("asc")
 
+    //Función de filtrado por 2DAW.
     const filtrar2DAW =()=>{
       const filtro2daw = discentes.filter((discente)=>{
         return discente.curso === "2DAW";
       })
       setDiscentes(filtro2daw);
+    }
+
+    //Función de filtrado por primer curso.
+    const filtradoPrimerCurso =()=>{
+      const filtroPrimerCurso = discentes.filter((discente)=>{
+        return discente.curso.startsWith('1');//Usamos starWith para verificar que empieza por 1.
+      })
+      setDiscentes(filtroPrimerCurso);
+    }
+    //Función para filtrar por DAW.
+    const filtrarPorDAW =()=>{
+      const filtroDAW = discentes.filter((discente)=>{
+        return discente.curso.includes('DAW'); //El includes es para verificar que contiene esa palabra.
+      })
+      setDiscentes(filtroDAW);
+    }
+    //Función para filtrar por Afición de lectura.
+    const filtrarPorAficion =()=>{
+      const filtroAficion = discentes.filter((discente)=>{
+        return discente.aficiones.includes("lectura");
+      })
+      setDiscentes(filtroAficion);
+    }
+    //Función para filtrar por Apellido.
+    const filtrarPorApellido =()=>{
+      //Cambiamos el orden según como esté ese orden actualmente.
+      const nuevoOrden = ordenar === "asc" ? "desc" : "asc";
+      const ordenDiscientes = discentes.sort((a, b)=>{
+        if(nuevoOrden === "asc"){
+          return a.apellidos.localeCompare(b.apellidos);
+        }
+        return b.apellidos.localeCompare(a.apellidos);
+
+      });
+      setOrdenar(nuevoOrden);
+      setDiscentes(ordenDiscientes);
+    }
+
+    //Función para reiniciar el listado de discentes.
+    const reiniciarListado = () =>{
+      setDiscentes(valorInicial);
+    }
+
+    //Función para que aparezca solo el disciente que se clica sobre él.
+    const desaparecerRestoDeDiscentes = (nombre) =>{
+      
+      const unicoDiscente = discentes.filter((discente)=>{
+        return discente.nombre !== nombre;
+      })
+      setDiscentes(unicoDiscente);
     }
   return (
     //JSX
@@ -22,14 +74,29 @@ const Matricula = () => {
         <button onClick={()=>{
           filtrar2DAW();
         }}>2º DAW</button>
-        <button>Primer curso</button>
-        <button>DAW</button>
-        <button>Aficion lectura</button>
-        <button>Apellidos</button>
-        <button>Reiniciar Listado</button>
+
+        <button onClick={()=>{
+          filtradoPrimerCurso();
+        }}>Primer curso</button>
+
+        <button onClick={()=>{
+          filtrarPorDAW();
+        }}>DAW</button>
+
+        <button onClick={()=>{
+          filtrarPorAficion();
+        }}>Aficion lectura</button>
+
+        <button onClick={()=>{
+          filtrarPorApellido();
+        }}>Apellidos</button>
+
+        <button onClick={()=>{
+          reiniciarListado();
+        }}>Reiniciar Listado</button>
         {/*El último sería que al clicar en un discente desaparezca el listado */}
       
-      <div>
+      <div className='contenedor-discentes-matricula'>
           <Discentes discentes={discentes}/>
       </div>
         
