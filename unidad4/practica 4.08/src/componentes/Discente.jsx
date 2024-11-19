@@ -5,13 +5,11 @@ import "./Discente.css";
 
 const Dicente = (props) => {
     //Javascript
-    const {id , nombre, apellidos, curso, aficiones, comida, onClick} = props;
+    const {id , nombre, apellidos, curso, aficiones, comida} = props;
     return(
         //JSX
         <>
-        <div className='contenedor-discente' onClick={()=>{
-            onClick(id);//Colocamos esa función generada en matricula para que nos elimine el discente indicado por identificador.
-        }}>
+        <div className='contenedor-discente'>
             <h3>Datos del discente: {id}</h3>
             <div className='contendor-nombre'>
                 <h4>Nombre: </h4>
@@ -32,6 +30,11 @@ const Dicente = (props) => {
             <div className='contenedor-comida'>
                 <h4>Comida:</h4>
                 <p>{comida}</p>
+            </div>
+            <div>
+                {/*Es necesario pasarle como id, el id del discente para que matricula
+                pueda cogerlo y realizar la función de eliminar el discente con el target.id . */}
+                <button id={id}>Borrar a {nombre}</button>
             </div>
         </div>
 
