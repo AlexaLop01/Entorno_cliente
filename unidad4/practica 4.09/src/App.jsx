@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import './App.css'
-import Localizador from './componentes/Ejercicio01/Localizador'
-import Colorines from './componentes/Ejercicio02/Colorines';
+import Localizador from './componentes/Ejercicio01/Localizador.jsx';
+import Colorines from './componentes/Ejercicio02/Colorines.jsx';
+import ContadorClics from './componentes/Ejercicio03/ContadorClics.jsx';
+import Cronometro from './componentes/Ejercicio04/Cronometro.jsx';
 
 function App() {
   const valorInicial = true;;
@@ -19,7 +21,10 @@ function App() {
         <div>
           {mostrar && <Localizador/>}
           {mostrar && <Colorines/>}
+          {mostrar && <ContadorClics/>}
         </div>
+
+        <Cronometro/>
       </div>
     </>
   )
