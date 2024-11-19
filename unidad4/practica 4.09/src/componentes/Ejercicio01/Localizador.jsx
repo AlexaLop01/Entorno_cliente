@@ -1,34 +1,41 @@
 import React, { useEffect, useState } from 'react';
+import "./Localizador.css";
 
 const Localizador = () => {
     //Javascript
-    const valorInicial = "";
-    const [localizacionX, setLocalizacionX] = useState(valorInicial);
-    const [localizacionY, setLocalizacionY] = useState(valorInicial);
+    //Creamos un objeto que contenga las dos posiciones inicializadas a 0.
+    const valorInicial = {
+        x: 0,
+        y: 0
+    };
 
+    const [localizacion, setLocalizacion] = useState(valorInicial);
 
+    //En la función vamos a obtener la posición del mouse y guardarla en el estado.
     const localizacionMouse = (evento) =>{
-        const x = evento.clientX;
-        const y = evento.clientY;
-        setLocalizacionX(x);
-        setLocalizacionY(y);
-        console.log(`Se ha creado el evento`);
+        const posicionX = evento.clientX;
+        const posicionY = evento.clientY;
+        setLocalizacion({x: posicionX, y: posicionY});
     }
 
+    //Usamos el useEffect para crear el evento y limpiarlo una sola vez.
     useEffect(() =>{
         document.addEventListener("mousemove", localizacionMouse);
 
         return () =>{
-            document.removeEventListener("click", localizacionMouse);
-            console.log(`Se ha desmontado el evento`);
+            document.removeEventListener("mousemove", localizacionMouse);
         };
     }, [])
   return (
     //JSX
     <>
-        <div>Localizador</div>
+    <div id='contenedor-localizador'>
+        <h3>Localizador</h3>
         <p> La localización del mouse es </p>
-        <p>X: {localizacionX} Y: {localizacionY}</p>
+        {/*Indicamos a que parte del objeto debe acceder para mostrarlo por pantalla*/}
+        <p>X: {localizacion.x} Y: {localizacion.y}</p>
+
+    </div>
     </>
     
   )

@@ -1,8 +1,16 @@
 import React from 'react';
 
 const ContadorClics = () => {
+  //Javascript
+  
   return (
-    <div>ContadorClics</div>
+    //JSX
+    <>
+    <div>
+      <h3>Contador de clics</h3>
+      <p></p>
+    </div>
+    </>
   )
 }
 
