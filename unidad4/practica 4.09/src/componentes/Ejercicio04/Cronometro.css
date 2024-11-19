@@ -1,0 +1,8 @@
+#contenedor-cronometro{
+    border: 3px dotted black;
+    margin-top: 10px;
+}
+
+#contenedor-cronometro button{
+    margin: 20px;
+}
