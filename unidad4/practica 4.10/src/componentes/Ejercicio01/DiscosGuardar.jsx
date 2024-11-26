@@ -42,24 +42,23 @@ const DiscosGuardar = () => {
           <form className='contenedor-formulario'>
             <fieldset className='contenedor-datos-formulario'>
               <legend>Datos del disco</legend>
-              <label htmlFor="nombre-disco">Introduce el nombre del disco: </label>
-              <input name="nombre-disco" type="text" placeholder='Nombre del disco'
+              <label htmlFor="nombreDisco">Introduce el nombre del disco: </label>
+              <input name="nombreDisco" type="text" placeholder='Nombre del disco'
               value={disco.nombreDisco}
               onChange={(evento) =>{
                 console.log(evento);
-                
                 actualizarDatos(evento.target);
               }}/>
           
-              <label htmlFor="grupo-musical">Introduce el grupo de música o el intérprete: </label>
-              <input name="grupo-musical" type="text" placeholder='Grupo musical'
+              <label htmlFor="grupoMusical">Introduce el grupo de música o el intérprete: </label>
+              <input name="grupoMusical" type="text" placeholder='Grupo musical'
               value={disco.grupoMusical}
               onChange={(evento) =>{
                 actualizarDatos(evento.target);
               }}/>
           
-              <label htmlFor="fech-publicacion">Introduce el año de publicacion: </label>
-              <input name="fech-publicacion" type="number" min="1900" max="2024" placeholder='XXXX'
+              <label htmlFor="fechPublicacion">Introduce el año de publicacion: </label>
+              <input name="fechPublicacion" type="number" min="1900" max="2024" placeholder='XXXX'
               value={disco.fechPublicacion}
               onChange={(evento) =>{
                 actualizarDatos(evento.target);
@@ -74,9 +73,10 @@ const DiscosGuardar = () => {
 
             <fieldset>
               <legend>Select tipo de musica:</legend>
-                <label htmlFor="tipo-musica">Introduce el tipo de música: </label>
-                <select name="tipo-musica" 
+                <label htmlFor="tipoMusica">Introduce el tipo de música: </label>
+                <select name="tipoMusica" 
                 onChange={(evento) =>{
+                  console.log(evento);
                 actualizarDatos(evento.target);
                 }}>
                     <option value="">-- Selecciona un tipo de música --</option>
@@ -103,7 +103,7 @@ const DiscosGuardar = () => {
               borrarFormulario();
             }} />
           </form>
-          <ValorEstado estadoMostrar={disco}/>
+          <ValorEstado estadoaMostrar={disco}/>
         </div>
     
     </>
