@@ -1,6 +1,5 @@
 import {useState} from 'react';
 import "./DiscosGuardar.css";
-import ValorEstado from '../comprobaciones/ValorEstado.jsx';
 
 const DiscosGuardar = () => {
     //Javascript
@@ -25,12 +24,14 @@ const DiscosGuardar = () => {
 
     }
 
+    //Realizamos una función para actualizar el checkbox.
     const actualizaciónDatoCheck = (evento) =>{
       const {name} = evento;
       const value = disco[name] ? "" : evento.value;
       setDisco({...disco, [name]: value});
     }
 
+    //Función para borrar. 
     const borrarFormulario = () =>{
       setDisco(valoresIniciales);
     }
@@ -103,7 +104,6 @@ const DiscosGuardar = () => {
               borrarFormulario();
             }} />
           </form>
-          <ValorEstado estadoaMostrar={disco}/>
         </div>
     
     </>
