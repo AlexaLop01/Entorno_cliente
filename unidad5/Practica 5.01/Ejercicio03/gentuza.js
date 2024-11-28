@@ -7,12 +7,12 @@ window.onload = ()=>{
     //Realizamos el acceso a la url con el fetch.
     fetch(urlPeople)
     .then((respuesta)=>{
-        console.log(respuesta);
+        //Convierte en un json lo que le pasamos por fetch.
         return respuesta.json();
     })
     .then((datos)=>{
+        //Coge lo que respuesta le pasa y hacemos un mapeado para poder sacarlo por pantalla.
         const contenedor = document.getElementById("lista-people");
-        console.log(datos.results);
         datos.results.map((people, indice)=>{
             contenedor.innerHTML += `<h4>Persona: ${indice + 1}</h4>
             <p>Nombre: ${people.name}</p>
@@ -24,6 +24,7 @@ window.onload = ()=>{
         })
     })
     .catch((error)=>{
+        //Hacemos el control de errores.
         console.error(error);;
     })
 }
