@@ -12,9 +12,9 @@ window.onload = ()=>{
     })
     .then((datos)=>{
         //Cogemos el json que nos pasa el then anterior para mapearlo y sacarlo formateado en el index.
-        const contendor = document.getElementById("listado-feos");
+        const contenedor = document.getElementById("listado-feos");
         datos.map((feo)=>{
-            contendor.innerHTML += `<h4>Persona: ${feo.id}</h4>
+            contenedor.innerHTML += `<h4>Persona: ${feo.id}</h4>
             <p>Nombre: ${feo.first_name}</p>
             <p>Apellido: ${feo.last_name}</p>
             <p>Email: ${feo.email}</p>
