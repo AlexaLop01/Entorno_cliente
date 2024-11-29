@@ -24,7 +24,7 @@ window.onload = ()=>{
         })
     })
     .catch((error)=>{
-        //Hacemos el control de errores.
+        //Hacemos el control de errores. 
         console.error(error);;
     })
 }
