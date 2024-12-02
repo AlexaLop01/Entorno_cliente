@@ -6,11 +6,11 @@ const mostrarListadoPeliculas = (datos, contenedor)=>{
     const lista = document.createElement("ul");
 
     datos.map((pelicula)=> {
-        lista.innerHTML += `<li>Id: ${pelicula.episode_id} 
-        titulo: ${pelicula.title} </li>`;
+        lista.innerHTML += `<li> 
+        ${pelicula.episode_id} ${pelicula.title} </li>`;
     })
 
-    contenedor.appendChild(lista)
+    contenedor.appendChild(lista);
 }
 
 //Crear una función para mostrar la información de la película seleccionada.
