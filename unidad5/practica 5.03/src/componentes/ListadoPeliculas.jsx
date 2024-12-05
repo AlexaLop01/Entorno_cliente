@@ -19,9 +19,16 @@ const ListadoPeliculas = () => {
             setErrores(error.message);
         })
     }
+
+    useEffect(() => {
+      traerListadoPeliculas();
+    }, [])
+    
   return (
     //JSX
-    <div>ListadoPeliculas</div>
+    <>
+        <div>ListadoPeliculas</div>
+    </>
   )
 }
 
