@@ -8,6 +8,7 @@ const Peliculas = ({mostrarLista}) => {
   return (
     //JSX
     <>
+      {/*Verificamos que la lista que entra por props sea una array y tenga longitud */}
       {mostrarLista.length && Array.isArray(mostrarLista)
       ? mostrarLista.map((pelicula)=>{
         return(
