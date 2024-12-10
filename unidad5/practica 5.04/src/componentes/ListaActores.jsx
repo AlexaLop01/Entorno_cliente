@@ -31,13 +31,15 @@ const ListaActores = ({actores}) => {
         setListaActores(promesasConsumidas);
 
     }
-
+    
+    //Realizamos una función que filtre el actor seleccionado en la lista para mostrar su información.
     const filtrarActor = (nombre)=>{
         const filtrado = listaActores.filter((actor)=>{
             //Es necesario poner el parseInt ya que el identificador que coge es un string por lo que no hará nada la función de eliminar.
             return actor.value.name === nombre; 
-          })
-          setActorFiltrado(filtrado);
+        })
+        //Guardamos el actor filtrado en el estado.
+        setActorFiltrado(filtrado);
     }
     useEffect(() =>{
         traerListaActores(actores);
@@ -47,7 +49,9 @@ const ListaActores = ({actores}) => {
   return (
     <>
         <div className='contenedor-lista-actores' onClick={(evento)=>{
-            filtrarActor(evento.target.dataset.id);
+            if(evento.target.tagName === "H4"){//Con esta línea controlamos que solo ocurra cuando seleccione el elemento en especifico.
+                filtrarActor(evento.target.dataset.id);
+            }
         }}>
             <Actores actoresAMostrar={listaActores}/>
         </div>

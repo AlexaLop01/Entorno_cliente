@@ -1,6 +1,6 @@
 import React from 'react';
-import Actor from '../mostrarListaActores/Actor.jsx';
 import { generarUuidAleatorio } from '../../biblioteca/biblioteca.js';
+import ActorInformacion from './ActorInformacion.jsx';
 
 const ActoresInformacion = ({actoresInformacionAMostrar}) => {
     //Javascript
@@ -9,13 +9,13 @@ const ActoresInformacion = ({actoresInformacionAMostrar}) => {
         {actoresInformacionAMostrar.length && actoresInformacionAMostrar ?
         actoresInformacionAMostrar.map((interprete)=>{
             return(
-                <Actor 
+                <ActorInformacion
                 key={generarUuidAleatorio()}
                 informacionActor={interprete}/>
             );
-        }):`La pelicula no tiene actores.`}
+        }):`No hay información del actor.`}
     </>
   )
 }
 
-export default ActoresInformacion
+export default ActoresInformacion;

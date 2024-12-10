@@ -17,6 +17,10 @@ const ListadoPeliculas = () => {
     const [peliculaFiltrada, setPeliculaFiltrada] = useState(peliculaFiltradaInicial)
 
     //Hacemos una función la cuál haga una llamada a la API de películas y guardamos su información en el estado de listado.
+    
+    /*Con el async await lo que hacemos es crear una línea paralela al hilo principal, donde se realizará esta consulta
+    y cuando la función de obtener datos haya finalizado, el await espera a la respuesta de la función, consume la promesa que le manda
+    y lo guarda en datos , para que después se guarde en el estado.*/
     const traerListadoPeliculas = async () =>{
       try{
         const datos = await obtenerDatos(urlPeliculas);
@@ -46,7 +50,9 @@ const ListadoPeliculas = () => {
     <>
     <div id='contenedor-listado-peliculas'>
       <div id='contenido-listado' onClick={(evento)=>{
-        filtrarPelicula(evento.target.id)
+        if(evento.target.tagName === "H3"){//Con esta línea controlamos que solo ocurra cuando seleccione el elemento en especifico.
+          filtrarPelicula(evento.target.id);
+        }
       }}>
       {/*Se muestra el listado de películas. */}
         <h2>ListadoPeliculas</h2>
