@@ -5,7 +5,7 @@ const Actor = ({actorAMostrar}) => {
     <>
         <div>
             {/*Colocamos data-id para tener un dato que identifique el elemento sin usar la clave id. */}
-            <h4 data-id ={actorAMostrar.value.name}>{actorAMostrar.value.name}</h4>
+            <h4 data-id ={actorAMostrar.name}>{actorAMostrar.name}</h4>
         </div>
     </>
   )

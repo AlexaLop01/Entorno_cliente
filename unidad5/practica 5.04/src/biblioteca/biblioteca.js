@@ -22,4 +22,6 @@ const obtenerDatos = (url) =>{
 
 }
 
+
+
 export{ generarUuidAleatorio, formatearFechaEuropeo, obtenerDatos};

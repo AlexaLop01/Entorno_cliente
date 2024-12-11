@@ -27,8 +27,17 @@ const ListaActores = ({actores}) => {
         //Consumimos las promesas que nos pase el array mapeado anteriormente.
         let promesasConsumidas = await Promise.allSettled(promesas);
 
+        //Validamos que las promesas esten fullfiled.
+        //Esta comprobación es solo para que imprima solo las promesas que tienen estado fullfiled.
+        let promesasValidacion = [];
+        promesasConsumidas.map((respuestas)=>{
+            if(respuestas.status === "fulfilled"){
+                return promesasValidacion = [...promesasValidacion, respuestas.value];
+            }
+        })
+
         //Añadimos esas promesas consumidas al estado.
-        setListaActores(promesasConsumidas);
+        setListaActores(promesasValidacion);
 
     }
     
@@ -36,7 +45,7 @@ const ListaActores = ({actores}) => {
     const filtrarActor = (nombre)=>{
         const filtrado = listaActores.filter((actor)=>{
             //Es necesario poner el parseInt ya que el identificador que coge es un string por lo que no hará nada la función de eliminar.
-            return actor.value.name === nombre; 
+            return actor.name === nombre; 
         })
         //Guardamos el actor filtrado en el estado.
         setActorFiltrado(filtrado);
