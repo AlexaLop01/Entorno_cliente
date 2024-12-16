@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { obtenerDatos } from '../../../practica 5.04/src/biblioteca/biblioteca.js';
+import Localizaciones from './mostrarListas/Localizacion/Localizaciones.jsx';
+import InformacionLocalizaciones from './mostrarInformacion/Localizacion/InformacionLocalizaciones.jsx';
 
 const ListaPersonajes = () => {
   //Javascript
@@ -29,12 +31,33 @@ const ListaPersonajes = () => {
       }
     }
 
+    const filtrarLocalizaciones = (identificador)=>{
+      const filtrado = listadoLugares.filter((lugar)=>{
+        //Es necesario poner el parseInt ya que el identificador que coge es un string por lo que no hará nada la función de eliminar.
+        return lugar.id === parseInt(identificador); 
+      })
+      setLugarFiltrado(filtrado);
+    }
+    console.log(lugarFiltrado);
+
     useEffect(()=>{
       traerListadoLocalizaciones();
     },[]);
   return (
     //JSX
-    <div>ListaPersonajes</div>
+    <>
+      <div onClick={(evento)=>{
+        filtrarLocalizaciones(evento.target.id);
+      }}>
+        <h2>Listado de Localizaciones</h2>
+        {errores? errores: <Localizaciones mostrarLocalizaciones={listadoLugares}/>}
+      </div>
+
+      <div>
+        <InformacionLocalizaciones mostrarInformacionLocalizaciones={lugarFiltrado}/>
+      </div>
+    
+    </>
   )
 }
 
