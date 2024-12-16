@@ -56,7 +56,7 @@ const ListaPersonajes = () => {
         {errores? errores: <Localizaciones mostrarLocalizaciones={listadoLugares}/>}
       </div>
       <div id='contenido-informacion'>
-        <h2>Peliculas</h2>
+        <h2>Localización</h2>
         <InformacionLocalizaciones mostrarInformacionLocalizaciones={lugarFiltrado}/>
       </div>
     </div>

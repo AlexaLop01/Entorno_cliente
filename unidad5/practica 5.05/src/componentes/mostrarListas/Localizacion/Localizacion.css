@@ -1,0 +1,10 @@
+.contendor-localizacion-lista{
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding:  0 15px;
+}
+.contendor-localizacion-lista:hover{
+    background-color: rgb(250, 156, 102);
+    cursor: pointer;
+}
