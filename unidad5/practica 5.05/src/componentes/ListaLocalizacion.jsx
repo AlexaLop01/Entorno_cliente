@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { obtenerDatos } from '../../../practica 5.04/src/biblioteca/biblioteca.js';
 import Localizaciones from './mostrarListas/Localizacion/Localizaciones.jsx';
 import InformacionLocalizaciones from './mostrarInformacion/Localizacion/InformacionLocalizaciones.jsx';
+import "./ListaLocalizacion.css";
 
 const ListaPersonajes = () => {
   //Javascript
@@ -38,7 +39,6 @@ const ListaPersonajes = () => {
       })
       setLugarFiltrado(filtrado);
     }
-    console.log(lugarFiltrado);
 
     useEffect(()=>{
       traerListadoLocalizaciones();
@@ -46,16 +46,21 @@ const ListaPersonajes = () => {
   return (
     //JSX
     <>
-      <div onClick={(evento)=>{
-        filtrarLocalizaciones(evento.target.id);
+    <div id='contenedor-listado-localizaciones'>
+      <div id='contenido-listado' onClick={(evento)=>{
+        if(evento.target.tagName === "H3"){
+          filtrarLocalizaciones(evento.target.id);
+        }
       }}>
         <h2>Listado de Localizaciones</h2>
         {errores? errores: <Localizaciones mostrarLocalizaciones={listadoLugares}/>}
       </div>
-
-      <div>
+      <div id='contenido-informacion'>
+        <h2>Peliculas</h2>
         <InformacionLocalizaciones mostrarInformacionLocalizaciones={lugarFiltrado}/>
       </div>
+    </div>
+
     
     </>
   )

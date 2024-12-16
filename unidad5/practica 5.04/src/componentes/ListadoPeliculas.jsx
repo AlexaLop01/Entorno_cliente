@@ -10,7 +10,7 @@ const ListadoPeliculas = () => {
     const listadoInicial = [];
     const erroresIniciales = "";
     const peliculaFiltradaInicial = [];
-    const urlPeliculas = `https://swapi.dev/api/films/`;
+    const urlPeliculas = `https://swapi.py4e.com/api/films/`;
     //Creamos los estados.
     const [listado, setListado] = useState(listadoInicial);
     const [errores, setErrores] = useState(erroresIniciales);

@@ -1,0 +1,11 @@
+#contenedor-listado-localizaciones{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+#contenido-listado{
+    text-align: left;
+}
+#contenido-informacion{
+    text-align: left;
+}
