@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {useContext} from 'react';
+import { contextoPeliculas } from '../../contexto/ProveedorPeliculas.jsx';
 import PeliculaInformación from './PeliculaInformacion.jsx';
 import { generarUuidAleatorio } from '../../../biblioteca/biblioteca.js';
 
-const PeliculasInformacion = ({mostrarInformacion}) => {
+const PeliculasInformacion = () => {
+  //Javascript
+  const {peliculaFiltrada} = useContext(contextoPeliculas);
+  console.log(peliculaFiltrada);
+  
   return (
     <>
     {/*Verificamos que la información que entra por props sea una array y tenga longitud */}
-    {mostrarInformacion.length && Array.isArray(mostrarInformacion)
-        ? mostrarInformacion.map((pelicula)=>{
+    {peliculaFiltrada.length && Array.isArray(peliculaFiltrada)
+        ? peliculaFiltrada.map((pelicula)=>{
+          console.log(pelicula);
+          
           return(
             <PeliculaInformación
             key={generarUuidAleatorio()}

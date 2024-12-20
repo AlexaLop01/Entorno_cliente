@@ -4,6 +4,8 @@ import ListaActores from '../../estructuraListas/actores/ListaActores.jsx';
 
 const PeliculaInformación = ({informacionAMostrar}) => {
     //Javascript
+    console.log(informacionAMostrar);
+    
   return (
     //JSX
     <>
@@ -15,7 +17,7 @@ const PeliculaInformación = ({informacionAMostrar}) => {
         <p>{informacionAMostrar.opening_crawl}</p>
       </div>
       <div>
-        <ListaActores actores={informacionAMostrar.characters}/>
+        {/*<ListaActores actores={informacionAMostrar.characters}/>*/}
       </div>
     </>
   )
