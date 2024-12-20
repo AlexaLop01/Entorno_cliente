@@ -1,0 +1,23 @@
+.contenedor-lista-actores{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.contenedor-lista-actores div{
+    padding: 10px 15px;
+    margin: 0;
+    border: 1px solid gray;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+.contenedor-lista-actores div:hover{
+    background-color: rgb(250, 156, 102);
+}
+
+.contenedor-lista-actores div h4{
+    margin: 0;
+}
