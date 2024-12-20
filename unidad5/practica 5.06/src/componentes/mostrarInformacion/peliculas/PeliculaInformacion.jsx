@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatearFechaEuropeo } from '../../../biblioteca/biblioteca.js';
-import ListaActores from '../ListaActores.jsx';
+import ListaActores from '../../estructuraListas/actores/ListaActores.jsx';
 
 const PeliculaInformación = ({informacionAMostrar}) => {
     //Javascript
