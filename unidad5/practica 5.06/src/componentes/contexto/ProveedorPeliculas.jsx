@@ -34,14 +34,10 @@ const ProveedorPeliculas = ({children}) => {
     //Creamos una función para filtrar y que salga la información de la película seleccionada.
     const filtrarPelicula = (evento)=>{  
         if (evento.target.tagName === "H3") {
-            // Se filtra el estado a través de un identificador.
             const filtrada = listado.filter((pelicula) => {
               return pelicula.episode_id === evento.target.id;
             });
-            // Se cormpueban los datos y se modifica el estado planeta.
-            filtrada.length
-              ? setPeliculaFiltrada(filtrada[0]) // Asigno la primera posición del array que es un objeto JSON.
-              : "No se ha encontrado planeta con ese nombre en la galazia.";
+            setPeliculaFiltrada(filtrada);
           } 
     }
 
