@@ -35,7 +35,7 @@ const ProveedorPeliculas = ({children}) => {
     const filtrarPelicula = (evento)=>{  
         if (evento.target.tagName === "H3") {
             const filtrada = listado.filter((pelicula) => {
-              return pelicula.episode_id === evento.target.id;
+              return parseInt(pelicula.episode_id) === parseInt(evento.target.id);
             });
             setPeliculaFiltrada(filtrada);
           } 
@@ -49,7 +49,7 @@ const ProveedorPeliculas = ({children}) => {
     const  [actorFiltrado, setActorFiltrado] = useState(actorFiltradoInicial);
 
     //Creamos una función que se encargue de traer las promesas y las consuma.
-    /*const traerListaActores = async (personas) =>{
+    const traerListaActores = async (personas) =>{
         let promesas = [];
         //Cuando colocamos personas.slice lo que obtenemos son los elementos comprendidos entre los numeros indicados dentro del slice.
         //En este caso siendo 0 donde empieza y 10 donde termina.
@@ -75,35 +75,38 @@ const ProveedorPeliculas = ({children}) => {
         //Añadimos esas promesas consumidas al estado.
         setListaActores(promesasValidacion);
 
-    }*/
+    }
     
     //Realizamos una función que filtre el actor seleccionado en la lista para mostrar su información.
-    const filtrarActor = (nombre)=>{
-
+    const filtrarActor = (evento)=>{
+      if(evento.target.tagName === "H4"){
         const filtrado = listaActores.filter((actor)=>{
             //Es necesario poner el parseInt ya que el identificador que coge es un string por lo que no hará nada la función de eliminar.
-            return actor.name === nombre; 
+            return actor.name === evento.target.dataset.id; 
         })
         //Guardamos el actor filtrado en el estado.
         setActorFiltrado(filtrado[0]);
+      }
     }
 
     const datosExportar ={
+      //Peliculas
         listado,
         errores, 
         peliculaFiltrada,
-        filtrarPelicula
+        filtrarPelicula,
+      //Actores
+        listaActores,
+        actorFiltrado,
+        filtrarActor
     }
 
-    console.log(listado);
-    
     console.log(peliculaFiltrada);
     
-
     //Cargamos la llamada a la API solo una vez con el useEffect.
     useEffect(() => {
       traerListadoPeliculas();
-      //traerListaActores(peliculaFiltrada.actores);
+      traerListaActores(peliculaFiltrada);
     }, []);
 
   return (

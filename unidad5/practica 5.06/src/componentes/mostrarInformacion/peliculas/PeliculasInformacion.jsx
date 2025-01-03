@@ -6,15 +6,12 @@ import { generarUuidAleatorio } from '../../../biblioteca/biblioteca.js';
 const PeliculasInformacion = () => {
   //Javascript
   const {peliculaFiltrada} = useContext(contextoPeliculas);
-  console.log(peliculaFiltrada);
   
   return (
     <>
     {/*Verificamos que la información que entra por props sea una array y tenga longitud */}
     {peliculaFiltrada.length && Array.isArray(peliculaFiltrada)
         ? peliculaFiltrada.map((pelicula)=>{
-          console.log(pelicula);
-          
           return(
             <PeliculaInformación
             key={generarUuidAleatorio()}

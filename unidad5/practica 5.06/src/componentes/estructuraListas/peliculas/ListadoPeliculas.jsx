@@ -7,7 +7,7 @@ import "./ListadoPeliculas.css";
 
 const ListadoPeliculas = () => {
     //Javascript
-  const { listado, errores, peliculaFiltrada ,filtrarPelicula } = useContext(contextoPeliculas);
+  const { errores ,filtrarPelicula } = useContext(contextoPeliculas);
     
   return (
     //JSX

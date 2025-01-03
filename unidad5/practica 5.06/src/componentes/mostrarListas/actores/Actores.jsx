@@ -1,13 +1,15 @@
-import React from 'react'
+import {useContext} from 'react';
+import { contextoPeliculas } from '../../contexto/ProveedorPeliculas.jsx';
 import Actor from './Actor.jsx';
 import { generarUuidAleatorio } from '../../../biblioteca/biblioteca.js';
 
-const Actores = ({actoresAMostrar}) => {
+const Actores = () => {
     //Javascript
+    const {listaActores} = useContext(contextoPeliculas);
   return (
     <>
-        {actoresAMostrar.length && actoresAMostrar ?
-        actoresAMostrar.map((interprete)=>{
+        {listaActores.length && listaActores ?
+        listaActores.map((interprete)=>{
             return(
                 <Actor 
                 key={generarUuidAleatorio()}
