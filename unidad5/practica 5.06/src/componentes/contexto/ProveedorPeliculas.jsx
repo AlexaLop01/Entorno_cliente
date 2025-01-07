@@ -101,13 +101,13 @@ const ProveedorPeliculas = ({children}) => {
         filtrarActor
     }
 
-    console.log(peliculaFiltrada);
+    
     
     //Cargamos la llamada a la API solo una vez con el useEffect.
     useEffect(() => {
       traerListadoPeliculas();
-      traerListaActores(peliculaFiltrada);
     }, []);
+
 
   return (
     //JSX

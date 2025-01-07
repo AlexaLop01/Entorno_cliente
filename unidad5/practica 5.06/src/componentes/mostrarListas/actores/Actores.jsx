@@ -8,7 +8,7 @@ const Actores = () => {
     const {listaActores} = useContext(contextoPeliculas);
   return (
     <>
-        {listaActores.length && listaActores ?
+        {listaActores.length && Array.isArray(listaActores) ?
         listaActores.map((interprete)=>{
             return(
                 <Actor 
