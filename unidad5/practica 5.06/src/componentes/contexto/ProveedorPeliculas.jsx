@@ -85,7 +85,7 @@ const ProveedorPeliculas = ({children}) => {
             return actor.name === evento.target.dataset.id; 
         })
         //Guardamos el actor filtrado en el estado.
-        setActorFiltrado(filtrado[0]);
+        setActorFiltrado(filtrado);
       }
     }
 
@@ -101,13 +101,16 @@ const ProveedorPeliculas = ({children}) => {
         filtrarActor
     }
 
-    
-    
     //Cargamos la llamada a la API solo una vez con el useEffect.
     useEffect(() => {
       traerListadoPeliculas();
     }, []);
-
+    
+    useEffect(()=>{
+      if(peliculaFiltrada.length !== 0){
+        traerListaActores(peliculaFiltrada[0].characters);
+      }
+    }, [peliculaFiltrada]);
 
   return (
     //JSX

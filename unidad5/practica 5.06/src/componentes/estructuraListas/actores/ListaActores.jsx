@@ -6,7 +6,7 @@ import ActoresInformacion from '../../mostrarInformacion/actores/ActoresInformac
 
 const ListaActores = () => {
     //Javascript
-    const { actorFiltrado , filtrarActor} = useContext(contextoPeliculas);
+    const {filtrarActor} = useContext(contextoPeliculas);
 
   return (
     <>
@@ -14,7 +14,7 @@ const ListaActores = () => {
             <Actores/>
         </div>
         <div>
-            <ActoresInformacion actoresInformacionAMostrar={actorFiltrado}/>
+            <ActoresInformacion/>
         </div>
     </>
   )
