@@ -1,8 +1,15 @@
 import React from 'react';
+import "./Login.css";
+import CrearCuenta from '../Sesion/CrearCuenta.jsx';
+import InicioSesion from '../Sesion/InicioSesion.jsx';
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <>
+      <InicioSesion/>
+      <CrearCuenta/>
+    
+    </>
   )
 }
 
