@@ -1,0 +1,10 @@
+#contenido_principal{
+    /* display: flex; */
+    border: solid white 1px;
+    border-radius: 4px;
+    margin-top: 15px;
+    padding: 10px 10px 10px 15px;
+    width: 100%;
+    min-height: 500px;
+    text-align: left;
+}
