@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{ useContext } from 'react';
+import { contextoSesion } from '../../contextos/ProveedorSesion.jsx';
 
 const CerrarSesion = () => {
+  const {cerrarSesion} = useContext(contextoSesion);
   return (
     <div className='cerrarsesion__cerrar'>
-      <button onClick={() => {}}>Cerrar sesión</button>
+      <button onClick={() => {cerrarSesion()}}>Cerrar sesión</button>
     </div>
   )
 }

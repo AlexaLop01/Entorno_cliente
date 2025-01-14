@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { contextoSesion } from '../../contextos/ProveedorSesion.jsx';
 
 const InicioSesion = () => {
+  const { actualizarDato, iniciarSesionMagicLink } = useContext();
   return (
     <div className='cuentaUsuario'>
       <h2>Iniciar sesión</h2>

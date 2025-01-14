@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { contextoSesion } from '../../contextos/ProveedorSesion.jsx';
+import Errores from '../Errores.jsx';
 
 const CrearCuenta = () => {
+  const { errorUsuario,crearCuenta, actualizarDato} = useContext(contextoSesion);
   return (
     <div className='cuentaUsuario'>
       <h2>Crea una nueva cuenta</h2>
@@ -10,7 +13,7 @@ const CrearCuenta = () => {
         name='email'
         id='email'
         placeholder='Su correo electrónico.'
-        onChange={(e) => {}}
+        onChange={(e) => {actualizarDato(e)}}
       />
       <label htmlFor='password'>Contraseña</label>
 
@@ -19,11 +22,12 @@ const CrearCuenta = () => {
         name='password'
         id='password'
         placeholder='Su contraseña.'
-        onChange={(e) => {}}
+        onChange={(e) => {actualizarDato(e)}}
       />
-      <button className='botonSesion' onClick={(e) => {}}>
+      <button className='botonSesion' onClick={(e) => {crearCuenta()}}>
         Crear cuenta
       </button>
+      <Errores>{errorUsuario}</Errores>
     </div>
   )
 }
