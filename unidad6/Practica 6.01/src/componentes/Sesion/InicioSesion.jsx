@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { contextoSesion } from '../../contextos/ProveedorSesion.jsx';
 
 const InicioSesion = () => {
-  const { actualizarDato, iniciarSesionMagicLink } = useContext();
+  const { actualizarDato, iniciarSesionConContrasenya } = useContext(contextoSesion);
   return (
     <div className='cuentaUsuario'>
       <h2>Iniciar sesión</h2>
@@ -12,9 +12,18 @@ const InicioSesion = () => {
         name='email'
         id='email'
         placeholder='Su correo electrónico.'
-        onChange={(e) => {}}
+        onChange={(e) => {actualizarDato(e)}}
       />
-      <button className='botonSesion' onClick={(e) => {}}>
+      <label htmlFor='password'>Contraseña</label>
+      <input
+        type='password'
+        name='password'
+        id='password'
+        placeholder='Su contraseña.'
+        onChange={(e) => {actualizarDato(e)}}
+      />
+
+      <button className='botonSesion' onClick={(e) => {iniciarSesionConContrasenya()}}>
         Iniciar sesión
       </button>
     </div>

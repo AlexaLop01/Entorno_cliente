@@ -1,9 +1,11 @@
 import React, { useState, useEffect, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabaseConexion } from "../config/supabase.js";
 
 const contextoSesion = createContext();
 
 const ProveedorSesion = ({ children }) => {
+  const navegar = useNavigate();
   /** Valores iniciales para los estados */
   const datosSesionInicial = {
     email: "",
@@ -33,9 +35,7 @@ const ProveedorSesion = ({ children }) => {
       if (error) {
         throw error;
       } else {
-        setErrorUsuario(
-          "Recibirás un correo electrónico para la confirmación de la cuenta."
-        );
+        setErrorUsuario("Recibirás un correo electrónico para la confirmación de la cuenta.");
       }
       // Se revisa el objeto data por consola.
       //console.log(data);
@@ -50,6 +50,23 @@ const ProveedorSesion = ({ children }) => {
      */
   };
 
+  //Función para iniciar sesión con contraseña.
+  const iniciarSesionConContrasenya = async() =>{
+    try{
+      let { data, error } = await supabaseConexion.auth.signInWithPassword({
+        email: datosSesion.email,
+        password: datosSesion.password,
+      })
+      if(error){
+        throw error;
+      }else{
+        setErrorUsuario("Sesión iniciada correctamente.");
+
+      }
+    }catch(error){
+      setErrorUsuario(error.message);
+    }
+  }
   /**
    * Función para iniciar sesión o crear usuario.
    * Si el usuario existe se inicia la sesión en lugar de crearla.
@@ -136,6 +153,7 @@ const ProveedorSesion = ({ children }) => {
   const datosAExportar = {
     errorUsuario,
     crearCuenta,
+    iniciarSesionConContrasenya,
     iniciarSesionMagicLink,
     cerrarSesion,
     obtenerUsuario,
