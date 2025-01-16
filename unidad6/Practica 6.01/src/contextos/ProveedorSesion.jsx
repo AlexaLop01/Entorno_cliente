@@ -13,11 +13,14 @@ const ProveedorSesion = ({ children }) => {
   };
   const usuarioInicial = {};
   const errorUsuarioInicial = "";
+  const sesionIniciadaInicial = false;
 
   /** Estados para proveer. */
   const [datosSesion, setDatosSesion] = useState(datosSesionInicial);
   const [usuario, setUsuario] = useState(usuarioInicial);
   const [errorUsuario, setErrorUsuario] = useState(errorUsuarioInicial);
+  //Controlamos la sesión con un estado.
+  const [sesionIniciada, setSesionIniciada] = useState(sesionIniciadaInicial);
 
   // Antes de empezar -> configurar el servidor de Supabase.
 
@@ -60,45 +63,14 @@ const ProveedorSesion = ({ children }) => {
       if(error){
         throw error;
       }else{
-        setErrorUsuario("Sesión iniciada correctamente.");
+        navegar("/");
 
       }
     }catch(error){
       setErrorUsuario(error.message);
     }
   }
-  /**
-   * Función para iniciar sesión o crear usuario.
-   * Si el usuario existe se inicia la sesión en lugar de crearla.
-   */
-  const iniciarSesionMagicLink = async () => {
-    setErrorUsuario(errorUsuarioInicial);
-    // Algo más de información en https://supabase.com/docs/guides/auth/auth-magic-link
-    try {
-      // Función asíncrona para iniciar sesion con el usuario (MagicLink).
-      const { data, error } = await supabaseConexion.auth.signInWithOtp({
-        email: datosSesion.email,
-        /**
-         *  No es necesario especificar la ruta de redirección
-         *  ya que se encuentra especificada en el servidor.
-         *  Es posible indicar una redirección diferente desde aquí si
-         *  el diseño de la aplicación así lo requiere.
-         * */
-        options: {
-          emailRedirectTo: "http://localhost:5173/",
-        },
-      });
-      if (error) {
-        throw error;
-      } else {
-        setErrorUsuario("Revisa tu correo electrónico para iniciar la sesión.");
-      }
-      // Lo reviso por consola.
-      //console.log(data);
-    } catch (error) {
-      setErrorUsuario(error.message);
-    }
-  };
+  
 
   /**
    * Función para cerrar la sesión.
@@ -128,33 +100,45 @@ const ProveedorSesion = ({ children }) => {
 
       setUsuario(data.user);
 
-      /* Imprimir usuarios por consola (data y estado).
-      console.log(estado);
-      console.log(data.user); */
     } catch (error) {
       setErrorUsuario(error.message);
     }
   };
 
-  /**
-   * Función para actualizar los datos de un formulario
-   * al estado "datosSesion".
-   * Diseño -> ¿importar desde otro lugar?
-   */
+ //Función para actualizar los datos del formulario.
   const actualizarDato = (evento) => {
     const { name, value } = evento.target;
     setDatosSesion({ ...datosSesion, [name]: value });
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    //Esta función siempre estará activa y realiza su funcionamiento según detecte que la sesión se inicia o se cierra.
+    const suscripcion = supabaseConexion.auth.onAuthStateChange(
+      (event, session) => {
+        // Se comprueba si hay sesión.
+        if (session) {
+          // Si hay sesión se carga la parte privada de la web.
+          navegar("/");
+          setSesionIniciada(true);
+          // Información del usuario que tiene sesión iniciada.
+          obtenerUsuario();
+        } else {
+          // Si no hay sesión, se redirige a la parte pública de la web.
+          navegar("/login");
+          setSesionIniciada(false);
+        }
+      }
+    );
+  }, []);
 
   // Objeto con la información a exportar.
 
   const datosAExportar = {
     errorUsuario,
+    sesionIniciada,
+    usuario,
     crearCuenta,
     iniciarSesionConContrasenya,
-    iniciarSesionMagicLink,
     cerrarSesion,
     obtenerUsuario,
     actualizarDato,
