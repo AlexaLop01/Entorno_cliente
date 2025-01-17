@@ -1,7 +1,6 @@
 .inicio__columnas {
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
 }
 
 .inicio__columna {
@@ -13,3 +12,7 @@
 .inicio__terminal{
     font-family: 'Courier New', Courier, monospace;
 }
+
+.contenedorInicio {
+    padding: 0 20px;
+} 

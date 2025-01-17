@@ -111,6 +111,21 @@ const ProveedorSesion = ({ children }) => {
     setDatosSesion({ ...datosSesion, [name]: value });
   };
 
+  const recuperarContrasenya = async () => {  
+    try {
+      const { data, error } = await supabaseConexion.auth.resetPasswordForEmail(
+        datosSesion.email
+      );
+      if (error) {
+        throw error;
+      } else {
+        setErrorUsuario("Recibirás un correo electrónico para restablecer la contraseña.");
+      }
+    } catch (error) {
+      setErrorUsuario(error.message);
+    }    
+  }
+
   useEffect(() => {
     //Esta función siempre estará activa y realiza su funcionamiento según detecte que la sesión se inicia o se cierra.
     const suscripcion = supabaseConexion.auth.onAuthStateChange(
@@ -142,6 +157,7 @@ const ProveedorSesion = ({ children }) => {
     cerrarSesion,
     obtenerUsuario,
     actualizarDato,
+    recuperarContrasenya,
   };
 
   return (

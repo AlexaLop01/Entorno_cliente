@@ -6,8 +6,10 @@ import InicioSesion from '../Sesion/InicioSesion.jsx';
 const Login = () => {
   return (
     <>
-      <InicioSesion/>
-      <CrearCuenta/>
+      <div className='ContenedorLogin'>
+        <InicioSesion/>
+        <CrearCuenta/>
+      </div>
     
     </>
   )
