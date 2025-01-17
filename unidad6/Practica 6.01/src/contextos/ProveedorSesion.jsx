@@ -110,10 +110,12 @@ const ProveedorSesion = ({ children }) => {
     const { name, value } = evento.target;
     setDatosSesion({ ...datosSesion, [name]: value });
   };
-
+  
+  //Función para recuperar la contraseña.
   const recuperarContrasenya = async () => {  
     try {
       const { data, error } = await supabaseConexion.auth.resetPasswordForEmail(
+        //Coge los datos del email que en el compontente se recoge con actualizarDato.
         datosSesion.email
       );
       if (error) {
@@ -149,9 +151,11 @@ const ProveedorSesion = ({ children }) => {
   // Objeto con la información a exportar.
 
   const datosAExportar = {
+    //Estados.
     errorUsuario,
     sesionIniciada,
     usuario,
+    //Funciones.
     crearCuenta,
     iniciarSesionConContrasenya,
     cerrarSesion,

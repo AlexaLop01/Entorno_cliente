@@ -11,7 +11,8 @@ const Navegacion = () => {
         <Link className='navegacion__enlace' to='/'>
           Inicio
         </Link>
-        {!sesionIniciada && (
+        {// Si la sesión no está iniciada, se muestra el enlace a la página de perfil.
+        !sesionIniciada && (
           <Link className='navegacion__enlace' to='/login'>
             Login
           </Link>

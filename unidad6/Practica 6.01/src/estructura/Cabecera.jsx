@@ -11,7 +11,8 @@ const Cabecera = () => {
       <header id='cabecera'>
         <h1>UT06 Almacenamiento con Supabase</h1>
         <div className='cabecera__sesion'>
-        {sesionIniciada && <CerrarSesion />}
+        {// Si la sesión está iniciada, se muestra el botón de cerrar sesión.
+        sesionIniciada && <CerrarSesion />}
         </div>
       </header>
     </>
