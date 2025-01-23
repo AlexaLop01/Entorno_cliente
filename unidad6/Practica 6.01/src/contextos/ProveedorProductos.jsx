@@ -2,7 +2,7 @@ import React,{ createContext , useState} from 'react'
 import { supabaseConexion } from '../config/supabase.js';
 
 
-const ProductosContext = createContext();
+const contextoProductos = createContext();
 const ProveedorProductos = ({children}) => {
     //Creamos las variables que vamos a utilizar en las funciones y los estados.
     const listadoInicial = [];
@@ -84,12 +84,12 @@ const ProveedorProductos = ({children}) => {
     };
   return (
     <>
-    <ProductosContext.Provider value={datosProductosProveer} >
+    <contextoProductos.Provider value={datosProductosProveer} >
         {children}
-    </ProductosContext.Provider>
+    </contextoProductos.Provider>
     </>
   )
 }
 
 export default ProveedorProductos;
-export { ProductosContext };
+export { contextoProductos };
