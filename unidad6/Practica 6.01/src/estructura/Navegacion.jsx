@@ -11,11 +11,13 @@ const Navegacion = () => {
         <Link className='navegacion__enlace' to='/'>
           Inicio
         </Link>
+        {/* Si la sesión está iniciada, se muestra el enlace a la página de productos. */
+        sesionIniciada && (
+          <Link className='navegacion__enlace' to='/productos'>Productos</Link>
+        )}
         {// Si la sesión no está iniciada, se muestra el enlace a la página de perfil.
         !sesionIniciada && (
-          <Link className='navegacion__enlace' to='/login'>
-            Login
-          </Link>
+          <Link className='navegacion__enlace' to='/login'>Login</Link>
         )}
       </nav>
     </>
