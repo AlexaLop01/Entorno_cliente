@@ -9,7 +9,7 @@ const Cabecera = () => {
   return (
     <>
       <header id='cabecera'>
-        <h1>UT06 Almacenamiento con Supabase</h1>
+        <h1>Almacenamiento con Supabase</h1>
         <div className='cabecera__sesion'>
         {// Si la sesión está iniciada, se muestra el botón de cerrar sesión.
         sesionIniciada && <CerrarSesion />}
