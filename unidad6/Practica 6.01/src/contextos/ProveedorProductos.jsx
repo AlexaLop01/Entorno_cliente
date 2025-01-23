@@ -51,8 +51,6 @@ const ProveedorProductos = ({ children }) => {
     const { name, value } = evento.target; // Desestructurar del evento
     setFiltros({ ...filtros, [name]: value });
   };
-  
-  console.log(filtros);
 
   //Funciones para filtrar por nombre, precio y peso, estos filtros.
   const filtrosProductos = ({ nombre, precio, peso }) => {
@@ -64,10 +62,10 @@ const ProveedorProductos = ({ children }) => {
       );
     }
     if (precio > 0) {
-      filtrados = filtrados.filter((producto) => producto.precio <= precio);
+      filtrados = filtrados.filter((producto) => producto.precio >= precio);
     }
     if (peso) {
-      filtrados = filtrados.filter((producto) => producto.peso <= peso);
+      filtrados = filtrados.filter((producto) => producto.peso >= peso);
     }
   
     setListadoProductosFiltrado(filtrados); // Actualiza el estado
@@ -76,6 +74,10 @@ const ProveedorProductos = ({ children }) => {
   const borrarFiltros = () => {
     setListadoProductosFiltrado([]); // Actualiza el estado
   };
+
+  const borrarCampos = () =>{
+    setFiltros(filtroProductoInicial);
+  }
 
   //Función para ordenar los productos.
 
@@ -94,6 +96,8 @@ const ProveedorProductos = ({ children }) => {
     obtenerProductos,
     filtrosProductos,
     actualizarDatosProducto,
+    borrarFiltros,
+    borrarCampos
   };
   return (
     <>
