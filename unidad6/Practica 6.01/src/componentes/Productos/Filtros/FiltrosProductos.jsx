@@ -13,6 +13,7 @@ const FiltrosProductos = () => {
 
   return (
     <>
+      <h3>Filtrar los Productos</h3>
       <div id="contenedorFiltros">
         <div>
           <label htmlFor="nombre">Nombre:</label>

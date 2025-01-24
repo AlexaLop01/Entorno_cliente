@@ -58,7 +58,7 @@ const ProveedorProductos = ({ children }) => {
   
     if (nombre) {
       filtrados = filtrados.filter((producto) =>
-        producto.nombre.toLowerCase().includes(nombre.toLowerCase())
+        producto.nombre.toLowerCase().startsWith(nombre.toLowerCase())
       );
     }
     if (precio > 0) {

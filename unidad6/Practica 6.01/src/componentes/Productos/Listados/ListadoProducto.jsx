@@ -1,14 +1,15 @@
-import React from 'react'
+import React from 'react';
+import "./ListadoProducto.css"
 
 const ListadoProducto = ({datos}) => {
   
   return (
     <>
-      <div>
+      <div className="contenedorProducto">
         <h3>{datos.nombre}</h3>
-        <p>- {datos.precio}€</p>
-        <p>- {datos.peso}</p>
-        <p>- {datos.descripcion}</p>
+        <p>{datos.precio}€</p>
+        <p>{datos.peso}</p>
+        <p>{datos.descripcion}</p>
       </div>
     </>
   )
