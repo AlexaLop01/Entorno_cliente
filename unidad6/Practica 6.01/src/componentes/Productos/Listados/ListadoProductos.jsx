@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { contextoProductos } from '../../contextos/ProveedorProductos';
+import { contextoProductos } from '../../../contextos/ProveedorProductos';
 import ListadoProducto from './ListadoProducto';
 
 const ListadoProductos = () => {

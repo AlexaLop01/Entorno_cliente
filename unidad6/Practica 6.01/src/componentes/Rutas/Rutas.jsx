@@ -1,7 +1,7 @@
 import React from 'react';
 import {Routes, Route} from "react-router-dom";
 import Inicio from '../Paginas/Inicio.jsx';
-import Listados from '../Paginas/Listados.jsx';
+import Listados from '../Productos/Listados.jsx';
 import Login from '../Paginas/Login.jsx';
 import Error from '../Paginas/Error.jsx';
 import RecuperarContrasenya from '../Sesion/RecuperarContrasenya.jsx';

@@ -18,7 +18,12 @@
 .botonSesion{
     margin-top: 15px;
     padding: 10px 20px 15px;
-    background-color: #cecece;
+    background-color: #6f9ae4;
+    color: black;
+}
+.botonSesion:hover{
+    background-color: #265ec0;
+    color: white;
 }
 .errorLogin {
     color: red;

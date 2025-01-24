@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { contextoProductos } from "../../contextos/ProveedorProductos.jsx";
+import { contextoProductos } from "../../../contextos/ProveedorProductos.jsx";
 import "./FiltrosProductos.css";
 
 const FiltrosProductos = () => {
@@ -13,7 +13,7 @@ const FiltrosProductos = () => {
 
   return (
     <>
-      <div className="contenedorFiltros">
+      <div id="contenedorFiltros">
         <div>
           <label htmlFor="nombre">Nombre:</label>
           <input
@@ -47,16 +47,17 @@ const FiltrosProductos = () => {
             onChange={actualizarDatosProducto} // Pasa el evento directamente
           />
         </div>
-
+      </div>
+      <div id="contenedorBotonesFiltros">
         <button onClick={() => filtrosProductos(filtros)}>
           Aplicar filtros
         </button>
         <button onClick={() =>{
           borrarFiltros(),
           borrarCampos()
-
         }}>Limpiar filtros</button>
-      </div>
+      </div> 
+      
     </>
   );
 };

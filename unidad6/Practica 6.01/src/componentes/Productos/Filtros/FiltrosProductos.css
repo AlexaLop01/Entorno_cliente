@@ -1,34 +1,45 @@
-.contenedorFiltros {
+#contenedorFiltros {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
+
 }
 
-.contenedorFiltros > div {
+#contenedorFiltros > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
 }
+
 #nombre {
     font-size: 12px;
-    color: #333;
     padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 #precio {
     font-size: 12px;
-    color: #333;
     padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 #peso{
     font-size: 12px;
-    color: #333;
     padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+#contenedorBotonesFiltros{
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+#contenedorBotonesFiltros > button {
+    background-color: #b16fe4;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }

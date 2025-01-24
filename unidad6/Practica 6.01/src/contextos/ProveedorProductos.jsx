@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { supabaseConexion } from "../config/supabase.js";
-import ListadoProducto from "../componentes/Listados/ListadoProducto.jsx";
+import ListadoProducto from "../componentes/Productos/Listados/ListadoProducto.jsx";
 
 const contextoProductos = createContext();
 const ProveedorProductos = ({ children }) => {
@@ -80,6 +80,19 @@ const ProveedorProductos = ({ children }) => {
   }
 
   //Función para ordenar los productos.
+  const ordenarProductos = (campos, ascendente = true) => {
+    const listaOrdenada = [...listadoProductos];
+    listaOrdenada.sort((a, b) => {
+      if (a[campos] > b[campos]) {
+        return ascendente ? 1 : -1;
+      }
+      if (a[campos] < b[campos]) {
+        return ascendente ? -1 : 1;
+      }
+      return 0;
+    });
+    setListadoProductosFiltrado(listaOrdenada);
+  }
 
   useEffect(() => {
     obtenerProductos();
@@ -93,11 +106,11 @@ const ProveedorProductos = ({ children }) => {
     produtoSeleccionado,
     filtros,
     //Funciones
-    obtenerProductos,
     filtrosProductos,
     actualizarDatosProducto,
     borrarFiltros,
-    borrarCampos
+    borrarCampos,
+    ordenarProductos
   };
   return (
     <>
