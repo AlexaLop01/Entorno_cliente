@@ -1,0 +1,26 @@
+.errores__container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: 2px solid #d32f2f; /* Rojo intenso */
+    background-color: #fff5f5; /* Fondo rojo claro */
+    color: #d32f2f; /* Texto rojo */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: "Arial", sans-serif;
+    font-size: 1rem;
+    max-width: 600px;
+  }
+  
+  .errores__icon {
+    margin-right: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .errores__error {
+    flex: 1;
+    word-wrap: break-word;
+  }
+  

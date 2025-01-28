@@ -1,16 +1,40 @@
-#contenedorMenuNavegacion{
+#contenedorMenuNavegacion {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: center; /* Alinea los enlaces hacia la derecha */
     align-items: center;
+    gap: 20px; /* Espaciado entre los enlaces */
+    position: relative; /* Mantén el contenedor en su posición normal */
+    top: 0;
+    right: 0;
+    padding: 10px 20px; /* Espaciado interno */
 }
+
 .enlaceMenu {
-    border: 1px rgb(131, 131, 254) solid;
-    color: rgb(131, 131, 254);
+    color: white; /* Texto blanco */
+    text-decoration: none; /* Sin subrayado por defecto */
+    padding: 10px 15px;
     border-radius: 5px;
-    padding: 10px 25px;
+    position: relative; /* Para el subrayado personalizado */
 }
-.enlaceMenu:hover{
-    color: white;
-    background-color: rgb(131, 131, 254);
+
+.enlaceMenu::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Distancia entre el texto y el subrayado */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transform: scaleX(0); /* Oculta el subrayado al inicio */
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.enlaceMenu:hover::after {
+    transform: scaleX(1); /* Aparece el subrayado al pasar el mouse */
+    transform-origin: left;
+}
+
+.enlaceMenu:hover {
+    color: rgb(131, 131, 254); /* Cambia el color del texto al pasar el mouse */
 }

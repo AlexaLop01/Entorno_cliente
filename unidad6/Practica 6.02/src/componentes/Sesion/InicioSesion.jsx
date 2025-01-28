@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom'
 import { contextoSesion } from '../../contextos/ProveedorSesion.jsx';
 
 const InicioSesion = () => {
@@ -27,9 +26,7 @@ const InicioSesion = () => {
       <button className='btnSesion' onClick={(e) => {iniciarSesionConContrasenya()}}>
         Iniciar sesión
       </button>
-      <div>
-        <Link to='/recuperar-contrasenya'>¿Olvidó su contraseña?</Link>
-      </div>
+    
     </div>
   )
 }

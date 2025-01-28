@@ -12,9 +12,9 @@ function App() {
     <>
       <ProveedorSesion>
           <Cabecera>
-            <Navegacion/>
           </Cabecera>
           <Contenido>
+            <Navegacion/>
             <Rutas/>
           </Contenido>
           <Pie/>

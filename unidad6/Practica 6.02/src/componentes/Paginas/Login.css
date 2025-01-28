@@ -1,41 +1,75 @@
-
-  .ContenedorLogin{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
-  }
-
-.contenedorCrearCuenta, .contenedorInicioSesion{
-    border: none;
-    border-radius: 10px;
-    box-shadow: 4px 4px 10px rgba(131, 131, 254, 0.5);
-    background-color: rgba(230, 230, 249, 0.5);
-    display: flex;
-    flex-direction: column;
-    padding: 10px 40px 20px;
-    gap: 10px;
+.ContenedorLogin {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
 }
 
-.contenedorCrearCuenta > input, .contenedorInicioSesion > input{
-    padding: 5px;
+.contenedorCrearCuenta, .contenedorInicioSesion {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(131, 131, 254, 0.5);
+  background-color: rgba(230, 230, 249, 0.5);
+  backdrop-filter: blur(10px); /* Efecto blur */
+  display: flex;
+  flex-direction: column;
+  padding: 10px 40px 20px;
+  gap: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para el hover */
 }
-.contenedorCerrarSesion{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+
+.contenedorCrearCuenta:hover, .contenedorInicioSesion:hover {
+  transform: scale(1.05); /* Crece un 5% */
+  box-shadow: 6px 6px 15px rgba(131, 131, 254, 0.7); /* Mayor sombra al hacer hover */
+}
+
+
+.contenedorCrearCuenta > input, .contenedorInicioSesion > input {
+  padding: 5px;
+}
+
+.contenedorInicioSesion > label, .contenedorCrearCuenta > label {
+  text-align: left;
+}
+
+.contenedorCerrarSesion {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .btnSesion {
-    padding: 10px 20px;
-    color: #8383fE; /* Color del texto */
-    border: 1px #8383fE solid; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    font-size: 16px; /* Tamaño de la fuente */
-    transition: background-color 0.3s ease;
+  margin-top: 4%;
+  padding: 10px 20px;
+  color: #8383fE; /* Color del texto */
+  border: 1px #8383fE hidden; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  font-size: 16px; /* Tamaño de la fuente */
+  transition: background-color 0.3s ease;
+  background-color: white;
 }
-.btnSesion:hover{
+.btnSesion:hover {
+  color: white;
+  background-color: #8383fE;
+}
+
+
+.btnCerrarSesion{
+  margin-top: 4%;
+  padding: 10px 20px;
+  color: #8383fE; /* Color del texto */
+  border: 1px #8383fE dashed; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  font-size: 16px; /* Tamaño de la fuente */
+  transition: background-color 0.3s ease;
+  background-color: white;
+}
+
+.btnCerrarSesion:hover {
   color: white;
   background-color: #8383fE;
 }
