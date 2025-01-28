@@ -7,7 +7,7 @@ const CerrarSesion = () => {
   return (
     <div className='contenedorCerrarSesion'>
       <h3>Hola, {usuario.email}</h3>
-      <button className='btnnSesion' onClick={() => {
+      <button className='btnSesion' onClick={() => {
         cerrarSesion()
         }}>Cerrar sesión</button>
     </div>

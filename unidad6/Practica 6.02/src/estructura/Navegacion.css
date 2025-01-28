@@ -1,0 +1,15 @@
+.contenedorMenuNavegacion{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+.enlaceMenu {
+    border: 1px rgb(131, 131, 254) solid;
+    border-radius: 5px;
+    padding: 10px 25px;
+}
+.enlaceMenu:hover{
+    color: white;
+    background-color: rgb(131, 131, 254);
+}

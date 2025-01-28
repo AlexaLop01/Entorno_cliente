@@ -11,8 +11,9 @@ function App() {
   return (
     <>
       <ProveedorSesion>
-          <Cabecera/>
-          <Navegacion/>
+          <Cabecera>
+            <Navegacion/>
+          </Cabecera>
           <Contenido>
             <Rutas/>
           </Contenido>

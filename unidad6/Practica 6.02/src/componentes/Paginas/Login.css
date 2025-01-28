@@ -9,7 +9,7 @@
     border: none;
     border-radius: 10px;
     box-shadow: 4px 4px 10px rgba(131, 131, 254, 0.5);
-    background-color: rgb(230, 230, 249);
+    background-color: rgba(230, 230, 249, 0.5);
     display: flex;
     flex-direction: column;
     width: auto;
@@ -20,4 +20,19 @@
 
 .contenedorCrearCuenta > input, .contenedorInicioSesion > input{
     padding: 5px;
+}
+.contenedorCerrarSesion{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnSesion {
+    height: 50%;
+    padding: 10px 20px;
+    color: rgb(16, 67, 207); /* Color del texto */
+    border: 1px rgb(16, 67, 207) solid; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px; /* Tamaño de la fuente */
+    transition: background-color 0.3s ease;
 }

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { contextoSesion } from '../contextos/ProveedorSesion.jsx';
 import { Link } from 'react-router-dom';
+import "./Navegacion.css";
 
 const Navegacion = () => {
   const {sesionIniciada} = useContext(contextoSesion);

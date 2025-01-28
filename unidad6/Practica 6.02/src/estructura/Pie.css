@@ -1,0 +1,10 @@
+.contenedorFooter{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgb(254, 253, 255);
+    box-shadow: 0px 0px 10px rgba(186, 186, 255, 0.5);
+    padding: 20px 0;
+}
