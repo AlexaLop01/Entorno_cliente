@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import "./Contenido.css";
 
 const Contenido = ({children}) => {
   return (
     <>
-      <article id='contenido_principal'>{children}</article>
+      <div id='contenidoPrincipal'>{children}</div>
     </>
   )
 }

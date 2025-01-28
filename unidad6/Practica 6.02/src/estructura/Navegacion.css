@@ -1,4 +1,4 @@
-.contenedorMenuNavegacion{
+#contenedorMenuNavegacion{
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -6,6 +6,7 @@
 }
 .enlaceMenu {
     border: 1px rgb(131, 131, 254) solid;
+    color: rgb(131, 131, 254);
     border-radius: 5px;
     padding: 10px 25px;
 }

@@ -6,7 +6,7 @@ import "./Navegacion.css";
 const Navegacion = () => {
   const {sesionIniciada} = useContext(contextoSesion);
   return (
-    <nav className='contenedorMenuNavegacion'>
+    <nav id='contenedorMenuNavegacion'>
         <Link className='enlaceMenu' to='/'>
           Inicio
         </Link>

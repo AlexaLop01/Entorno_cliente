@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { contextoSesion } from '../../contextos/ProveedorSesion.jsx';
 
 const CrearCuenta = () => {
-  const { errorUsuario,crearCuenta, actualizarDato} = useContext(contextoSesion);
+  const { crearCuenta, actualizarDato} = useContext(contextoSesion);
   return (
     <div className='contenedorCrearCuenta'>
       <h2>Registrate</h2>

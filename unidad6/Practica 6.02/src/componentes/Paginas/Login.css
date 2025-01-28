@@ -12,10 +12,8 @@
     background-color: rgba(230, 230, 249, 0.5);
     display: flex;
     flex-direction: column;
-    width: auto;
-    padding: 20px 30px;
+    padding: 10px 40px 20px;
     gap: 10px;
-
 }
 
 .contenedorCrearCuenta > input, .contenedorInicioSesion > input{
@@ -23,16 +21,21 @@
 }
 .contenedorCerrarSesion{
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
 }
 
 .btnSesion {
-    height: 50%;
     padding: 10px 20px;
-    color: rgb(16, 67, 207); /* Color del texto */
-    border: 1px rgb(16, 67, 207) solid; /* Sin borde */
+    color: #8383fE; /* Color del texto */
+    border: 1px #8383fE solid; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
     cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
     font-size: 16px; /* Tamaño de la fuente */
     transition: background-color 0.3s ease;
+}
+.btnSesion:hover{
+  color: white;
+  background-color: #8383fE;
 }

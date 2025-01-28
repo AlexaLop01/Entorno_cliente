@@ -8,14 +8,15 @@ const Cabecera = ({children}) => {
   const {sesionIniciada} = useContext(contextoSesion);
   return (
     <>
-      <div className='contenedorCabecera'>
-          <div className='contenedorSesionCabecera'>
-          {// Si la sesión está iniciada, se muestra el botón de cerrar sesión.
-          sesionIniciada && <CerrarSesion />}
-          </div>
-          <div>
-            {children}
-          </div>
+      <div id='contenedorCabecera'>
+        <h2>Práctica Supabase</h2>
+        <div className='contenedorSesionCabecera'>
+        {// Si la sesión está iniciada, se muestra el botón de cerrar sesión.
+        sesionIniciada && <CerrarSesion />}
+        </div>
+        <div>
+          {children}
+        </div>
       </div>
     </>
   )
