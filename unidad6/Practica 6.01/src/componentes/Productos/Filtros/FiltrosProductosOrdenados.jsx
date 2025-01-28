@@ -6,7 +6,7 @@ const FiltrosProductosOrdenados = () => {
   const { ordenarProductos } = useContext(contextoProductos);
   return (
     <>
-    <h2>Ordenar los Productos</h2>
+    <h3>Ordenar los Productos</h3>
     <div className='contenedorBotonesOrdenar'>
       <button onClick={() => ordenarProductos('nombre', true)}>Nombre Ascendente</button>
       <button onClick={() => ordenarProductos('nombre', false)}>Nombre Descendente</button>

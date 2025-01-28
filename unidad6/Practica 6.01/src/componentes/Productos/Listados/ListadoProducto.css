@@ -1,0 +1,19 @@
+.contenedorProducto{
+    border: 1px solid #9c9c9c;
+    border-radius: 5px;
+    width: 200px;
+    padding: 20px 20px 10px;
+}
+.contenedorPrecioPeso{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    align-items: center;
+}
+img{
+    width: 120px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center; 
+}
