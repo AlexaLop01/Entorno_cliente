@@ -1,8 +1,21 @@
-import React from 'react'
+import React, {useContext} from 'react';
+import { contextoSesion } from '../../contextos/ProveedorSesion.jsx';
+import InicioSesion from "../Sesion/InicioSesion.jsx";
+import CrearCuenta from '../Sesion/CrearCuenta.jsx';
+import Errores from '../Errores.jsx';
+import "./Login.css"; 
 
 const Login = () => {
+  const {errorUsuario}=useContext(contextoSesion);
   return (
-    <div>Login</div>
+    <>
+      <div className='ContenedorLogin'>
+          <InicioSesion/>
+          <CrearCuenta/>
+      </div>
+      <Errores>{errorUsuario}</Errores>
+    
+    </>
   )
 }
 

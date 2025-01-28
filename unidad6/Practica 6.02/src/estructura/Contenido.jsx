@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Contenido = () => {
+const Contenido = ({children}) => {
   return (
-    <div>Contenido</div>
+    <>
+      <article id='contenido_principal'>{children}</article>
+    </>
   )
 }
 

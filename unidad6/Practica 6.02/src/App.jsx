@@ -1,9 +1,10 @@
 import './App.css'
 import ProveedorSesion from './contextos/ProveedorSesion.jsx';
 import Cabecera from './estructura/Cabecera.jsx';
-import Navegacion from './estructura/Navegacion.jsx';
 import Contenido from './estructura/Contenido.jsx';
 import Pie from './estructura/Pie.jsx';
+import Rutas from './componentes/Rutas/Rutas.jsx';
+import Navegacion from './estructura/Navegacion.jsx';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
           <Cabecera/>
           <Navegacion/>
           <Contenido>
-
+            <Rutas/>
           </Contenido>
           <Pie/>
       </ProveedorSesion>

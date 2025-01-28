@@ -1,4 +1,4 @@
-import React,{ createContext ,useState } from 'react';
+import React,{ createContext ,useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabaseConnection } from '../config/supabase.js';
 
@@ -45,7 +45,7 @@ const ProveedorSesion = ({children}) => {
     //Iniciar sesión con contraseña.
     const iniciarSesionConContrasenya = async () => {
         try{
-            const { data, error } = await supabaseConnection.auth.signIn({
+            const { data, error } = await supabaseConnection.auth.signInWithPassword({
                 email: sesion.correo,
                 password: sesion.contrasenya
             });
@@ -70,15 +70,31 @@ const ProveedorSesion = ({children}) => {
         }
     };
 
+    //Función para recuperar la contraseña.
+  const recuperarContrasenya = async () => {  
+    try {
+      const { data, error } = await supabaseConnection.auth.resetPasswordForEmail(
+        //Coge los datos del email que en el compontente se recoge con actualizarDato.
+        sesion.correo
+      );
+      if (error) {
+        throw error;
+      } else {
+        setErrorUsuario("Recibirás un correo electrónico para restablecer la contraseña.");
+      }
+    } catch (error) {
+      setErrorUsuario(error.message);
+    }    
+  }
+
     //Obtener los datos del usuario.
     const obtenerUsuario = async () => {
         try {
-          const { data, error } = await supabaseConexion.auth.getUser();
+          const { data, error } = await supabaseConnection.auth.getUser();
     
           if (error) {
             throw error;
           }
-    
           setUsuario(data.user);
     
         } catch (error) {
@@ -93,10 +109,39 @@ const ProveedorSesion = ({children}) => {
         setSesion({ ...sesion , [name] : value});
     }
 
+    useEffect(() => {
+        //Esta función siempre estará activa y realiza su funcionamiento según detecte que la sesión se inicia o se cierra.
+        const suscripcion = supabaseConnection.auth.onAuthStateChange(
+          (event, session) => {
+            // Se comprueba si hay sesión.
+            if (session) {
+              // Si hay sesión se carga la parte privada de la web.
+              navegar("/");
+              setSesionIniciada(true);
+              // Información del usuario que tiene sesión iniciada.
+              obtenerUsuario();
+            } else {
+              // Si no hay sesión, se redirige a la parte pública de la web.
+              navegar("/login");
+              setSesionIniciada(false);
+            }
+          }
+        );
+      }, []);
+
     const datosParaProveer = {
         //Estados.
+        sesion,
+        errorUsuario,
+        usuario,
+        sesionIniciada,
 
         //Funciones.
+        crearCuenta,
+        iniciarSesionConContrasenya,
+        recuperarContrasenya,
+        cerrarSesion,
+        actualizarDato
     }
   return (
     //JSX.
@@ -106,4 +151,5 @@ const ProveedorSesion = ({children}) => {
   )
 }
 
-export default ProveedorSesion
+export default ProveedorSesion;
+export { contextoSesion }; 

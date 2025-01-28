@@ -1,0 +1,23 @@
+
+  .ContenedorLogin{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
+
+.contenedorCrearCuenta, .contenedorInicioSesion{
+    border: none;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(131, 131, 254, 0.5);
+    background-color: rgb(230, 230, 249);
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    padding: 20px 30px;
+    gap: 10px;
+
+}
+
+.contenedorCrearCuenta > input, .contenedorInicioSesion > input{
+    padding: 5px;
+}
