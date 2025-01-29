@@ -5,6 +5,7 @@ import Contenido from './estructura/Contenido.jsx';
 import Pie from './estructura/Pie.jsx';
 import Rutas from './componentes/Rutas/Rutas.jsx';
 import Navegacion from './estructura/Navegacion.jsx';
+import ProveedorProductos from './contextos/ProveedorProductos.jsx';
 
 function App() {
 
@@ -15,7 +16,9 @@ function App() {
           </Cabecera>
           <Contenido>
             <Navegacion/>
-            <Rutas/>
+            <ProveedorProductos>
+              <Rutas/>
+            </ProveedorProductos>
           </Contenido>
           <Pie/>
       </ProveedorSesion>

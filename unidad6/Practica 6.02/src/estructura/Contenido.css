@@ -1,8 +1,7 @@
 #contenidoPrincipal {
-    position: relative;
     width: 100%; 
     margin: 0 auto;
-    padding: 20px;
+    min-width: auto;
     height: 100%;
     z-index: 1000;
     box-sizing: border-box;

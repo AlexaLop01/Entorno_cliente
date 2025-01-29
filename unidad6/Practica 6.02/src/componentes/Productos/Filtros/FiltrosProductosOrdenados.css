@@ -1,0 +1,14 @@
+.contenedorBotonesOrdenar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.contenedorBotonesOrdenar > button {
+    background-color: #e46f84;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
