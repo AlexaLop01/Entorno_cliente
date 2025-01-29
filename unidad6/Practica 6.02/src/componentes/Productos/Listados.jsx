@@ -10,8 +10,12 @@ const Listados = () => {
     <>
       <div className='contenedorListados'>
         <h2>Productos</h2>
-        <FiltrosProductos/>
-        <FiltrosProductosOrdenados/>
+        <div className='contenedorFiltrosListados'>
+          <FiltrosProductos/>
+        </div>
+        <div className='contenedorOrdenadosListados'>
+          <FiltrosProductosOrdenados/>
+        </div>
         <ListadoProductos />
       </div>
     </>

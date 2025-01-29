@@ -10,9 +10,11 @@ const Navegacion = () => {
       <Link className="enlaceMenu" to="/">
         Inicio
       </Link>
-      <Link className="enlaceMenu" to="/productos">
+      {sesionIniciada &&
+      (<Link className="enlaceMenu" to="/productos">
         Productos
-      </Link>
+      </Link>)
+      }
       {!sesionIniciada && (
         <Link className="enlaceMenu" to="/login">
           Login
