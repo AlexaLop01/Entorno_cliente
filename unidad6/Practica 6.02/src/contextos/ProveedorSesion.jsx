@@ -70,33 +70,15 @@ const ProveedorSesion = ({children}) => {
         }
     };
 
-    //Función para recuperar la contraseña.
-  const recuperarContrasenya = async () => {  
-    try {
-      const { data, error } = await supabaseConnection.auth.resetPasswordForEmail(
-        //Coge los datos del email que en el compontente se recoge con actualizarDato.
-        sesion.correo
-      );
-      if (error) {
-        throw error;
-      } else {
-        setErrorUsuario("Recibirás un correo electrónico para restablecer la contraseña.");
-      }
-    } catch (error) {
-      setErrorUsuario(error.message);
-    }    
-  }
 
     //Obtener los datos del usuario.
     const obtenerUsuario = async () => {
         try {
           const { data, error } = await supabaseConnection.auth.getUser();
-    
           if (error) {
             throw error;
           }
           setUsuario(data.user);
-    
         } catch (error) {
           setErrorUsuario(error.message);
         }
@@ -139,7 +121,6 @@ const ProveedorSesion = ({children}) => {
         //Funciones.
         crearCuenta,
         iniciarSesionConContrasenya,
-        recuperarContrasenya,
         cerrarSesion,
         actualizarDato
     }

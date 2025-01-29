@@ -3,9 +3,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-color: #f7f4ff; /* Blanco suave con un toque lila */
-    color: #5d3fd3; /* Morado intenso */
+    height: 50vh;
+    background-color: #f7f4ff; 
+    color: #5d3fd3; 
     text-align: center;
     padding: 20px;
   }

@@ -6,20 +6,20 @@ const CrearCuenta = () => {
   return (
     <div className='contenedorCrearCuenta'>
       <h2>Registrate</h2>
-      <label htmlFor='email'>Correo electrónico</label>
+      <label htmlFor='correo'>Correo electrónico</label>
       <input
         type='email'
-        name='email'
-        id='email'
+        name='correo'
+        id='correo'
         placeholder='Su correo electrónico'
         onChange={(e) => {actualizarDato(e)}}
       />
-      <label htmlFor='password'>Contraseña</label>
+      <label htmlFor='contrasenya'>Contraseña</label>
 
       <input
         type='password'
-        name='password'
-        id='password'
+        name='contrasenya'
+        id='contrasenya'
         placeholder='Su contraseña.'
         onChange={(e) => {actualizarDato(e)}}
       />
