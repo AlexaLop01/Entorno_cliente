@@ -6,9 +6,16 @@
 }
 
 .contenedorBotonesOrdenar > button {
-    background-color: #e46f84;
-    color: black;
-    border: none;
+    background-color: white;
+    color: #e46f84;
+    font-family: system-ui, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    border: 1px #e46f84 solid;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.contenedorBotonesOrdenar > button:hover{
+    background-color: #e46f84;
+    color: white;
 }

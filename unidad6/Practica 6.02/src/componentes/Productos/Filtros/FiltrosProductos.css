@@ -15,19 +15,19 @@
     font-size: 12px;
     padding: 5px 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
 }
 #precio {
     font-size: 12px;
     padding: 5px 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
 }
 #peso{
     font-size: 12px;
     padding: 5px 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
 }
 #contenedorBotonesFiltros{
     margin-top: 15px;
@@ -37,9 +37,15 @@
     margin-bottom: 20px;
 }
 #contenedorBotonesFiltros > button {
-    background-color: #b16fe4;
-    color: black;
-    border: none;
+    background-color: white;
+    color: #b16fe4;
+    font-family: system-ui, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    border: 1px #b16fe4 solid;
     border-radius: 4px;
     cursor: pointer;
+}
+#contenedorBotonesFiltros > button:hover{
+    background-color: #b16fe4;
+    color: white
 }

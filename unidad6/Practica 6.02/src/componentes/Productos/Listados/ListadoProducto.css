@@ -1,15 +1,16 @@
 .contenedorProducto{
-    border: 1px solid #9c9c9c;
-    border-radius: 5px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(131, 131, 254, 0.5);
+    background-color: #f9f9fa;
     width: 200px;
-    padding: 20px 20px 10px;
+    padding: 25px 15px 10px 25px;
 }
 .contenedorPrecioPeso{
     display: flex;
     flex-direction: row;
-    gap: 40px;
-
-    justify-content: center;
+    justify-content: start;
+    gap: 70px;
 }
 img{
     width: 120px;
