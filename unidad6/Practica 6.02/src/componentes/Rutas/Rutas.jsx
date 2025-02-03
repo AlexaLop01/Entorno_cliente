@@ -9,10 +9,14 @@ const Rutas = () => {
   return (
     <>
     <Routes>
-        <Route path='/' element={<Inicio/>}></Route>
-        <Route path='/productos' element={<Listados/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path='*' element={<Error/>}></Route>
+        <Route path='/' element={<Inicio/>}/>
+        <Route path='/productos' element={<Listados/>}>
+          <Route path='insertar' />
+          <Route path='editar' />
+          <Route path='borrar' />
+        </Route>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='*' element={<Error/>}/>
     </Routes>
     </>
   )
