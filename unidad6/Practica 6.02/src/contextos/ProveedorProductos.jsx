@@ -24,7 +24,8 @@ const ProveedorProductos = ({ children }) => {
   const [filtros, setFiltros] = useState(filtroProductoInicial);
   const [listadoProductosFiltrado, setListadoProductosFiltrado] = useState(listadoInicial);
   const [errorProductos, setErrorProductos] = useState(errorInicial);
-  const [produtoSeleccionado, setProdutoSeleccionado] = useState(productoInicial);
+  const [productoEdicion, setProductoEdicion] = useState(productoInicial);
+
 
   //Creamos las funciones que vamos a utilizar en el contexto de los productos.
   //Función para listar los productos.
@@ -94,6 +95,13 @@ const ProveedorProductos = ({ children }) => {
     setListadoProductosFiltrado(listaOrdenada);
   }
 
+  //Sección para la edición de los datos
+  const actualizarDatoEdicion = (evento) =>{
+    const { name, value } = evento.target; // Desestructurar del evento
+    setProductoEdicion({ ...productoEdicion, [name]: value });
+  }
+
+
   useEffect(() => {
     obtenerProductos();
   }, []);
@@ -103,14 +111,16 @@ const ProveedorProductos = ({ children }) => {
     listadoProductos,
     listadoProductosFiltrado,
     errorProductos,
-    produtoSeleccionado,
     filtros,
-    //Funciones
+    productoEdicion,
+    //Funciones filtros
     filtrosProductos,
     actualizarDatosProducto,
     borrarFiltros,
     borrarCampos,
-    ordenarProductos
+    ordenarProductos,
+    //Funciones Edición
+    actualizarDatoEdicion,
   };
   return (
     <>
