@@ -6,8 +6,8 @@ const SubmenuProductos = () => {
     <>
     <nav id="contenedorMenuNavegacion">
         <Link className="enlaceMenu" to="/productos/insertar">Insertar</Link>
-        <Link className="enlaceMenu" to="/productos/insertar">Editar</Link>
-        <Link className="enlaceMenu" to="/productos/insertar">Borrar</Link>            
+        <Link className="enlaceMenu" to="/productos/editar">Editar</Link>
+        <Link className="enlaceMenu" to="/productos/borrar">Borrar</Link>            
     </nav>
     </>
   )
