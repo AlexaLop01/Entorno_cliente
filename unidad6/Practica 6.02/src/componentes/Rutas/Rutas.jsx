@@ -7,13 +7,15 @@ import Error from '../Paginas/Error.jsx';
 import InsertarProductos from '../Productos/EdicionProductos/InsertarProductos.jsx';
 import BorrarProductos from '../Productos/EdicionProductos/BorrarProductos.jsx';
 import ActualizarProductos from '../Productos/EdicionProductos/ActualizarProductos.jsx';
+import EdicionProductos from '../Productos/EdicionProductos.jsx';
 
 const Rutas = () => {
   return (
     <>
     <Routes>
         <Route path='/' element={<Inicio/>}/>
-        <Route path='/productos' element={<Listados/>}>
+        <Route path='/productos' element={<Listados/>}/>
+        <Route path='/edicionProductos' element={<EdicionProductos/>}>
           <Route path='insertar' element={<InsertarProductos/>}/>
           <Route path='editar' element={<ActualizarProductos/>}/>
           <Route path='borrar' element={<BorrarProductos/>}/>

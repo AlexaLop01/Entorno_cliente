@@ -1,8 +1,11 @@
 import React from 'react'
+import ListadoProductos from '../Listados/ListadoProductos'
 
 const BorrarProductos = () => {
   return (
-    <div>BorrarProductos</div>
+    <>
+      <ListadoProductos borrado={true}/>
+    </>
   )
 }
 

@@ -1,0 +1,23 @@
+.contenedorFormularioEdicion{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(131, 131, 254, 0.5);
+    width: 50%;
+    margin: 10px auto;
+    padding: 30px;
+    gap: 10px;
+}
+
+.contenedorFormularioEdicion > h3{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.contenedorFormularioEdicion > input{
+    font-size: 12px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}

@@ -4,7 +4,7 @@ import ListadoProducto from './ListadoProducto.jsx';
 import "./ListadoProductos.css"
 
 
-const ListadoProductos = () => {
+const ListadoProductos = ({borrado}) => {
   const { listadoProductos, listadoProductosFiltrado } = useContext(contextoProductos);
 
   //Muestra los productos, ya sea toda la lista de inicio o la lista filtrada.
@@ -18,18 +18,23 @@ const ListadoProductos = () => {
     numeroProductos > 0
       ? productosAMostrar.reduce((acc, producto) => acc + producto.precio, 0) / numeroProductos
       : 0;
+
+  /*Para borrar el producto que queremos borrar, tenemos un parámetro que entra por props,
+  que especifica que si ese parámetro es true , realiza esta función.  */
+
+
   return (
     <>
       <div className="contenedorResumen">
         <h2>Resumen</h2>
         <p>Número de productos: {numeroProductos}</p>
-        <p>Precio medio: {precioMedio.toFixed(2)}</p>
+        <p>Precio medio: {precioMedio.toFixed(2)}€</p>
       </div>
       
       <div className="contenedorListadoProductos">
         {productosAMostrar.length ? (
           productosAMostrar.map((producto) => (
-            <ListadoProducto key={producto.id} datos={producto} />
+            <ListadoProducto key={producto.id} datos={producto} borrado={borrado}/>
           ))
         ) : (
           `No hay productos para mostrar`

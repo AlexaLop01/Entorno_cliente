@@ -1,9 +1,10 @@
 import React from 'react'
+import FormularioProducto from './Formulario/FormularioProducto'
 
 const InsertarProductos = () => {
   return (
     <>
-    <h3>Insertar un Producto</h3>
+    <FormularioProducto/>
     </>
   )
 }

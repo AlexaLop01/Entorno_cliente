@@ -101,6 +101,68 @@ const ProveedorProductos = ({ children }) => {
     setProductoEdicion({ ...productoEdicion, [name]: value });
   }
 
+  const insertarProducto = async ()=>{
+    try{
+      //Tenemos que generar un id aleatorio para evitar que se duplique el id.
+      productoEdicion.id= crypto.randomUUID();
+      //Posteriormente añadimos la función de supabase de insertar un producto.
+      const {data, error} = await supabaseConnection.from("Productos").insert(productoEdicion);
+      if(error){
+        throw error;
+      }
+      setListadoProductosFiltrado([...listadoProductosFiltrado, productoEdicion]);
+      setListadoProductos([...listadoProductos, productoEdicion]);
+    }catch(error){
+      setErrorProductos(error.message);
+    }
+  }
+
+  const actualizarProducto = async ()=>{
+    try{
+      const {data,error} = await supabaseConnection.from("Productos")
+      .update(productoEdicion)
+      .eq("id", productoEdicion.id);
+      
+      if(error){
+        throw error;
+      }
+
+      //Guardamos la actualización de producto. Primero con un map que cambie el dato 
+      //y después guardandolo en el estado para evitar llamadas a la API.
+      const productosModificados = listadoProductos.map((productoAntiguo)=>{
+        //Esta ternaria que hacemos es para que localice el producto y haga la modificación, si se trata del producto que
+        //queremos modificar lo modifica y si no, lo deja tal como está.
+        return productoAntiguo.id === productoEdicion.id ? productoEdicion : productoAntiguo;
+      });
+      setListadoProductosFiltrado(productosModificados);
+      setListadoProductos(productosModificados);
+
+    }catch(error){
+      setErrorProductos(error.message);
+    }
+  }
+
+  const borrarProducto = async (id) =>{
+    try{
+      const {data, error } = await supabaseConnection.from("Productos")
+      .delete().eq("id",id);
+  
+      if(error){
+        throw error;
+      }
+  
+      //Realizamos un filter para cambiar el estado sin necesidad de tener que llamar a la API.
+      const productosNoEliminados = listadoProductos.filter((producto)=>{
+        return producto.id !== id;
+      });
+  
+      setListadoProductosFiltrado(productosNoEliminados);
+      setListadoProductos(productosNoEliminados);
+    }catch(error){
+      setErrorProductos(error.message);
+    }
+  }
+
 
   useEffect(() => {
     obtenerProductos();
@@ -121,6 +183,9 @@ const ProveedorProductos = ({ children }) => {
     ordenarProductos,
     //Funciones Edición
     actualizarDatoEdicion,
+    insertarProducto,
+    actualizarProducto,
+    borrarProducto
   };
   return (
     <>

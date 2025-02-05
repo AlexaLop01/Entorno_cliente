@@ -1,0 +1,33 @@
+.enlaceSubMenu{
+    background-color: white;
+    padding: 10px 20px;
+    font-family: system-ui, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.insertar{
+    color: #007965;
+    border: 1px #007965 solid;
+}
+.insertar:hover{
+    background-color: #007965;
+    color: white;
+}
+.editar{
+    color: orange;
+    border: 1px orange solid;
+}
+.editar:hover{
+    background-color: orange;
+    color: white;
+}
+.borrar{
+    color: #BE0000;
+    border: 1px #BE0000 solid;
+}
+.borrar:hover{
+    background-color: #BE0000;
+    color: white;
+}

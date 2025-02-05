@@ -1,8 +1,12 @@
 import React from 'react'
+import FormularioProducto from './Formulario/FormularioProducto'
 
 const ActualizarProductos = () => {
   return (
-    <div>ActualizarProductos</div>
+    <>
+      <FormularioProducto actualizar={true}/>
+    </>
+    
   )
 }
 

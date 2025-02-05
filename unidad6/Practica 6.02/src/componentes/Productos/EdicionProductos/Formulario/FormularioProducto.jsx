@@ -1,11 +1,15 @@
 import React,{ useContext } from 'react'
-import { contextoProductos } from '../../../../contextos/ProveedorProductos.jsx'
+import { contextoProductos } from '../../../../contextos/ProveedorProductos.jsx';
+import "./FormularioProducto.css";
+import Errores from '../../../Errores.jsx';
 
 const FormularioProducto = ({actualizar}) => {
-    const { productoEdicion, actualizarDatoEdicion } = useContext(contextoProductos);
+    const { productoEdicion, actualizarDatoEdicion, insertarProducto, actualizarProducto , errorProducto } = useContext(contextoProductos);
   return (
     <>
-        <label htmlFor="nombre"></label>
+      <div className='contenedorFormularioEdicion'>
+        <h3>{actualizar ? "Actualizar Producto" : "Insertar Producto"}</h3>
+        <label htmlFor="nombre">Nombre</label>
         <input 
         name='nombre'
         id='nombre'
@@ -13,7 +17,7 @@ const FormularioProducto = ({actualizar}) => {
         value={productoEdicion.nombre}
         onChange={actualizarDatoEdicion}/>
 
-        <label htmlFor="peso"></label>
+        <label htmlFor="peso">Peso</label>
         <input 
         name='peso'
         id='peso'
@@ -21,7 +25,7 @@ const FormularioProducto = ({actualizar}) => {
         value={productoEdicion.peso}
         onChange={actualizarDatoEdicion}/>
 
-        <label htmlFor="precio"></label>
+        <label htmlFor="precio">Precio</label>
         <input 
         name='precio'
         id='precio'
@@ -29,15 +33,15 @@ const FormularioProducto = ({actualizar}) => {
         value={productoEdicion.precio}
         onChange={actualizarDatoEdicion}/>
 
-        <label htmlFor="imagen"></label>
+        <label htmlFor="imagen">Imagen</label>
         <input 
         name='imagen'
         id='imagen'
-        type='url'
+        type='text'
         value={productoEdicion.imagen}
         onChange={actualizarDatoEdicion}/>
 
-        <label htmlFor="descripcion"></label>
+        <label htmlFor="descripcion">Descripcion</label>
         <input 
         name='descripcion'
         id='descripcion'
@@ -46,10 +50,12 @@ const FormularioProducto = ({actualizar}) => {
         onChange={actualizarDatoEdicion}/>
 
         <button onClick={(e)=>{
-            actualizar? "": "";
+            actualizar? actualizarProducto() : insertarProducto();
         }}>
-            {actualizar ? "Actualizar Producto": "Insertar Producto" }
+            {actualizar ? "Actualizar": "Insertar" }
         </button>
+        {errorProducto && <Errores>{errorProducto}</Errores>}
+      </div>
     </>
   )
 }

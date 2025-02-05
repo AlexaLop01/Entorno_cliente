@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./SubmenuProductos.css";
 
 const SubmenuProductos = () => {
   return (
     <>
     <nav id="contenedorMenuNavegacion">
-        <Link className="enlaceMenu" to="/productos/insertar">Insertar</Link>
-        <Link className="enlaceMenu" to="/productos/editar">Editar</Link>
-        <Link className="enlaceMenu" to="/productos/borrar">Borrar</Link>            
+        <Link className="enlaceSubMenu insertar" to="/edicionProductos/insertar">Insertar</Link>
+        <Link className="enlaceSubMenu editar" to="/edicionProductos/editar">Editar</Link>
+        <Link className="enlaceSubMenu borrar" to="/edicionProductos/borrar">Borrar</Link>            
     </nav>
     </>
   )
