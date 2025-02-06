@@ -105,7 +105,7 @@ const ProveedorProductos = ({ children }) => {
   const insertarProducto = async () => {
     try {
       productoEdicion.id = crypto.randomUUID();
-      const { data, error } = await supabaseConnection.from("Productos").insert(productoEdicion);
+      const { data, error } = await supabaseConnection.from("productos").insert(productoEdicion);
       if (error) {
         throw error;
       }
