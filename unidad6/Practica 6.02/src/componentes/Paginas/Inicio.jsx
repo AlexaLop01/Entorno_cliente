@@ -1,5 +1,6 @@
 import React from 'react';
 import './Inicio.css';
+import ListaCompra from '../ListasCompra/ListaCompra';
 
 const Inicio = () => {
   return (
@@ -9,6 +10,7 @@ const Inicio = () => {
         Bienvenido a mi aplicación de lista de compras. Esta app está
         desarrollada utilizando React (jsx) y Supabase para ofrecer una experiencia
         moderna y sencilla al gestionar tus compras. :)
+        <ListaCompra/>
       </p>
     </div>
   );

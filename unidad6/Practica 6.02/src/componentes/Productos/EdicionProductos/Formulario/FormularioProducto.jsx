@@ -4,22 +4,26 @@ import useProductos from '../../../../hooks/useProductos.js';
 import "./FormularioProducto.css";
 import Errores from '../../../Errores.jsx';
 
+// 📌 Importamos los componentes de Material UI
+import { Snackbar, Alert } from '@mui/material';
+
 const FormularioProducto = ({ actualizar }) => {
     const { id } = useParams();
     const { productoEdicion, actualizarDatoEdicion, insertarProducto, actualizarProducto, errorProducto, setProductoEdicion, obtenerProductoPorId } = useProductos();
 
     const [errores, setErrores] = useState([]);
+    const [openSnackbar, setOpenSnackbar] = useState(false); // Estado para la alerta
+    const [mensajeSnackbar, setMensajeSnackbar] = useState(""); // Mensaje de la alerta
 
     useEffect(() => {
         if (actualizar && id) {
             const producto = obtenerProductoPorId(id);
             if (producto) {
-                setProductoEdicion(producto); // Guardamos el producto en el estado
+                setProductoEdicion(producto);
             }
         }
     }, [id, actualizar]);
 
-    // 🛑 Función para validar antes de guardar o actualizar
     const validarFormulario = () => {
         let erroresTemp = [];
 
@@ -30,13 +34,19 @@ const FormularioProducto = ({ actualizar }) => {
         }
 
         setErrores(erroresTemp);
-        return erroresTemp.length === 0; // Retorna `true` si no hay errores
+        return erroresTemp.length === 0;
     };
 
-    // ✨ Función para manejar la acción de guardar
     const manejarGuardar = () => {
         if (validarFormulario()) {
-            actualizar ? actualizarProducto() : insertarProducto();
+            if (actualizar) {
+                actualizarProducto();
+                setMensajeSnackbar("✅ Producto actualizado con éxito.");
+            } else {
+                insertarProducto();
+                setMensajeSnackbar("✅ Producto insertado con éxito.");
+            }
+            setOpenSnackbar(true); // Abre la alerta
         }
     };
 
@@ -81,7 +91,7 @@ const FormularioProducto = ({ actualizar }) => {
                     onChange={actualizarDatoEdicion}
                 />
 
-                <label htmlFor="descripcion">Descripcion</label>
+                <label htmlFor="descripcion">Descripción</label>
                 <input 
                     name='descripcion'
                     id='descripcion'
@@ -94,7 +104,6 @@ const FormularioProducto = ({ actualizar }) => {
                     {actualizar ? "Actualizar" : "Insertar"}
                 </button>
 
-                {/* 🔴 Muestra errores si hay */}
                 {errores.length > 0 && (
                     <div className="errores">
                         {errores.map((error, index) => (
@@ -103,8 +112,23 @@ const FormularioProducto = ({ actualizar }) => {
                     </div>
                 )}
 
-                {/* 🔴 También muestra los errores del contexto */}
                 {errorProducto && <Errores>{errorProducto}</Errores>}
+
+                {/* 📢 Snackbar para mostrar la alerta */}
+                <Snackbar 
+                    open={openSnackbar} 
+                    autoHideDuration={3000} 
+                    onClose={() => setOpenSnackbar(false)}
+                    anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                >
+                    <Alert 
+                        onClose={() => setOpenSnackbar(false)} 
+                        severity="success"
+                        variant="filled"
+                    >
+                        {mensajeSnackbar}
+                    </Alert>
+                </Snackbar>
             </div>
         </>
     );

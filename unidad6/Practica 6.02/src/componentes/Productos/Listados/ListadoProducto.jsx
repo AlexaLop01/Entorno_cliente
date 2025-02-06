@@ -1,19 +1,28 @@
-import "./ListadoProducto.css";
-//Esta línea de useProductos es un hook que dentro hace la llamada a su proveedor correspondiente y guarda todo el contexto.
-import useProductos from '../../../hooks/useProductos.js';
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./ListadoProducto.css";
+import useProductos from '../../../hooks/useProductos.js';
 
-const ListadoProducto = ({datos, borrado=false, actualizar=false}) => {
-  const {borrarProducto} = useProductos();
+// 📌 Importamos Material UI
+import { Dialog, DialogActions, DialogTitle, DialogContent, Button, Typography } from "@mui/material";
+
+const ListadoProducto = ({ datos, borrado = false, actualizar = false }) => {
+  const { borrarProducto } = useProductos();
+  const [openDialog, setOpenDialog] = useState(false); // Estado para abrir/cerrar el diálogo
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
 
   const confirmarDelete = () => {
-    const confirmacion = window.confirm(`¿Estás seguro de que deseas eliminar el producto "${datos.nombre}"?`);
-    if (confirmacion) {
-      borrarProducto(datos.id);
-    }
+    borrarProducto(datos.id);
+    setOpenDialog(false); // Cerrar el diálogo después de eliminar
   };
-  console.log("esfesfsfnhufuhs",datos);
-  
+
   return (
     <>
       <div className="contenedorProducto" id={datos.id}>
@@ -24,17 +33,33 @@ const ListadoProducto = ({datos, borrado=false, actualizar=false}) => {
           <p>{datos.precio}€</p>
         </div>
         <p>{datos.descripcion}</p>
-        {borrado && <button onClick={confirmarDelete}>Eliminar</button>}
+        
+        {borrado && <button onClick={handleOpenDialog}>Eliminar</button>}
+
         {actualizar && (
           <Link to={`/edicionProductos/editar/${datos.id}`}>
-          <button>Editar</button>
+            <button>Editar</button>
           </Link>
         )}
-
-
       </div>
-    </>
-  )
-}
 
-export default ListadoProducto
+      {/* 📌 Cuadro de confirmación Material UI */}
+      <Dialog open={openDialog} onClose={handleCloseDialog}>
+        <DialogTitle>Eliminar Producto</DialogTitle>
+        <DialogContent>
+          <Typography>¿Estás seguro de que deseas eliminar el producto "{datos.nombre}"?</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} color="primary">
+            Cancelar
+          </Button>
+          <Button onClick={confirmarDelete} color="error" variant="contained">
+            Eliminar
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+};
+
+export default ListadoProducto;

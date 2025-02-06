@@ -9,6 +9,7 @@ import BorrarProductos from '../Productos/EdicionProductos/BorrarProductos.jsx';
 import ActualizarProductos from '../Productos/EdicionProductos/ActualizarProductos.jsx';
 import EdicionProductos from '../Productos/EdicionProductos.jsx';
 import FormularioProducto from '../Productos/EdicionProductos/Formulario/FormularioProducto.jsx';
+import ListaCompra from '../ListasCompra/ListaCompra.jsx';
 
 const Rutas = () => {
   return (
@@ -22,6 +23,7 @@ const Rutas = () => {
           <Route path='editar/:id' element={<FormularioProducto actualizar={true}/>}/>
           <Route path='borrar' element={<BorrarProductos/>}/>
         </Route>
+        <Route path='/listaCompra' element={<ListaCompra/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='*' element={<Error/>}/>
     </Routes>

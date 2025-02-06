@@ -137,9 +137,11 @@ const ProveedorProductos = ({ children }) => {
         //queremos modificar lo modifica y si no, lo deja tal como está.
         return productoAntiguo.id === productoEdicion.id ? productoEdicion : productoAntiguo;
       });
-      setListadoProductosFiltrado(productosModificados);
+
       setListadoProductos(productosModificados);
       setProductoEdicion(productoInicial);
+
+      
 
     }catch(error){
       setErrorProductos(error.message);
