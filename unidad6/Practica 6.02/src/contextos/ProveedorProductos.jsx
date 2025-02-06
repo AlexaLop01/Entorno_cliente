@@ -25,6 +25,7 @@ const ProveedorProductos = ({ children }) => {
   const [listadoProductosFiltrado, setListadoProductosFiltrado] = useState(listadoInicial);
   const [errorProductos, setErrorProductos] = useState(errorInicial);
   const [productoEdicion, setProductoEdicion] = useState(productoInicial);
+  const [ListadoProductoInsertados, setListadoProductoInsertados] = useState([]);
 
 
   //Creamos las funciones que vamos a utilizar en el contexto de los productos.
@@ -34,7 +35,7 @@ const ProveedorProductos = ({ children }) => {
     try {
       //Guardamos los productos en el estado.
       const { data, error } = await supabaseConnection
-        .from("Productos")
+        .from("productos")
         .select("*");
       //Si hay un error, lo lanzamos.
       if (error) {
@@ -101,25 +102,27 @@ const ProveedorProductos = ({ children }) => {
     setProductoEdicion({ ...productoEdicion, [name]: value });
   }
 
-  const insertarProducto = async ()=>{
-    try{
-      //Tenemos que generar un id aleatorio para evitar que se duplique el id.
-      productoEdicion.id= crypto.randomUUID();
-      //Posteriormente añadimos la función de supabase de insertar un producto.
-      const {data, error} = await supabaseConnection.from("Productos").insert(productoEdicion);
-      if(error){
+  const insertarProducto = async () => {
+    try {
+      productoEdicion.id = crypto.randomUUID();
+      const { data, error } = await supabaseConnection.from("Productos").insert(productoEdicion);
+      if (error) {
         throw error;
       }
       setListadoProductosFiltrado([...listadoProductosFiltrado, productoEdicion]);
       setListadoProductos([...listadoProductos, productoEdicion]);
-    }catch(error){
+  
+      // Añadir el producto al estado de productos insertados
+      setListadoProductoInsertados(prevState => [...prevState, productoEdicion]);
+    } catch (error) {
       setErrorProductos(error.message);
     }
-  }
+  };
+  
 
   const actualizarProducto = async ()=>{
     try{
-      const {data,error} = await supabaseConnection.from("Productos")
+      const {data,error} = await supabaseConnection.from("productos")
       .update(productoEdicion)
       .eq("id", productoEdicion.id);
       
@@ -144,7 +147,7 @@ const ProveedorProductos = ({ children }) => {
 
   const borrarProducto = async (id) =>{
     try{
-      const {data, error } = await supabaseConnection.from("Productos")
+      const {data, error } = await supabaseConnection.from("productos")
       .delete().eq("id",id);
   
       if(error){
@@ -175,6 +178,7 @@ const ProveedorProductos = ({ children }) => {
     errorProductos,
     filtros,
     productoEdicion,
+    ListadoProductoInsertados,
     //Funciones filtros
     filtrosProductos,
     actualizarDatosProducto,
