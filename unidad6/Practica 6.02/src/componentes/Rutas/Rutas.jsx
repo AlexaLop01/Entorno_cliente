@@ -8,6 +8,7 @@ import InsertarProductos from '../Productos/EdicionProductos/InsertarProductos.j
 import BorrarProductos from '../Productos/EdicionProductos/BorrarProductos.jsx';
 import ActualizarProductos from '../Productos/EdicionProductos/ActualizarProductos.jsx';
 import EdicionProductos from '../Productos/EdicionProductos.jsx';
+import FormularioProducto from '../Productos/EdicionProductos/Formulario/FormularioProducto.jsx';
 
 const Rutas = () => {
   return (
@@ -18,6 +19,7 @@ const Rutas = () => {
         <Route path='/edicionProductos' element={<EdicionProductos/>}>
           <Route path='insertar' element={<InsertarProductos/>}/>
           <Route path='editar' element={<ActualizarProductos/>}/>
+          <Route path='editar/:id' element={<FormularioProducto actualizar={true}/>}/>
           <Route path='borrar' element={<BorrarProductos/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>

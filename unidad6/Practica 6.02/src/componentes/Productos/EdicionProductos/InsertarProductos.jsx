@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
 import FormularioProducto from './Formulario/FormularioProducto.jsx';
-import { contextoProductos } from '../../../contextos/ProveedorProductos.jsx';
 import ListadoProducto from '../Listados/ListadoProducto.jsx';
+//Esta línea de useProductos es un hook que dentro hace la llamada a su proveedor correspondiente y guarda todo el contexto.
+import useProductos from '../../../hooks/useProductos.js';
 
 const InsertarProductos = () => {
-  const { ListadoProductoInsertados } = useContext(contextoProductos);
+  const { ListadoProductoInsertados } = useProductos();
 
   return (
     <>

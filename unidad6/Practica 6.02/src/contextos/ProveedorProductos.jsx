@@ -109,11 +109,11 @@ const ProveedorProductos = ({ children }) => {
       if (error) {
         throw error;
       }
-      setListadoProductosFiltrado([...listadoProductosFiltrado, productoEdicion]);
       setListadoProductos([...listadoProductos, productoEdicion]);
   
       // Añadir el producto al estado de productos insertados
-      setListadoProductoInsertados(prevState => [...prevState, productoEdicion]);
+      setListadoProductoInsertados(productoInsertado => [...productoInsertado, productoEdicion]);
+      setProductoEdicion(productoInicial);
     } catch (error) {
       setErrorProductos(error.message);
     }
@@ -139,6 +139,7 @@ const ProveedorProductos = ({ children }) => {
       });
       setListadoProductosFiltrado(productosModificados);
       setListadoProductos(productosModificados);
+      setProductoEdicion(productoInicial);
 
     }catch(error){
       setErrorProductos(error.message);
@@ -158,13 +159,23 @@ const ProveedorProductos = ({ children }) => {
       const productosNoEliminados = listadoProductos.filter((producto)=>{
         return producto.id !== id;
       });
+
+      const productosNoEliminadosInsertados = ListadoProductoInsertados.filter((producto)=>{
+        return producto.id !== id;
+      });
   
       setListadoProductosFiltrado(productosNoEliminados);
       setListadoProductos(productosNoEliminados);
+      setListadoProductoInsertados(productosNoEliminadosInsertados);
     }catch(error){
       setErrorProductos(error.message);
     }
   }
+
+  //Esta función se utiliza para la función de editar.
+  const obtenerProductoPorId = (id) => {
+    return listadoProductos.find(producto => producto.id === id);
+  };
 
 
   useEffect(() => {
@@ -189,7 +200,9 @@ const ProveedorProductos = ({ children }) => {
     actualizarDatoEdicion,
     insertarProducto,
     actualizarProducto,
-    borrarProducto
+    borrarProducto,
+    setProductoEdicion,
+    obtenerProductoPorId
   };
   return (
     <>

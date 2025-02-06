@@ -1,5 +1,5 @@
 import React from 'react'
-import ListadoProductos from '../Listados/ListadoProductos'
+import ListadoProductos from '../Listados/ListadoProductos.jsx';
 
 const BorrarProductos = () => {
   return (

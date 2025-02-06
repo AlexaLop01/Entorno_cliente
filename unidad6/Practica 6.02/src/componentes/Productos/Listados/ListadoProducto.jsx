@@ -1,9 +1,10 @@
-import React,{ useContext } from 'react';
-import { contextoProductos } from '../../../contextos/ProveedorProductos.jsx';
-import "./ListadoProducto.css"
+import "./ListadoProducto.css";
+//Esta línea de useProductos es un hook que dentro hace la llamada a su proveedor correspondiente y guarda todo el contexto.
+import useProductos from '../../../hooks/useProductos.js';
+import { Link } from "react-router-dom";
 
-const ListadoProducto = ({datos, borrado=false}) => {
-  const {borrarProducto} = useContext(contextoProductos);
+const ListadoProducto = ({datos, borrado=false, actualizar=false}) => {
+  const {borrarProducto} = useProductos();
 
   const confirmarDelete = () => {
     const confirmacion = window.confirm(`¿Estás seguro de que deseas eliminar el producto "${datos.nombre}"?`);
@@ -11,6 +12,7 @@ const ListadoProducto = ({datos, borrado=false}) => {
       borrarProducto(datos.id);
     }
   };
+  console.log("esfesfsfnhufuhs",datos);
   
   return (
     <>
@@ -23,6 +25,13 @@ const ListadoProducto = ({datos, borrado=false}) => {
         </div>
         <p>{datos.descripcion}</p>
         {borrado && <button onClick={confirmarDelete}>Eliminar</button>}
+        {actualizar && (
+          <Link to={`/edicionProductos/editar/${datos.id}`}>
+          <button>Editar</button>
+          </Link>
+        )}
+
+
       </div>
     </>
   )

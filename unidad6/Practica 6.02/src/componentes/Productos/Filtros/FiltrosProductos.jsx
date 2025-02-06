@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { contextoProductos } from "../../../contextos/ProveedorProductos.jsx";
+//Esta línea de useProductos es un hook que dentro hace la llamada a su proveedor correspondiente y guarda todo el contexto.
+import useProductos from "../../../hooks/useProductos";
 import "./FiltrosProductos.css";
 
 const FiltrosProductos = () => {
@@ -9,7 +9,9 @@ const FiltrosProductos = () => {
     filtrosProductos,
     filtros,
     borrarCampos
-  } = useContext(contextoProductos);
+  } = useProductos();
+
+  
 
   return (
     <>

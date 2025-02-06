@@ -1,10 +1,12 @@
 import React from 'react'
-import FormularioProducto from './Formulario/FormularioProducto'
+import FormularioProducto from './Formulario/FormularioProducto.jsx';
+import ListadoProductos from '../Listados/ListadoProductos.jsx';
 
 const ActualizarProductos = () => {
   return (
     <>
-      <FormularioProducto actualizar={true}/>
+      <ListadoProductos actualizar = {true}/>
+      {/*<FormularioProducto actualizar={true}/>*/}
     </>
     
   )

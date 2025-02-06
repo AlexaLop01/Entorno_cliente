@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import { contextoProductos } from '../../../contextos/ProveedorProductos.jsx';
+//Esta línea de useProductos es un hook que dentro hace la llamada a su proveedor correspondiente y guarda todo el contexto.
+import useProductos from '../../../hooks/useProductos.js';
 import ListadoProducto from './ListadoProducto.jsx';
-import "./ListadoProductos.css"
+import "./ListadoProductos.css";
 
 
-const ListadoProductos = ({borrado}) => {
-  const { listadoProductos, listadoProductosFiltrado } = useContext(contextoProductos);
+const ListadoProductos = ({borrado, actualizar}) => {
+  const { listadoProductos, listadoProductosFiltrado } = useProductos();
 
   //Muestra los productos, ya sea toda la lista de inicio o la lista filtrada.
   const productosAMostrar = listadoProductosFiltrado.length
@@ -21,7 +21,7 @@ const ListadoProductos = ({borrado}) => {
 
   /*Para borrar el producto que queremos borrar, tenemos un parámetro que entra por props,
   que especifica que si ese parámetro es true , realiza esta función.  */
-
+console.log(listadoProductos);
 
   return (
     <>
@@ -34,7 +34,7 @@ const ListadoProductos = ({borrado}) => {
       <div className="contenedorListadoProductos">
         {productosAMostrar.length ? (
           productosAMostrar.map((producto) => (
-            <ListadoProducto key={producto.id} datos={producto} borrado={borrado}/>
+            <ListadoProducto key={producto.id} datos={producto} borrado={borrado} actualizar={actualizar}/>
           ))
         ) : (
           `No hay productos para mostrar`
