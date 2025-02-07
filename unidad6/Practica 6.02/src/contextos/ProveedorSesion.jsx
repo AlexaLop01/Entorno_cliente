@@ -28,22 +28,37 @@ const ProveedorSesion = ({children}) => {
     //Funciones para la conexión con supabase.
     //Crear cuenta.
     const crearCuenta = async () => {
-        try{
-            const { data, error} = await supabaseConnection.auth.signUp({
+        let { correo } = sesion;
+        try {
+            const { data, error } = await supabaseConnection.auth.signUp({
                 email: sesion.correo,
                 password: sesion.contrasenya
             });
-            if(error){
+    
+            if (error) {
                 throw error;
-            }else{
-                setErrorUsuario("Recibirás un correo electrónico para la confirmación de la cuenta.");
             }
-        }catch(error){
+    
+            // Informamos que el usuario debe confirmar su email
+            const id_usuario = data.user.id;
+            const { error: errorAlInsertar } = await supabaseConnection
+            .from("users")
+            .insert([{ id: id_usuario, email: correo }]);
+
+            if (errorAlInsertar) {
+                throw errorAlInsertar;
+            }
+            setErrorUsuario("Recibirás un correo electrónico para la confirmación de la cuenta.");
+            // No podemos insertar en `users` inmediatamente, así que esperamos a que el usuario confirme su email
+        } catch (error) {
             setErrorUsuario(error.message);
         }
     };
+    
+    
     //Iniciar sesión con contraseña.
     const iniciarSesionConContrasenya = async () => {
+        setErrorUsuario("");
         try{
             const { data, error } = await supabaseConnection.auth.signInWithPassword({
                 email: sesion.correo,

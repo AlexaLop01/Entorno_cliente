@@ -21,7 +21,6 @@ const ListadoProductos = ({borrado, actualizar}) => {
 
   /*Para borrar el producto que queremos borrar, tenemos un parámetro que entra por props,
   que especifica que si ese parámetro es true , realiza esta función.  */
-console.log(listadoProductos);
 
   return (
     <>

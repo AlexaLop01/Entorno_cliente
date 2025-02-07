@@ -28,6 +28,41 @@
     margin: auto;
 }
 
+.btn-nueva-lista {
+    position: sticky;
+    top: 20px;
+    right: 20px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1000;
+    display: inline-block;
+}
+
+.btn-nueva-lista:hover {
+    background-color: #e65b50;
+    transform: scale(1.1);
+}
+
+.btn-nueva-lista:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 600px) {
+    .btn-nueva-lista {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+
 /* Responsive: Cambia a 2 columnas en pantallas medianas */
 @media (max-width: 900px) {
     .listas-grid {

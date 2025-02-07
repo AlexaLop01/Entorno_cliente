@@ -3,6 +3,7 @@ import './Inicio.css';
 
 const Inicio = () => {
   return (
+    <>
     <div className="inicio-container">
       <h2 className="inicio-title">Inicio</h2>
       <p className="inicio-description">
@@ -11,6 +12,7 @@ const Inicio = () => {
         moderna y sencilla al gestionar tus compras. :)
       </p>
     </div>
+    </>
   );
 };
 
