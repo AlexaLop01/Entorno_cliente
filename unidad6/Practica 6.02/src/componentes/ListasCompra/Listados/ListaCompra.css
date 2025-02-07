@@ -1,0 +1,94 @@
+/* Tarjeta de lista de compra */
+.card-container {
+    max-width: 350px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+}
+
+.total-info {
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    margin: 5px 0;
+}
+
+.total-info span {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Contenedor de botones */
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Botones */
+.icon-button {
+    padding: 10px 14px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s, transform 0.1s;
+    font-family: system-ui, Helvetica, Arial, sans-serif;
+    border: 2px solid transparent;
+}
+
+/* Botón verde */
+.add-button {
+    color: #007965;
+    border-color: #007965;
+    background-color: white;
+}
+
+.add-button:hover {
+    background-color: #007965;
+    color: white;
+}
+
+/* Botón azul */
+.view-button {
+    color: #0056b3;
+    border-color: #0056b3;
+    background-color: white;
+}
+
+.view-button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Botón rojo */
+.delete-button {
+    color: #BE0000;
+    border-color: #BE0000;
+    background-color: white;
+}
+
+.delete-button:hover {
+    background-color: #BE0000;
+    color: white;
+}

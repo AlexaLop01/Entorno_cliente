@@ -19,6 +19,9 @@ const Navegacion = () => {
         <Link className="enlaceMenu" to="/edicionProductos">
           Editar Productos
         </Link>
+        <Link className='enlaceMenu' to="/listaCompra">
+          Listas de compra
+        </Link>
       </>
       )
 

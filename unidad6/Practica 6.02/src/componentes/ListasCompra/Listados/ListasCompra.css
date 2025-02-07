@@ -1,0 +1,43 @@
+/* Contenedor principal */
+.listas-container {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Mensaje cuando no hay listas */
+.mensaje-vacio {
+    font-size: 18px;
+    font-weight: bold;
+    color: #777;
+    margin-top: 20px;
+}
+
+/* Diseño en grid para que las tarjetas se acomoden en 3 columnas */
+.listas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas por fila */
+    gap: 20px; /* Espaciado entre las tarjetas */
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Asegurar que las tarjetas de ListaCompra tengan un tamaño adecuado */
+.card-container {
+    width: 100%;
+    max-width: 350px;
+    margin: auto;
+}
+
+/* Responsive: Cambia a 2 columnas en pantallas medianas */
+@media (max-width: 900px) {
+    .listas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Responsive: Cambia a 1 columna en pantallas pequeñas */
+@media (max-width: 600px) {
+    .listas-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

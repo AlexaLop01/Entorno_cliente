@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
 import { supabaseConnection } from "../config/supabase.js";
-import ListadoProducto from "../componentes/Productos/Listados/ListadoProducto.jsx";
 
 const contextoProductos = createContext();
 const ProveedorProductos = ({ children }) => {
