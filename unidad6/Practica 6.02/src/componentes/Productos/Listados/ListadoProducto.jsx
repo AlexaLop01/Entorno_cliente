@@ -6,7 +6,7 @@ import useProductos from '../../../hooks/useProductos.js';
 // 📌 Importamos Material UI
 import { Dialog, DialogActions, DialogTitle, DialogContent, Button, Typography } from "@mui/material";
 
-const ListadoProducto = ({ datos, borrado = false, actualizar = false }) => {
+const ListadoProducto = ({ datos, borrado = false, actualizar = false, agregarALista }) => {
   const { borrarProducto } = useProductos();
   const [openDialog, setOpenDialog] = useState(false); // Estado para abrir/cerrar el diálogo
 
@@ -33,7 +33,12 @@ const ListadoProducto = ({ datos, borrado = false, actualizar = false }) => {
           <p>{datos.precio}€</p>
         </div>
         <p>{datos.descripcion}</p>
-        
+
+        {/* Botón para agregar el producto a la lista de productos agregados */}
+        {agregarALista && (
+          <button onClick={() => agregarALista(datos)}>Agregar</button>
+        )}
+
         {borrado && <button onClick={handleOpenDialog}>Eliminar</button>}
 
         {actualizar && (

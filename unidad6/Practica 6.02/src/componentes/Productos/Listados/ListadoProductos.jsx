@@ -4,7 +4,7 @@ import ListadoProducto from './ListadoProducto.jsx';
 import "./ListadoProductos.css";
 
 
-const ListadoProductos = ({borrado, actualizar}) => {
+const ListadoProductos = ({borrado, actualizar, agregarALista}) => {
   const { listadoProductos, listadoProductosFiltrado } = useProductos();
 
   //Muestra los productos, ya sea toda la lista de inicio o la lista filtrada.
@@ -33,7 +33,7 @@ const ListadoProductos = ({borrado, actualizar}) => {
       <div className="contenedorListadoProductos">
         {productosAMostrar.length ? (
           productosAMostrar.map((producto) => (
-            <ListadoProducto key={producto.id} datos={producto} borrado={borrado} actualizar={actualizar}/>
+            <ListadoProducto key={producto.id} datos={producto} borrado={borrado} actualizar={actualizar} agregarALista={agregarALista}/>
           ))
         ) : (
           `No hay productos para mostrar`

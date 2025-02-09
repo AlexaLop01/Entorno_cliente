@@ -1,0 +1,93 @@
+.agregar-producto-container {
+  width: 100%;
+  max-width: 1024px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.productos-agregados {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 productos por fila */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.producto-agregado {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f9f9fa;
+  box-shadow: 2px 2px 8px rgba(131, 131, 254, 0.5);
+}
+
+.productos-agregados-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.productos-agregados-cantidad > button {
+  height: 30px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+.guardar-btn {
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.guardar-btn:hover {
+  background-color: #218838;
+}
+
+.cancelar-btn {
+  background-color: gray;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.cancelar-btn:hover{
+  background-color: rgb(75, 75, 75);
+}
+
+/* Responsivo: 2 columnas en pantallas medianas, 1 en móviles */
+@media (max-width: 768px) {
+  .productos-agregados {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .productos-agregados {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

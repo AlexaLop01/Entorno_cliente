@@ -10,6 +10,7 @@ import ActualizarProductos from '../Productos/EdicionProductos/ActualizarProduct
 import EdicionProductos from '../Productos/EdicionProductos.jsx';
 import FormularioProducto from '../Productos/EdicionProductos/Formulario/FormularioProducto.jsx';
 import ListasCompra from '../ListasCompra/Listados/ListasCompra.jsx';
+import AgregarProducto from '../ListasCompra/AgregarProductos/AgregarProducto.jsx';
 
 const Rutas = () => {
   return (
@@ -24,6 +25,7 @@ const Rutas = () => {
           <Route path='borrar' element={<BorrarProductos/>}/>
         </Route>
         <Route path='/listaCompra' element={<ListasCompra/>}/>
+        <Route path='/agregarProductos/:id' element={<AgregarProducto/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='*' element={<Error/>}/>
     </Routes>

@@ -32,6 +32,8 @@ const ProveedorListaCompra = ({ children }) => {
     obtenerListas();
   }, [usuario]);
 
+  
+
   // Actualizar datos del formulario
   const actualizarDatoLista = (evento) => {
     const { name, value } = evento.target;
@@ -85,6 +87,35 @@ const ProveedorListaCompra = ({ children }) => {
     setFormularioVisible(!formularioVisible);
   };
 
+  //Función para guardar, actualizar y borrar los productos en la lista de compra.
+  const ActualizacionProductosLista = async (productos, idLista)=>{
+    try{
+      //Esta función sirve para eliminar los productos que ya no existen en la lista.
+      const idProductos = productos.map((p) => p.id_producto);
+       await supabaseConnection
+         .from("productoslistas")
+         .delete()
+         .eq("id_lista", idLista)
+         .not("id_producto", "in", `(${idProductos.join(",")})`);
+
+      //Esta sección funciona para insertar o actualizar los productos en la lista.
+      const productosAInsertar = productos.map((producto) => ({
+        id_lista: idLista,
+        id_producto: producto.id,
+        cantidad: producto.cantidad,
+      }));
+      const { data, error } = await supabaseConnection
+          .from('productoslistas')
+          .upsert(productosAInsertar);
+  
+      if (error) {
+          throw error;
+      }
+    }catch (error){
+      
+    }
+  };
+
   //Esta es la función de obtener productos de una lista de compra. La dejamos aquí por si la necesitamos más adelante.
   // const obtenerProductosListaMultiseleccion = async (idLista) => {
   //   try {
@@ -113,31 +144,7 @@ const ProveedorListaCompra = ({ children }) => {
   //   }
   // };
 
-   // Actualizar productos en una lista
-  //  const actualizarProductosLista = async (idLista, productosEnLista) => {
-  //   try {
-  //     // Eliminar productos que ya no están en la lista
-  //     const idsProductos = productosEnLista.map((p) => p.id_producto);
-  //     await supabaseConexion
-  //       .from("productos_listas")
-  //       .delete()
-  //       .eq("id_lista", idLista)
-  //       .not("id_producto", "in", `(${idsProductos.join(",")})`);
   
-  //     // Agregar o actualizar productos en la lista
-  //     const productosConLista = productosEnLista.map((p) => ({
-  //       id_lista: idLista,
-  //       id_producto: p.id_producto,
-  //       cantidad: p.cantidad,
-  //     }));
-  
-  //     const { error } = await supabaseConexion.from("productos_listas").upsert(productosConLista);
-  //     if (error) throw error;
-  //   } catch (error) {
-  //     console.error("Error al actualizar los productos en la lista:", error);
-  //     throw error;
-  //   }
-  // };
 
   const datosAExportar = {
     listas,
@@ -146,7 +153,8 @@ const ProveedorListaCompra = ({ children }) => {
     crearLista,
     actualizarDatoLista,
     cambiarVisibilidadFormulario,
-    borrarLista
+    borrarLista,
+    ActualizacionProductosLista
   };
 
   return (

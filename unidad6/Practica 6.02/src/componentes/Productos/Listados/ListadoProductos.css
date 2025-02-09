@@ -13,4 +13,5 @@
     flex-grow: 1;
     gap: 21px ;
     margin-top: 20px;
+    text-align: start;
 }

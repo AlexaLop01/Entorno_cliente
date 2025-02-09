@@ -7,6 +7,7 @@ import {
 } from "@mui/icons-material";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 import useListaCompra from "../../../hooks/useListaCompra.js";
+import { Link } from "react-router-dom";
 
 const ListaCompra = ({ id, nombre, precioTotal, pesoTotal }) => {
   const { borrarLista } = useListaCompra(); // Obtener la función desde el proveedor
@@ -45,9 +46,11 @@ const ListaCompra = ({ id, nombre, precioTotal, pesoTotal }) => {
         </p>
       </div>
       <div className="card-actions">
-        <button className="icon-button add-button">
-          <AddShoppingCartIcon /> Añadir productos
-        </button>
+        <Link to={`/agregarProductos/${id}`}>
+          <button className="icon-button add-button">
+            <AddShoppingCartIcon /> Añadir productos
+          </button>
+        </Link>
         <button className="icon-button view-button">
           <VisibilityIcon /> Ver contenido
         </button>
