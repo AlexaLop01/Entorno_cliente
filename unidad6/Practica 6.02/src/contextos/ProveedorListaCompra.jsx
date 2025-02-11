@@ -96,7 +96,6 @@ const ProveedorListaCompra = ({ children }) => {
   
       // Solo ejecutar la eliminación si hay productos en la lista
       if (idProductos.length > 0) {
-        console.log(idProductos)
         await supabaseConnection
           .from("productoslistas")
           .delete()
@@ -173,6 +172,7 @@ const ProveedorListaCompra = ({ children }) => {
 
   const obtenerPrecioPesoProducto = async (idLista) => {
     try {
+      //Trae el id_producto, la cantidad y la información relacionada en la tabla de productos.
       const { data, error } = await supabaseConnection
         .from("productoslistas")
         .select(`

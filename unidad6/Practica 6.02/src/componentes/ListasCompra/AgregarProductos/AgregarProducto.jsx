@@ -23,9 +23,10 @@ const AgregarProducto = () => {
   useEffect(() => {
     const cargarDatos = async () => {
       if (listadoProductos.length === 0) return; 
-  
+      //Trae la lista de productos de cada lista en supabase.
       const productosLista = await obtenerProductoLista(id);
       
+      //busca los productos que hay en la lista los filtra y los guarda en el estado de productos agregados.
       const productosConDetalles = productosLista.map((p) => {
         const productoEncontrado = listadoProductos.find(
           (prod) => prod.id === p.id_producto
@@ -60,7 +61,7 @@ const AgregarProducto = () => {
         );
       }
   
-      return [...prev, { ...producto, id_producto: producto.id, cantidad: 1 }]; // Asegurar que tenga id_producto
+      return [...prev, { ...producto, id_producto: producto.id, cantidad: 1 }]; 
     });
   };
   
