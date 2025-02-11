@@ -50,15 +50,20 @@ const AgregarProducto = () => {
 
   const agregarALista = (producto) => {
     setProductosAgregados((prev) => {
-      const existente = prev.find((p) => p.id === producto.id);
+      const existente = prev.find((p) => p.id_producto === producto.id); 
+  
       if (existente) {
         return prev.map((p) =>
-          p.id === producto.id ? { ...p, cantidad: p.cantidad + 1 } : p
+          p.id_producto === producto.id
+            ? { ...p, cantidad: p.cantidad + 1 }
+            : p
         );
       }
-      return [...prev, { ...producto, cantidad: 1 }];
+  
+      return [...prev, { ...producto, id_producto: producto.id, cantidad: 1 }]; // Asegurar que tenga id_producto
     });
   };
+  
 
   const incrementarCantidad = (id_producto) => {
     setProductosAgregados((prev) =>

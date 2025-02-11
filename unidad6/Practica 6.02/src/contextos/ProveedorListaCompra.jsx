@@ -96,6 +96,7 @@ const ProveedorListaCompra = ({ children }) => {
   
       // Solo ejecutar la eliminación si hay productos en la lista
       if (idProductos.length > 0) {
+        console.log(idProductos)
         await supabaseConnection
           .from("productoslistas")
           .delete()
@@ -106,7 +107,7 @@ const ProveedorListaCompra = ({ children }) => {
       // Insertar o actualizar productos
       const productosAInsertar = productos.map((producto) => ({
         id_lista: idLista,
-        id_producto: producto.id, // Asegurarte de que aquí se usa id_producto
+        id_producto: producto.id, 
         cantidad: producto.cantidad,
       }));
   
