@@ -22,26 +22,25 @@ const AgregarProducto = () => {
 
   useEffect(() => {
     const cargarDatos = async () => {
+      if (listadoProductos.length === 0) return; 
   
       const productosLista = await obtenerProductoLista(id);
       
-      if (listadoProductos.length > 0) {
-        const productosConDetalles = productosLista.map((p) => {
-          const productoEncontrado = listadoProductos.find(
-            (prod) => prod.id === p.id_producto // Asegurar la correcta comparación
-          );
-          return productoEncontrado
-            ? { ...p, ...productoEncontrado, id_producto: p.id_producto } 
-            : { id_producto: p.id_producto, cantidad: p.cantidad };
-        });
-        
+      const productosConDetalles = productosLista.map((p) => {
+        const productoEncontrado = listadoProductos.find(
+          (prod) => prod.id === p.id_producto
+        );
+        return productoEncontrado
+          ? { ...p, ...productoEncontrado, id_producto: p.id_producto } 
+          : { id_producto: p.id_producto, cantidad: p.cantidad };
+      });
   
-        setProductosAgregados(productosConDetalles);
-      }
+      setProductosAgregados(productosConDetalles);
     };
   
     cargarDatos();
   }, [id, listadoProductos]);
+  
   
   
   // Estados para Snackbar
@@ -64,21 +63,21 @@ const AgregarProducto = () => {
   const incrementarCantidad = (id_producto) => {
     setProductosAgregados((prev) =>
       prev.map((p) =>
-        p.id_producto === id_producto ? { ...p, cantidad: p.cantidad + 1 } : p
+        p.id_producto === id_producto ? { ...p, cantidad: (p.cantidad || 0) + 1 } : p
       )
     );
   };
   
-  
-  const disminuirCantidad = (id) => {
+  const disminuirCantidad = (id_producto) => {
     setProductosAgregados((prev) =>
       prev
         .map((p) =>
-          p.id === id ? { ...p, cantidad: p.cantidad - 1 } : p
+          p.id_producto === id_producto ? { ...p, cantidad: (p.cantidad || 1) - 1 } : p
         )
         .filter((p) => p.cantidad > 0)
     );
   };
+  
   
 
   // Guardar productos en Supabase
@@ -90,23 +89,18 @@ const AgregarProducto = () => {
   
     try {
       await ActualizacionProductosLista(productosAgregados, id);
-  
-      // Recargar los productos desde la base de datos después de guardarlos
       const productosActualizados = await obtenerProductoLista(id);
+      
+      const productosConDetalles = productosActualizados.map((p) => {
+        const productoEncontrado = listadoProductos.find(
+          (prod) => prod.id === p.id_producto
+        );
+        return productoEncontrado
+          ? { ...p, ...productoEncontrado }
+          : { id_producto: p.id_producto, cantidad: p.cantidad };
+      });
   
-      if (listadoProductos.length > 0) {
-        const productosConDetalles = productosActualizados.map((p) => {
-          const productoEncontrado = listadoProductos.find(
-            (prod) => prod.id === p.id_producto
-          );
-          return productoEncontrado
-            ? { ...p, ...productoEncontrado }
-            : { id_producto: p.id_producto, cantidad: p.cantidad };
-        });
-  
-        setProductosAgregados(productosConDetalles);
-      }
-  
+      setProductosAgregados(productosConDetalles);
       mostrarAlerta("Lista guardada con éxito.", "success");
       navegar("/listaCompra");
     } catch (error) {
@@ -114,6 +108,7 @@ const AgregarProducto = () => {
       console.error("Error al guardar la lista:", error);
     }
   };
+  
   
 
   // Función para cancelar
