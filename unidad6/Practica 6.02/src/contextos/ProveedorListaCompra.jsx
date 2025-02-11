@@ -35,6 +35,7 @@ const ProveedorListaCompra = ({ children }) => {
 };
 
 
+
   // Actualizar datos del formulario
   const actualizarDatoLista = (evento) => {
     const { name, value } = evento.target;
@@ -124,13 +125,19 @@ const ProveedorListaCompra = ({ children }) => {
         .from("productoslistas")
         .select("id_producto, cantidad")
         .eq("id_lista", idLista);
+  
       if (error) throw error;
+  
+      // Filtrar productos por la lista actual
+      setProductosAgregados(data); 
+  
       return data;
     } catch (error) {
-      console.error( error.message);
+      console.error("Error al obtener productos:", error.message);
       return [];
     }
   };
+  
 
   //Esta función recoge los productos de la lista para mostrarlo en el componente de ver contenido.
   const obtenerProductosListaContenido = async (idLista) => {
@@ -210,7 +217,24 @@ const ProveedorListaCompra = ({ children }) => {
     }
   };
   
-
+    //Sin terminar.
+  const actualizarNombreLista = async (idLista, nombre_lista) => {
+    try {
+      const { error } = await supabaseConnection
+        .from("listacompra")
+        .update(nombre_lista)
+        .eq("id", idLista);
+      if (error) throw error;
+      //Este set coge el id de la lista, verifica que sea el que estamos modificando y cambia el atributo del nombre, y lo guarda en el estado para evitar consultas extras.
+      setListas((prev) =>
+        prev.map((lista) =>
+          lista.id === idLista ? { ...lista, ...nombre_lista } : lista
+        )
+      );
+    } catch (fallo) {
+      setError(fallo.message);
+    }
+  };
   
 
   const datosAExportar = {
@@ -219,15 +243,17 @@ const ProveedorListaCompra = ({ children }) => {
     formularioVisible,
     productosAgregados,
     setProductosAgregados,
+    setDatosFormulario,
     crearLista,
+    obtenerListas,
     actualizarDatoLista,
-    cambiarVisibilidadFormulario,
     borrarLista,
+    cambiarVisibilidadFormulario,
     ActualizacionProductosLista,
+    obtenerProductoLista,
     obtenerProductosListaContenido,
     obtenerPrecioPesoProducto,
-    obtenerListas,
-    obtenerProductoLista
+    actualizarNombreLista
   };
 
   return (

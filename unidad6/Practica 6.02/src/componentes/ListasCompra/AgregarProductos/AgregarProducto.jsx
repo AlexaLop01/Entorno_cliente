@@ -18,7 +18,7 @@ const AgregarProducto = () => {
   const navegar = useNavigate();
   const { id } = useParams();
 
-  const [productosOriginales, setProductosOriginales] = useState([]);
+  const [productosOriginales, setProductosOriginales] = useState(productosAgregados);
 
   useEffect(() => {
     const cargarDatos = async () => {
@@ -133,7 +133,7 @@ const AgregarProducto = () => {
         {productosAgregados.length > 0 ? (
           productosAgregados.map((producto) => (
             <div
-              key={`${producto.id_producto || producto.id}-${
+              key={`${producto.id}-${
                 producto.cantidad
               }`}
               className="producto-agregado"

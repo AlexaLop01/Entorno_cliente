@@ -16,6 +16,10 @@
 }
 
 .card-title {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
     font-size: 20px;
     font-weight: bold;
     color: #222;
@@ -44,7 +48,7 @@
 
 /* Botones */
 .icon-button {
-    padding: 10px 14px;
+    padding: 8px 12px;
     font-size: 16px;
     font-weight: 600;
     border-radius: 6px;
@@ -92,3 +96,16 @@
     background-color: #BE0000;
     color: white;
 }
+/* Botón rojo */
+.edit-button {
+    color: orange;
+    border-color: orange;
+    background-color: white;
+}
+
+.edit-button:hover {
+    border: orange;
+    background-color: orange;
+    color: white;
+}
+

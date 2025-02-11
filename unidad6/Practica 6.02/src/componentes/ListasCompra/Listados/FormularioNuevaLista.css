@@ -50,7 +50,11 @@
     margin-top: 5px;
   }
   
-  .boton-crear {
+  .botones-contenedor{
+    display: flex;
+    gap: 20px;
+  }
+  .boton-crear, .boton-cancelar {
     background: #007bff;
     color: white;
     border: none;

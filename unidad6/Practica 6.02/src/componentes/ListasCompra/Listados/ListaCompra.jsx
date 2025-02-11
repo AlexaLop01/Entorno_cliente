@@ -4,15 +4,19 @@ import {
   Delete as DeleteIcon,
   Visibility as VisibilityIcon,
   AddShoppingCart as AddShoppingCartIcon,
+  Edit as EditIcon, // Icono para editar
 } from "@mui/icons-material";
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
 import useListaCompra from "../../../hooks/useListaCompra.js";
 import { Link } from "react-router-dom";
+import FormularioNuevaLista from "./FormularioNuevaLista.jsx";
 
 const ListaCompra = ({ id, nombre }) => {
-  const { borrarLista, obtenerPrecioPesoProducto } = useListaCompra(); 
+  const { borrarLista, obtenerPrecioPesoProducto } = useListaCompra();
   const [dialogoAbierto, setDialogoAbierto] = useState(false);
   const [totales, setTotales] = useState({ precioTotal: 0, pesoTotal: 0 });
+
+  const [editandoNombre, setEditandoNombre] = useState(false); // Estado para saber si estamos en modo de edición
 
   const obtenerTotales = async () => {
     const { precioTotal, pesoTotal } = await obtenerPrecioPesoProducto(id);
@@ -26,7 +30,6 @@ const ListaCompra = ({ id, nombre }) => {
     obtenerTotales();
   }, [id]);
 
-  // Formatear el precio en euros
   const precioFormateado = !isNaN(totales.precioTotal)
     ? `${parseFloat(totales.precioTotal).toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`
     : "0,00 €";
@@ -47,7 +50,24 @@ const ListaCompra = ({ id, nombre }) => {
   return (
     <div className="card-container">
       <div className="card-content">
-        <h3 className="card-title">{nombre}</h3>
+        <h3 className="card-title">
+          {editandoNombre ? (
+            <FormularioNuevaLista
+            actualizar={true}
+            nombreLista={nombre}
+            idLista={id}
+            onCancelar={() => setEditandoNombre(false)} // Cierra el formulario al cancelar
+          />
+          ) : (
+            nombre
+          )}
+          {/* Botón para editar el nombre */}
+          {!editandoNombre ? (
+          <button className="icon-button edit-button" onClick={() => setEditandoNombre(true)}>
+            Editar nombre
+          </button>
+        ) : null}
+        </h3>
         <p className="total-info">
           Precio total: <span>{precioFormateado}</span>
         </p>
@@ -55,7 +75,6 @@ const ListaCompra = ({ id, nombre }) => {
           Peso total: <span>{totales.pesoTotal.toFixed(2)} kg</span>
         </p>
 
-        {/* Mensaje sobre el medio de transporte según el peso total */}
         <p className="total-info">
           {totales.pesoTotal > 10 ? (
             <>
@@ -75,17 +94,18 @@ const ListaCompra = ({ id, nombre }) => {
             <AddShoppingCartIcon /> Añadir productos
           </button>
         </Link>
+        
         <Link to={`/verContenido/${id}`}>
           <button className="icon-button view-button">
             <VisibilityIcon /> Ver contenido
           </button>
         </Link>
+
         <button className="icon-button delete-button" onClick={confirmarBorrar}>
           <DeleteIcon /> Eliminar lista
         </button>
       </div>
 
-      {/* Diálogo de confirmación para eliminar una lista */}
       <Dialog open={dialogoAbierto} onClose={cancelarEliminacion}>
         <DialogTitle>Eliminar Lista</DialogTitle>
         <DialogContent>
