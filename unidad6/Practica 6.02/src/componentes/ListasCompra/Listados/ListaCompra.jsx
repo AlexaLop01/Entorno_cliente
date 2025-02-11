@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ListaCompra.css";
 import {
   Delete as DeleteIcon,
@@ -9,26 +9,36 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import useListaCompra from "../../../hooks/useListaCompra.js";
 import { Link } from "react-router-dom";
 
-const ListaCompra = ({ id, nombre, precioTotal, pesoTotal }) => {
-  const { borrarLista } = useListaCompra(); // Obtener la función desde el proveedor
+const ListaCompra = ({ id, nombre }) => {
+  const { borrarLista, obtenerPrecioPesoProducto } = useListaCompra(); 
   const [dialogoAbierto, setDialogoAbierto] = useState(false);
+  const [totales, setTotales] = useState({ precioTotal: 0, pesoTotal: 0 });
+
+  const obtenerTotales = async () => {
+    const { precioTotal, pesoTotal } = await obtenerPrecioPesoProducto(id);
+    setTotales({
+      precioTotal,
+      pesoTotal,
+    });
+  };
+
+  useEffect(() => {
+    obtenerTotales();
+  }, [id]);
 
   // Formatear el precio en euros
-  const precioFormateado = !isNaN(precioTotal)
-    ? `${parseFloat(precioTotal).toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`
+  const precioFormateado = !isNaN(totales.precioTotal)
+    ? `${parseFloat(totales.precioTotal).toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`
     : "0,00 €";
 
-  // Abrir el diálogo de confirmación
   const confirmarBorrar = () => {
     setDialogoAbierto(true);
   };
 
-  // Cerrar diálogo sin eliminar
   const cancelarEliminacion = () => {
     setDialogoAbierto(false);
   };
 
-  // Llamar a la función del proveedor para borrar la lista
   const eliminarLista = () => {
     borrarLista(id);
     setDialogoAbierto(false);
@@ -42,18 +52,34 @@ const ListaCompra = ({ id, nombre, precioTotal, pesoTotal }) => {
           Precio total: <span>{precioFormateado}</span>
         </p>
         <p className="total-info">
-          Peso total: <span>{pesoTotal} kg</span>
+          Peso total: <span>{totales.pesoTotal.toFixed(2)} kg</span>
+        </p>
+
+        {/* Mensaje sobre el medio de transporte según el peso total */}
+        <p className="total-info">
+          {totales.pesoTotal > 10 ? (
+            <>
+              Es mejor ir en coche <span style={{ fontSize: "1.5rem" }}>🚗</span>
+            </>
+          ) : (
+            <>
+              Puedes ir andando <span style={{ fontSize: "1.5rem" }}>🚶</span>
+            </>
+          )}
         </p>
       </div>
+
       <div className="card-actions">
         <Link to={`/agregarProductos/${id}`}>
           <button className="icon-button add-button">
             <AddShoppingCartIcon /> Añadir productos
           </button>
         </Link>
-        <button className="icon-button view-button">
-          <VisibilityIcon /> Ver contenido
-        </button>
+        <Link to={`/verContenido/${id}`}>
+          <button className="icon-button view-button">
+            <VisibilityIcon /> Ver contenido
+          </button>
+        </Link>
         <button className="icon-button delete-button" onClick={confirmarBorrar}>
           <DeleteIcon /> Eliminar lista
         </button>

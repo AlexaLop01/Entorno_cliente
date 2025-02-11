@@ -11,28 +11,29 @@ const ProveedorListaCompra = ({ children }) => {
   // Estados
   const [listas, setListas] = useState([]);
   const [datosFormulario, setDatosFormulario] = useState({ nombre_lista: "" });
+  const [productosAgregados, setProductosAgregados] = useState([]);
   const [formularioVisible, setFormularioVisible] = useState(false);
 
-  // Obtener listas de compra desde Supabase
-  useEffect(() => {
-    const obtenerListas = async () => {
-      try {
-        const { data, error } = await supabaseConnection
-          .from('listacompra')
-          .select('*')
-          .eq('id_usuario', usuario.id);
+  //Llamada de la base de datos inicial de las listas.
+  const obtenerListas = async () => {
+  if (!usuario || !usuario.id) {
+    console.warn("El usuario no está definido. No se pueden obtener listas.");
+    return;
+  }
 
-        if (error) throw error;
-        setListas(data);
-      } catch (error) {
-        console.error("Error obteniendo listas:", error);
-      }
-    };
+  try {
+    const { data, error } = await supabaseConnection
+      .from('listacompra')
+      .select('*')
+      .eq('id_usuario', usuario.id);
 
-    obtenerListas();
-  }, [usuario]);
+    if (error) throw error;
+    setListas(data);
+  } catch (error) {
+    console.error("Error obteniendo listas:", error);
+  }
+};
 
-  
 
   // Actualizar datos del formulario
   const actualizarDatoLista = (evento) => {
@@ -107,7 +108,7 @@ const ProveedorListaCompra = ({ children }) => {
       const { data, error } = await supabaseConnection
           .from('productoslistas')
           .upsert(productosAInsertar);
-  
+        setProductosAgregados([])
       if (error) {
           throw error;
       }
@@ -116,33 +117,99 @@ const ProveedorListaCompra = ({ children }) => {
     }
   };
 
-  //Esta es la función de obtener productos de una lista de compra. La dejamos aquí por si la necesitamos más adelante.
-  // const obtenerProductosListaMultiseleccion = async (idLista) => {
-  //   try {
-  //     const { data, error } = await supabaseConexion
-  //       .from("productos_listas")
-  //       .select(`
-  //         cantidad, 
-  //         productos:productos(id, nombre, precio, imagen, peso)
-  //       `)
-  //       .eq("id_lista", idLista);
+  //Esta es la función que se utiliza para traer los productos y poder guardarlo en el estado de productos agregados.
+  const obtenerProductoLista = async (idLista) => {
+    try {
+      const { data, error } = await supabaseConnection
+        .from("productoslistas")
+        .select("id_producto, cantidad")
+        .eq("id_lista", idLista);
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error( error.message);
+      return [];
+    }
+  };
+
+  //Esta función recoge los productos de la lista para mostrarlo en el componente de ver contenido.
+  const obtenerProductosListaContenido = async (idLista) => {
+    try {
+      const { data, error } = await supabaseConnection
+        .from("productoslistas")
+        .select(`
+          cantidad, 
+          productos:productos(id, nombre, precio, imagen, peso)
+        `)
+        .eq("id_lista", idLista);
   
-  //     if (error) throw error;
+      if (error) throw error;
   
-  //     // Transformamos los datos en un formato más accesible
-  //     return data.map(({ cantidad, productos }) => ({
-  //       id: productos.id,
-  //       nombre: productos.nombre,
-  //       precio: productos.precio,
-  //       imagen: productos.imagen,
-  //       peso: productos.peso,
-  //       cantidad,
-  //     }));
-  //   } catch (error) {
-  //     console.error("Error al obtener los productos de la lista:", error);
-  //     return [];
-  //   }
-  // };
+      // Transformamos los datos en un formato más accesible
+      return data.map(({ cantidad, productos }) => ({
+        id: productos.id,
+        nombre: productos.nombre,
+        precio: productos.precio,
+        imagen: productos.imagen,
+        peso: productos.peso,
+        cantidad,
+      }));
+    } catch (error) {
+      console.error("Error al obtener los productos de la lista:", error);
+      return [];
+    }
+  };
+
+  const obtenerPrecioPesoProducto = async (idLista) => {
+    try {
+      const { data, error } = await supabaseConnection
+        .from("productoslistas")
+        .select(`
+          id_producto, 
+          cantidad, 
+          productos:productos(id, precio, peso)
+        `)
+        .eq("id_lista", idLista);
+  
+      if (error) throw error;
+  
+      // Calcular los totales directamente dentro de la función
+      const totalPrecio = data.reduce((acc, productoLista) => {
+        const { precio } = productoLista.productos;
+        const cantidad = productoLista.cantidad;
+        acc += precio * cantidad; // Sumar el total del precio
+        return acc;
+      }, 0);
+  
+      const totalPeso = data.reduce((acc, productoLista) => {
+        const { peso } = productoLista.productos;
+        const cantidad = productoLista.cantidad;
+        
+        // Extraer el valor numérico del peso (eliminando las unidades como "kg")
+        const pesoNumerico = parseFloat(peso.replace(/[^\d.-]/g, "")); // Quitar cualquier cosa que no sea número o punto decimal
+        
+        // Si no se pudo convertir el peso a número, asignamos 0
+        if (!isNaN(pesoNumerico)) {
+          acc += pesoNumerico * cantidad; // Sumar el total del peso
+        } else {
+          console.warn(`El peso de ${productoLista.productos.nombre} no es válido: ${peso}`);
+        }
+  
+        return acc;
+      }, 0);
+  
+      // Devolver los totales junto con la lista de productos
+      return {
+        productos: data, // Los productos no se modifican, solo se calculan los totales
+        precioTotal: totalPrecio,
+        pesoTotal: totalPeso,
+      };
+    } catch (error) {
+      console.error("Error al obtener productos:", error);
+      return { productos: [], precioTotal: 0, pesoTotal: 0 }; // Si hay error, devolver valores por defecto
+    }
+  };
+  
 
   
 
@@ -150,11 +217,17 @@ const ProveedorListaCompra = ({ children }) => {
     listas,
     datosFormulario,
     formularioVisible,
+    productosAgregados,
+    setProductosAgregados,
     crearLista,
     actualizarDatoLista,
     cambiarVisibilidadFormulario,
     borrarLista,
-    ActualizacionProductosLista
+    ActualizacionProductosLista,
+    obtenerProductosListaContenido,
+    obtenerPrecioPesoProducto,
+    obtenerListas,
+    obtenerProductoLista
   };
 
   return (

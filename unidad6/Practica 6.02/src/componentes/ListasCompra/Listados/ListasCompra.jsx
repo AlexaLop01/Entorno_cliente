@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ListaCompra from "./ListaCompra.jsx";
 import useListaCompra from "../../../hooks/useListaCompra.js";
 import FormularioNuevaLista from "./FormularioNuevaLista.jsx";
 import "./ListasCompra.css";
 
 const ListasCompra = () => {
-  const { listas, formularioVisible, cambiarVisibilidadFormulario } = useListaCompra();
+  const { listas, formularioVisible, cambiarVisibilidadFormulario, obtenerListas } = useListaCompra();
+
+  useEffect(() =>{
+    obtenerListas();
+  }, [])
 
   return (
     <div className="listas-container">
