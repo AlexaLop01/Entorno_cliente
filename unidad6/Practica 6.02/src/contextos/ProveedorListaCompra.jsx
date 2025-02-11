@@ -90,33 +90,36 @@ const ProveedorListaCompra = ({ children }) => {
   };
 
   //Función para guardar, actualizar y borrar los productos en la lista de compra.
-  const ActualizacionProductosLista = async (productos, idLista)=>{
-    try{
-      //Esta función sirve para eliminar los productos que ya no existen en la lista.
+  const ActualizacionProductosLista = async (productos, idLista) => {
+    try {
       const idProductos = productos.map((p) => p.id_producto);
-       await supabaseConnection
-         .from("productoslistas")
-         .delete()
-         .eq("id_lista", idLista)
-         .not("id_producto", "in", `(${idProductos.join(",")})`);
-
-      //Esta sección funciona para insertar o actualizar los productos en la lista.
+  
+      // Solo ejecutar la eliminación si hay productos en la lista
+      if (idProductos.length > 0) {
+        await supabaseConnection
+          .from("productoslistas")
+          .delete()
+          .eq("id_lista", idLista)
+          .not("id_producto", "in", `(${idProductos.join(",")})`);
+      }
+  
+      // Insertar o actualizar productos
       const productosAInsertar = productos.map((producto) => ({
         id_lista: idLista,
-        id_producto: producto.id,
+        id_producto: producto.id, // Asegurarte de que aquí se usa id_producto
         cantidad: producto.cantidad,
       }));
-      const { data, error } = await supabaseConnection
-          .from('productoslistas')
-          .upsert(productosAInsertar);
-        setProductosAgregados([])
-      if (error) {
-          throw error;
-      }
-    }catch (error){
-      
+  
+      const { error } = await supabaseConnection
+        .from("productoslistas")
+        .upsert(productosAInsertar);
+  
+      if (error) throw error;
+    } catch (error) {
+      console.error("Error actualizando productos en la lista:", error);
     }
   };
+  
 
   //Esta es la función que se utiliza para traer los productos y poder guardarlo en el estado de productos agregados.
   const obtenerProductoLista = async (idLista) => {

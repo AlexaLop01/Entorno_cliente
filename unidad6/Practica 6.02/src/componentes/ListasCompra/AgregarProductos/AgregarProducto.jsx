@@ -18,29 +18,31 @@ const AgregarProducto = () => {
   const navegar = useNavigate();
   const { id } = useParams();
 
-  const [productosOriginales, setProductosOriginales] = useState(productosAgregados);
+  const [productosOriginales, setProductosOriginales] = useState([]);
 
   useEffect(() => {
     const cargarDatos = async () => {
+  
       const productosLista = await obtenerProductoLista(id);
+      
       if (listadoProductos.length > 0) {
         const productosConDetalles = productosLista.map((p) => {
           const productoEncontrado = listadoProductos.find(
-            (prod) => prod.id === p.id_producto
+            (prod) => prod.id === p.id_producto // Asegurar la correcta comparación
           );
           return productoEncontrado
-            ? { ...p, ...productoEncontrado }
+            ? { ...p, ...productoEncontrado, id_producto: p.id_producto } 
             : { id_producto: p.id_producto, cantidad: p.cantidad };
         });
+        
   
         setProductosAgregados(productosConDetalles);
       }
     };
   
-    if (id && productosAgregados.length === 0) {
-      cargarDatos();
-    }
-  }, [id, obtenerProductoLista]);
+    cargarDatos();
+  }, [id, listadoProductos]);
+  
   
   // Estados para Snackbar
   const [mensajeAlerta, setMensajeAlerta] = useState("");
@@ -66,16 +68,18 @@ const AgregarProducto = () => {
       )
     );
   };
-
-  const disminuirCantidad = (id_producto) => {
+  
+  
+  const disminuirCantidad = (id) => {
     setProductosAgregados((prev) =>
       prev
         .map((p) =>
-          p.id_producto === id_producto ? { ...p, cantidad: p.cantidad - 1 } : p
+          p.id === id ? { ...p, cantidad: p.cantidad - 1 } : p
         )
         .filter((p) => p.cantidad > 0)
     );
   };
+  
 
   // Guardar productos en Supabase
   const guardarLista = async () => {
@@ -83,15 +87,26 @@ const AgregarProducto = () => {
       mostrarAlerta("No hay productos en la lista para guardar.", "warning");
       return;
     }
-
+  
     try {
-      // Guardar productos en la base de datos
       await ActualizacionProductosLista(productosAgregados, id);
-
+  
       // Recargar los productos desde la base de datos después de guardarlos
       const productosActualizados = await obtenerProductoLista(id);
-      setProductosAgregados(productosActualizados);
-
+  
+      if (listadoProductos.length > 0) {
+        const productosConDetalles = productosActualizados.map((p) => {
+          const productoEncontrado = listadoProductos.find(
+            (prod) => prod.id === p.id_producto
+          );
+          return productoEncontrado
+            ? { ...p, ...productoEncontrado }
+            : { id_producto: p.id_producto, cantidad: p.cantidad };
+        });
+  
+        setProductosAgregados(productosConDetalles);
+      }
+  
       mostrarAlerta("Lista guardada con éxito.", "success");
       navegar("/listaCompra");
     } catch (error) {
@@ -99,6 +114,7 @@ const AgregarProducto = () => {
       console.error("Error al guardar la lista:", error);
     }
   };
+  
 
   // Función para cancelar
   const cancelarLista = () => {
