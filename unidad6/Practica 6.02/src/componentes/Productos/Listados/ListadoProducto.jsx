@@ -29,7 +29,7 @@ const ListadoProducto = ({ datos, borrado = false, actualizar = false, agregarAL
         <img src={datos.imagen} alt={datos.nombre} />
         <h3>{datos.nombre}</h3>
         <div className="contenedorPrecioPeso">
-          <p>{datos.peso}</p>
+          <p>{datos.peso}kg</p>
           <p>{datos.precio}€</p>
         </div>
         <p>{datos.descripcion}</p>
